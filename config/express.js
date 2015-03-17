@@ -30,10 +30,14 @@ module.exports = function(app, config) {
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
 
+  console.log("this far");
+
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
     require(controller)(app);
   });
+
+  console.log("controllers ready");
 
   app.use(function (req, res, next) {
     var err = new Error('Not Found');
