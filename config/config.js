@@ -32,7 +32,7 @@ var config = {
       name: 'tvapi'
     },
     port: port,
-    db: mongodb_connection_string + 'tvapi-development'
+    db: mongodb_connection_string// + 'tvapi-development'
   },
 
   test: {
@@ -41,7 +41,7 @@ var config = {
       name: 'tvapi'
     },
     port: port,
-    db: mongodb_connection_string + 'tvapi-test'
+    db: mongodb_connection_string// + 'tvapi-test'
   },
 
   production: {
@@ -50,7 +50,7 @@ var config = {
       name: 'tvapi'
     },
     port: port,
-    db: mongodb_connection_string + 'tvapi-production'
+    db: mongodb_connection_string// + 'tvapi-production'
   }
 };
 
