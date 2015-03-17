@@ -11,8 +11,9 @@ var methodOverride = require('method-override');
 module.exports = function(app, config) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'ejs');
-  app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
-  app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
+  app.set('port', process.env.OPENSHIFT_NODEJS_PORT);
+  app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP);
+  console.log("ipaddr: " + process.env.OPENSHIFT_NODEJS_IP);
 
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
