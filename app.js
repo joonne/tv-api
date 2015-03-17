@@ -3,13 +3,13 @@ var express = require('express'),
   glob = require('glob'),
   mongoose = require('mongoose');
 
-console.log("is anyone here?");
-
 mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', function () {
   throw new Error('unable to connect to database at ' + config.db);
 });
+
+console.log("db connection working");
 
 var models = glob.sync(config.root + '/app/models/*.js');
 models.forEach(function (model) {
@@ -21,3 +21,4 @@ require('./config/express')(app, config);
 
 app.listen(config.port);
 
+console.log("app listening at " + config.port);
