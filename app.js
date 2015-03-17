@@ -3,6 +3,8 @@ var express = require('express'),
   glob = require('glob'),
   mongoose = require('mongoose');
 
+console.log("is anyone here?");
+
 mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', function () {
