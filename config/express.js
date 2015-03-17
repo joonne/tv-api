@@ -13,7 +13,6 @@ module.exports = function(app, config) {
   app.set('view engine', 'ejs');
   app.set('port', process.env.OPENSHIFT_NODEJS_PORT);
   app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP);
-  console.log("ipaddr: " + process.env.OPENSHIFT_NODEJS_IP);
 
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
@@ -30,14 +29,10 @@ module.exports = function(app, config) {
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
 
-  console.log("this far");
-
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
     require(controller)(app);
   });
-
-  console.log("controllers ready");
 
   app.use(function (req, res, next) {
     var err = new Error('Not Found');
