@@ -19,6 +19,8 @@ var app = express();
 
 require('./config/express')(app, config);
 
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT);
+app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP);
 app.listen(config.port);
 
 console.log("app listening at " + config.port);
