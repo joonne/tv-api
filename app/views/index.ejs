@@ -80,12 +80,12 @@ $(document).ready(function() {
 	$(".btn.btn-success").click(function() {
 
 		var formData = $(".navbar-form.navbar-right").serialize();
-		console.log(formaData);
+		console.log(formData);
 
 		$.ajax(
 		{
 			type: "POST",
-			url: "https://www.tvapi-mashupjonne.rhcloud.com/addpost",
+			url: "http://www.tvapi-mashupjonne.rhcloud.com/addpost",
 			data: formData,
 			success: function(result,status) { alert("POST success"); },
 			error: function(xhr,status,error) { alert(xhr.responseText); },
