@@ -6,7 +6,7 @@ var express = require('express'),
 module.exports = function (app) {
   app.use('/', router);
   app.use('/addpost', router);
-  app.post('/addpost', function(console.log("route working")));
+  app.post('/addpost', response);
 };
 
 router.get('/', function (req, res, next) {
@@ -25,3 +25,7 @@ router.post('/addpost', function (req, res, next) {
   console.log(req.body);
 
 });
+
+function response() {
+  console.log("route working");
+}
