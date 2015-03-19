@@ -6,8 +6,7 @@ var mongoose = require('mongoose'),
 var ArticleSchema = new Schema({
   title: String,
   url: String,
-  text: String,
-  date: Date
+  text: String
 });
 
 ArticleSchema.virtual('date')
