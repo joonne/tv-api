@@ -29,7 +29,7 @@ module.exports = function(app, config) {
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
 
-  console.log(config.root + '/public/css');
+  console.log(__dirname + '/public/css');
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
