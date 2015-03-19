@@ -68,16 +68,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
 
 <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
 <script>
 
 $(document).ready(function() {
 
-	$(".btn btn-success").click(function() {
+	console.log("page loaded!");
 
-		var formData = $(".navbar-form navbar-right").serialize();
+	$(".btn.btn-success").click(function() {
+
+		var formData = $(".navbar-form.navbar-right").serialize();
 		console.log(formaData);
 
 		$.ajax(
