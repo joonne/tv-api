@@ -6,6 +6,7 @@ var express = require('express'),
 module.exports = function (app) {
   app.use('/', router);
   app.use('/addpost', router);
+  app.post('/addpost', function(console.log("route working")));
 };
 
 router.get('/', function (req, res, next) {
