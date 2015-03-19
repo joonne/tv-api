@@ -79,8 +79,10 @@ $(document).ready(function() {
 
 	$(".btn.btn-success").click(function() {
 
+		console.log("button clicked");
+
 		var formData = $(".navbar-form.navbar-right").serialize();
-		console.log(formData);
+		console.log("form data: " + formData);
 
 		$.ajax(
 		{

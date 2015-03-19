@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
   });
 });
 
-router.post('/addpost', function(req, res, next) {
+router.post('/addpost', function (req, res, next) {
 
   console.log("route is working!");
   console.log(req.body);
