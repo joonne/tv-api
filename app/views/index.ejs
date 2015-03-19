@@ -70,4 +70,31 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
+<script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+	$(".btn btn-success").click(function() {
+
+		var formData = $(".navbar-form navbar-right").serialize();
+		console.log(formaData);
+
+		$.ajax(
+		{
+			type: "POST",
+			url: "https://www.tvapi-mashupjonne.rhcloud.com/addpost",
+			data: formData,
+			success: function(result,status) { alert("POST success"); },
+			error: function(xhr,status,error) { alert(xhr.responseText); },
+			headers: { Accept: "application/json" },
+			dataType: "json"
+		});
+	});
+
+});
+
+
+</script>
+
 <% include footer %>

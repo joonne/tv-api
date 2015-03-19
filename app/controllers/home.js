@@ -5,6 +5,7 @@ var express = require('express'),
 
 module.exports = function (app) {
   app.use('/', router);
+  app.use('/addpost', router);
 };
 
 router.get('/', function (req, res, next) {
@@ -15,4 +16,10 @@ router.get('/', function (req, res, next) {
       articles: articles
     });
   });
+});
+
+router.post('/addpost', function(req, res, next) {
+
+  console.log(req.body);
+
 });
