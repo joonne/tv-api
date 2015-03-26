@@ -74,7 +74,13 @@ $(document).ready(function() {
 
 	console.log("page loaded!");
 
-	var socket = io('http://127.0.0.1:8080');
+	console.log(OPENSHIFT_NODEJS_IP + ":" + OPENSHIFT_NODEJS_PORT)
+
+	var app_url = 'https://127.4.155.129:8080';
+
+	//'http://127.0.0.1:8080'
+
+	var socket = io(app_url);
 
 	$(".btn.btn-success").click(function() {
 
