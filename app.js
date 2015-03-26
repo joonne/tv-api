@@ -21,4 +21,4 @@ var io = require('socket.io')(server);
 
 require('./config/express')(app, config, io);
 
-console.log("Listening...");
+console.log("Listening at " + config.ipaddr + ":" + config.port);
