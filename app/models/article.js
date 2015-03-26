@@ -5,8 +5,8 @@ var mongoose = require('mongoose'),
 
 var ArticleSchema = new Schema({
   title: String,
-  url: String,
-  text: String
+  text: String,
+  timeStamp: String
 });
 
 ArticleSchema.virtual('date')

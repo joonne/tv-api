@@ -15,6 +15,10 @@ models.forEach(function (model) {
 });
 var app = express();
 
-require('./config/express')(app, config);
+var server = app.listen(config.port,config.ipaddr);
 
-app.listen(config.port,config.ipaddr);
+var io = require('socket.io')(server);
+
+require('./config/express')(app, config, io);
+
+console.log("Listening...");

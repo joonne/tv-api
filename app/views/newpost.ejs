@@ -24,7 +24,7 @@
 				<div class="form-group">
 					<input type="password" placeholder="Password" class="form-control" name="password">
 				</div>
-				<button type="button" class="btn btn-success">Sign in</button>
+				<button type="submit" class="btn btn-success">Sign in</button>
 			</form>
 		</div><!--/.navbar-collapse -->
 	</div>
@@ -33,38 +33,27 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container">
-		<h1>Welcome!</h1>
-		<p>This is a web-page for finnish television information API.</p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+		<h1>Write a new post!</h1>
+
+		<form class="post-form">
+			<div class="form-group">
+				<input id="title" type="text" placeholder="Title" class="form-control">
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" rows="10" id="text" placeholder="Content"></textarea>
+			</div>
+			<button class="btn btn-success" type="button">Add post!</button>
+		</form>
+
 	</div>
 </div>
 
 <div class="container">
-	<!-- Example row of columns -->
-	<div class="row">
-		<div class="col-md-4 post1">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		<div class="col-md-4 post2">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-		<div class="col-md-4 post3">
-			<h2>Heading</h2>
-			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-		</div>
-	</div>
-
 	<hr>
-
 	<footer>
 		<p>&copy; Jonne Pihlanen 2015</p>
 	</footer>
-</div> <!-- /container -->
+</div>
 
 
 <!-- Bootstrap core JavaScript
@@ -79,39 +68,29 @@
 <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
 <script>
 
-// "http://www.tvapi-mashupjonne.rhcloud.com/addpost"
+<!-- "http://www.tvapi-mashupjonne.rhcloud.com/addpost" -->
 
 $(document).ready(function() {
 
+	console.log("page loaded!");
+
 	var socket = io('http://127.0.0.1:8080');
-	var articles = <%- JSON.stringify(articles) %>
-
-	for(i = 0; i < articles.length; ++i) {
-
-		if(i===2) {
-			$(".post1 h2").text(articles[i].title);
-			$(".post1 p:first").text(articles[i].text);
-		} else if(i===1) {
-			$(".post2 h2").text(articles[i].title);
-			$(".post2 p:first").text(articles[i].text);
-		} else {
-			$(".post3 h2").text(articles[i].title);
-			$(".post3 p:first").text(articles[i].text);
-		}
-	}
 
 	$(".btn.btn-success").click(function() {
 
 		console.log("button clicked");
 
-		var formData = $("form.navbar-form.navbar-right").serialize();
+		var title = $("#title").val();
+		var text = $("#text").val();
+
+		var formData = {title: title, text: text};
+		
 		console.log("form data: " + formData);
 
 		socket.emit('data',formData);
 	});
 
 });
-
 
 </script>
 
