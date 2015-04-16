@@ -1,9 +1,11 @@
+// /app.js
+
 var express = require('express'),
   config = require('./config/config'),
   glob = require('glob'),
   mongoose = require('mongoose');
 
-mongoose.connect(config.db);
+//mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', function () {
   throw new Error('unable to connect to database at ' + config.db);
@@ -15,10 +17,8 @@ models.forEach(function (model) {
 });
 var app = express();
 
-var server = app.listen(config.port,config.ipaddr);
+require('./config/express')(app, config);
 
-var io = require('socket.io')(server);
-
-require('./config/express')(app, config, io);
+var server = app.listen(config.port, config.ipaddr);
 
 console.log("Listening at " + config.ipaddr + ":" + config.port);

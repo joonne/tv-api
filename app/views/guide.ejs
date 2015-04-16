@@ -1,31 +1,20 @@
 <% include header %>
 
-<% include navbar %>
+<%- include('navbar', {user: user}); %>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
-	<div class="container">
-		<h1>Write a new post!</h1>
-
-		<form class="post-form" method="post" action="/addpost">
-			<div class="form-group">
-				<input type="text" placeholder="Title" class="form-control" name="title">
-			</div>
-			<div class="form-group">
-				<textarea class="form-control" rows="10" placeholder="Content" name="content"></textarea>
-			</div>
-			<button class="btn btn-success" type="submit">Add post!</button>
-		</form>
-
+	<div class="container guide">
+		<h2>Guide</h2>
 	</div>
 </div>
 
-<div class="container">
 	<hr>
+
 	<footer>
 		<p>&copy; Jonne Pihlanen 2015</p>
 	</footer>
-</div>
+</div> <!-- /container -->
 
 
 <!-- Bootstrap core JavaScript
@@ -40,13 +29,18 @@
 <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
 <script>
 
-<!-- "http://www.tvapi-mashupjonne.rhcloud.com/addpost" -->
+// "http://www.tvapi-mashupjonne.rhcloud.com/addpost"
 
 $(document).ready(function() {
 
-	console.log("page loaded!");
+	var series = <%- JSON.stringify(series) %>
+
+	$.each(series, function(index,serie) {
+		$(".container.guide").append("<p>" + serie.name + " : " + serie.start + "</p>");
+	});
 
 });
+
 
 </script>
 

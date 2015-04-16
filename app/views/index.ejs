@@ -1,41 +1,13 @@
 <% include header %>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/">TV-API</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-left">
-                <li id="home"><a href="/">Home</a></li>
-                <li id="newpost"><a href="/newpost">New Post</a></li>
-                <li id="about"><a href="/about">About</a></li>
-            </ul>
-			<form class="navbar-form navbar-right">
-				<div class="form-group">
-					<input type="text" placeholder="Email" class="form-control" name="email">
-				</div>
-				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control" name="password">
-				</div>
-				<button type="button" class="btn btn-success">Sign in</button>
-			</form>
-		</div><!--/.navbar-collapse -->
-	</div>
-</nav>
+<%- include('navbar', {user: user}); %>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container">
 		<h1>Welcome!</h1>
 		<p>This is a web-page for finnish television information API.</p>
-		<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+		<p><a class="btn btn-primary btn-lg" href="/about" role="button">Learn more &raquo;</a></p>
 	</div>
 </div>
 
@@ -45,17 +17,17 @@
 		<div class="col-md-4 post1">
 			<h2>Heading</h2>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+			<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
 		</div>
 		<div class="col-md-4 post2">
 			<h2>Heading</h2>
 			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+			<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
 		</div>
 		<div class="col-md-4 post3">
 			<h2>Heading</h2>
 			<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-			<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+			<!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
 		</div>
 	</div>
 
@@ -83,10 +55,10 @@
 
 $(document).ready(function() {
 
-	var socket = io('http://127.0.0.1:8080');
 	var articles = <%- JSON.stringify(articles) %>
 
-	for(i = 0; i < articles.length; ++i) {
+
+	for(var i = 0; i < articles.length; ++i) {
 
 		if(i===2) {
 			$(".post1 h2").text(articles[i].title);
@@ -99,16 +71,6 @@ $(document).ready(function() {
 			$(".post3 p:first").text(articles[i].text);
 		}
 	}
-
-	$(".btn.btn-success").click(function() {
-
-		console.log("button clicked");
-
-		var formData = $("form.navbar-form.navbar-right").serialize();
-		console.log("form data: " + formData);
-
-		socket.emit('data',formData);
-	});
 
 });
 

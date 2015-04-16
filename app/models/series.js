@@ -13,9 +13,4 @@ var SeriesSchema = new Schema({
 	seriesid: String
 });
 
-SeriesSchema.virtual('date')
-  .get(function(){
-    return this._id.getTimestamp();
-  });
-
-mongoose.model('Series', SeriesSchema);
+module.exports = mongoose.model('Series', SeriesSchema);

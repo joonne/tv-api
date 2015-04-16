@@ -1,3 +1,5 @@
+// config/config.js
+
 var path = require('path'),
     rootPath = path.normalize(__dirname + '/..'),
     env = process.env.NODE_ENV || 'development';
@@ -5,7 +7,9 @@ var path = require('path'),
 var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
-var mongodb_connection_string = 'mongodb://127.0.0.1:27017/';
+var db_name = "tv-api";
+
+var mongodb_connection_string = 'mongodb://127.0.0.1:27017/' + db_name;
 
 //take advantage of openshift env vars when available:
 if(process.env.OPENSHIFT_MONGODB_DB_URL){

@@ -1,3 +1,5 @@
+// config/express.js
+
 var express = require('express');
 var glob = require('glob');
 
@@ -7,16 +9,22 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
+var passport = require('passport');
+var session = require('express-session');
+var flash = require('connect-flash');
+var mongoose = require('mongoose');
 
-module.exports = function(app, config, io) {
+
+module.exports = function(app, config) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'ejs');
-  app.set('port', process.env.OPENSHIFT_NODEJS_PORT);
-  app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP);
 
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
+
+  require('./passport')(passport);
+  mongoose.connect(config.db);
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));
@@ -24,14 +32,20 @@ module.exports = function(app, config, io) {
   app.use(bodyParser.urlencoded({
     extended: true
   }));
-  app.use(cookieParser());
   app.use(compress());
   app.use('/public', express.static(config.root + '/public'));
   app.use(methodOverride());
+  app.use(cookieParser());
+
+  // passport related stuff
+  app.use(session({ secret: 'secret' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
-    require(controller)(app,io);
+    require(controller)(app,passport);
   });
 
   app.use(function (req, res, next) {
@@ -58,6 +72,14 @@ module.exports = function(app, config, io) {
         error: {},
         title: 'error'
       });
+  });
+
+  app.get('/logout', function(req, res) {
+    var name = req.user.username;
+    console.log("LOGGING OUT " + name);
+    req.logout();
+    res.redirect('/');
+    req.session.notice = "You have successfully been logged out " + name;
   });
 
 };
