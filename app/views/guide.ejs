@@ -22,25 +22,58 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
 
 <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-1.4.2.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-
-// "http://www.tvapi-mashupjonne.rhcloud.com/addpost"
 
 $(document).ready(function() {
 
-	var series = <%- JSON.stringify(series) %>
-
-	$.each(series, function(index,serie) {
-		$(".container.guide").append("<p>" + serie.name + " : " + serie.start + "</p>");
-	});
+  //$.each(programs, function(index,program) {
+  //  $(".container.guide").append("<p>" + program.data.name + " : " + program.data.start + "</p>");
+  //});
 
 });
 
+var programs = <%- JSON.stringify(programs) %>
+
+var diameter = 600;
+ 
+var svg = d3.select('.container.guide').append('svg')
+  .attr('width', diameter)
+  .attr('height', diameter);
+ 
+var bubble = d3.layout.pack()
+  .size([diameter, diameter])
+  .padding(3) // padding between adjacent circles
+  .value(function(d) {return d.size;}) // new data will be loaded to bubble layout
+
+var nodes = bubble.nodes(processData(programs))
+  .filter(function(d) { return !d.children; }); // filter out the outer bubble
+
+var vis = svg.selectAll('circle')
+  .data(nodes, function(d) { return d.name; })
+  .enter();
+ 
+vis.append('circle')
+  .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+  .attr('r', function(d) { return d.r; })
+  .attr('class', function(d) { return d.className; });
+
+function processData(data) {
+
+  var newDataSet = [];
+
+  for(var program in data) {
+    newDataSet.push({name: data[program].data.name, className: data[program].channelName.toLowerCase(), size: data[program].data.name.length});
+  }
+  return {children: newDataSet};
+
+}
+
+d3.select(self.frameElement).style("height", diameter + "px");
 
 </script>
 
