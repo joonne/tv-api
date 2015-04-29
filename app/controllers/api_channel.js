@@ -13,7 +13,7 @@ router.get('/api/:channel', function (req, res, next) {
 
   var channel = req.params['channel'];
 
-  Program.find(({'channelName': channel}), function (err, programs) {  
+  Program.find({'channelName': channel}).sort({'data.start': 1 }).exec(function (err, programs) {  
 
     if(programs) {
       res.status(200).json(programs);

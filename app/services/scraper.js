@@ -12,7 +12,7 @@ moment.locale('fi');
 
 var baseUrl = "http://www.telsu.fi/";
 var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
-// var channels = ["subtv"];
+//var channels = ["yle2"];
 var today = moment().format('dddd');
 var content = "";
 var descriptions = [];
@@ -32,10 +32,8 @@ function searchSeasonNumber(description) {
 
    if(description.charAt(start+8) !== '.') {
       number = description.substr(start+6,1);
-      //console.log("Kausi " + number);
    } else {
       number = description.substr(start+6,2);
-      //console.log("Kausi " + number);
    }
 
    if(isNaN(number/1)) {
@@ -102,12 +100,10 @@ function getSeriesIDs() {
                   seriesid = seriesid.substr(0,6);
                }
 
-               console.log(name + ": " + seriesid);
+               console.log(channel.channelName + " " + name + ": " + seriesid);
                series.seriesid = seriesid;
 
                var newProgram = new Program();
-
-               // console.log(newProgram.createdAt);
 
                newProgram.channelName = channel.channelName;
                newProgram.data.name = series.name;
