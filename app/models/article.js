@@ -1,4 +1,4 @@
-// Example model
+// models/article.js
 
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
@@ -8,11 +8,6 @@ var ArticleSchema = new Schema({
   text: String,
   timeStamp: String
 });
-
-ArticleSchema.virtual('date')
-  .get(function(){
-    return this._id.getTimestamp();
-  });
 
 mongoose.model('Article', ArticleSchema);
 

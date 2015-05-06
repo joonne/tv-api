@@ -25,7 +25,9 @@ module.exports = function(passport) {
       passReqToCallback: true
     },
 
-    function(req, email, password, done) {
+    function (req, email, password, done) {
+
+      var username = req.body.username;
 
         process.nextTick(function() {
 
@@ -39,7 +41,8 @@ module.exports = function(passport) {
 
   				    var newUser = new User();
 
-  				    newUser.local.email = email;
+              newUser.local.email = email;
+              newUser.local.username = username;
   				    newUser.local.password = newUser.generateHash(password);
 
   				    newUser.save(function(err) {

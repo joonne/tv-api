@@ -1,5 +1,5 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only">Toggle navigation</span>
@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/">TV-API</a>
+			<a class="navbar-brand" href="/">tv-api</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-left">
@@ -17,39 +17,26 @@
 
             <% if (user) { %>
 
-            <!-- Dropdown version of login info navbar thingy -->
-            <!-- TODO: change nickame or fullname instead of email-->
-   			<div class="dropdown nav navbar-nav navbar-right">
-        		<a data-toggle="dropdown" class="dropdown-toggle"> Hi, <%= user.local.email %> <b class="caret"></b></a>
-        		<ul class="dropdown-menu">
-        			<li><a href="/newpost">New Post</a></li>
-            		<li><a href="/profile">Profile</a></li>
-            		<li><a href="/settings">Settings</a></li>
-            		<li class="divider"></li>
-            		<li><a href="/logout">Logout</a></li>
+   			<ul class="nav navbar-nav navbar-right">
+   				<li><a><%=user.local.username%></a></li>
+   				<!--<li><img src="public/img/avatar_base.png"></li>-->
+        		<li><a href="/newpost">New Post</a></li>
+            	<li><a href="/profile">Profile</a></li>
+            	<li><a href="/settings">Settings</a></li>
+            	<li><a href="/logout">Logout</a></li>
+        	</ul>
+    	</div>
+
+   	 	<% } else { %>
+
+   	 		<div id="navbar" class="navbar-collapse collapse">
+        		<ul class="nav navbar-nav navbar-right">
+            		<li><a href="/login">Login</a></li>
+            		<li><a href="/signup">Signup</a></li>
         		</ul>
     		</div>
 
-    		<!-- Simple version -->
-            <!--<ul class="nav navbar-nav navbar-right">
-                <li>Hi, <%= user.local.email %></li>
-                <li><img src="public/img/avatar_base.png"></li>
-            </ul>-->
-   	 		
-   	 		<% } else { %>
+		<% } %>
 
-			<form class="navbar-form navbar-right" action="/login" method="post">
-				<div class="form-group">
-					<input type="text" placeholder="Email" class="form-control" name="email">
-				</div>
-				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control" name="password">
-				</div>
-				<button type="submit" class="btn btn-success">Log in</button>
-			</form>
-
-			<% } %>
-
-		</div><!--/.navbar-collapse -->
 	</div>
 </nav>
