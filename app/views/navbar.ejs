@@ -11,32 +11,31 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-left">
-                <li id="documentation"><a href="/documentation">Documentation</a></li>
-                <li id="about"><a href="/about">About</a></li>
-            </ul>
+        <li><a href="/documentation">Documentation</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
 
-            <% if (user) { %>
+      <% if (user) { %>
 
-   			<ul class="nav navbar-nav navbar-right">
-   				<li><a><%=user.local.username%></a></li>
-   				<!--<li><img src="public/img/avatar_base.png"></li>-->
-        		<li><a href="/newpost">New Post</a></li>
-            	<li><a href="/profile">Profile</a></li>
-            	<li><a href="/settings">Settings</a></li>
-            	<li><a href="/logout">Logout</a></li>
-        	</ul>
-    	</div>
+   		<ul class="nav navbar-nav navbar-right">
+   			<li><a><%=user.local.username%></a></li>
+        <li><a href="/newpost">New Post</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/settings">Settings</a></li>
+        <li><hr></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
 
-   	 	<% } else { %>
+   	  <% } else { %>
 
-   	 		<div id="navbar" class="navbar-collapse collapse">
-        		<ul class="nav navbar-nav navbar-right">
-            		<li><a href="/login">Login</a></li>
-            		<li><a href="/signup">Signup</a></li>
-        		</ul>
-    		</div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><hr></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
+      </ul>
+    </div>
 
-		<% } %>
+		  <% } %>
 
 	</div>
 </nav>
