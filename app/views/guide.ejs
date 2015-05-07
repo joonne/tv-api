@@ -56,6 +56,11 @@ $(document).ready(function() {
     .attr('r', function(d) { return d.r; })
     .attr('class', function(d) { return d.className; });
 
+  vis.append("text")
+      .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className; });
+
   function processData(data) {
 
     var newDataSet = [];

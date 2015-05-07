@@ -27,5 +27,6 @@ router.get('/loginerror', function (req, res) {
 
 router.get('/removeusers', function (req, res, next) {
   User.remove().exec();
+  User.drop();
   res.send("users removed");
 });
