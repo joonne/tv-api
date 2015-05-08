@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 var ArticleSchema = new Schema({
   title: String,
   text: String,
-  timeStamp: String
+  author: String,
+  createdAt: { type: String, default: Date.now }
 });
 
 mongoose.model('Article', ArticleSchema);

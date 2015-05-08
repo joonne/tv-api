@@ -3,11 +3,7 @@
 var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
-  Article = mongoose.model('Article'),
-  moment = require('moment');
-
-//moment.locale('fi');
-var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+  Article = mongoose.model('Article')
 
 module.exports = function (app,passport) {
   app.use('/', router);
@@ -17,14 +13,14 @@ module.exports = function (app,passport) {
     var title = req.body.title;
     var text = req.body.content;
 
-    console.log(title,text);
-
-    var article = new Article({title: title, text: text, timeStamp: time});
+    var article = new Article({title: title, text: text, author: req.user.username});
     article.save(function (err, article) {
-    if(err) return console.error(err);
-  });
+      if(err) return console.error(err);
+    });
 
-    res.redirect('/newpost');
+    console.log(article);
+
+    res.redirect('/');
 
   });
 };

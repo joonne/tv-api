@@ -5,8 +5,8 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
 	<div class="container guide">
-		<h2>Visualization</h2>
 	</div>
+  <p> The bubble chart shows the lengths of the tv-program-names. Each "channel-family" is plotted with different color. </p>
 </div>
 
 	<hr>
@@ -33,11 +33,19 @@ $(document).ready(function() {
 
   var programs = <%- JSON.stringify(programs) %>
 
-  var diameter = 600;
+  var channels = [{name:"yle1"},{name:"yle2"},{name:"mtv3"},{name:"nelonen"},{name:"subtv"},{name:"liv"},{name:"jim"},{name:"viisi"},{name:"kutonen"},{name:"fox"},{name:"ava"},{name:"hero"}];
 
-  var svg = d3.select('.container.guide').append('svg')
-    .attr('width', diameter)
-    .attr('height', diameter);
+  var color = d3.scale.ordinal().range(['#45B29D', '#45B29D', '#DF4949', '#E27A3F', '#DF4949', '#E27A3F', '#E27A3F' , '#E3814D', '#E3814D', '#E489CD', '#DF4949', '#E27A3F']); 
+
+  var diameter = 400;
+  var svg_width = 800;
+  var svg_height = 400;
+
+  var svg = d3.select('.container.guide')
+    .append('svg')
+    .attr('width', svg_width)
+    .attr('height', svg_height)
+    .append('g');
  
   var bubble = d3.layout.pack()
     .size([diameter, diameter])
@@ -47,19 +55,48 @@ $(document).ready(function() {
   var nodes = bubble.nodes(processData(programs))
     .filter(function(d) { return !d.children; }); // filter out the outer bubble
 
-  var vis = svg.selectAll('circle')
+  var circle = svg.selectAll('.circle')
     .data(nodes, function(d) { return d.name; })
     .enter();
  
-  vis.append('circle')
+  circle.append('circle')
     .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
     .attr('r', function(d) { return d.r; })
     .attr('class', function(d) { return d.className; });
 
-  vis.append("text")
-      .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
-      .style("text-anchor", "middle")
-      .text(function(d) { return d.className; });
+  // vis.append("text")
+  //     .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+  //     .style("text-anchor", "middle")
+  //     .text(function(d) { return d.className; });
+
+  var legendRectSize = 18;
+  var legendSpacing = 4;
+
+  var legend = svg.selectAll('.legend')
+    .data(channels)
+    .enter()
+    .append('g')
+    .attr('class', 'legend')
+    .attr('transform', function(d, i) {
+      var height = legendRectSize + legendSpacing;
+      var offset =  height * color.domain().length / 2;
+      var horz = -2 * legendRectSize;
+      var vert = i * height - offset;
+      return 'translate(' + horz + ',' + vert + ')';
+    });
+
+    legend.append('rect')
+      .attr('width', legendRectSize)
+      .attr('height', legendRectSize)
+      .attr('x', legendRectSize + 450)
+      .attr('y', legendRectSize - legendSpacing + 35)
+      .style('fill', color)
+      .style('stroke', color);
+
+    legend.append('text')
+      .attr('x', legendRectSize + legendSpacing + 480)
+      .attr('y', legendRectSize - legendSpacing + 50)
+      .text(function(d) { return d.name; });
 
   function processData(data) {
 
