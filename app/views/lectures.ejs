@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<title>Ohjelmallinen Sisällönhallinta</title>
+	<meta name="author" content="Jonne Pihlanen">
+	<meta name="description" content="Luentopäiväkirja">
+	<style type="text/css">
+		body {
+			font-size:90%; 
+  			line-height:1.5;
+			font-family: 'Merriweather', Georgia, 'Times New Roman', Times, serif;
+			padding: 20px;
+		}
+	</style>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+
+<body>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+	<div class="container">
+		<h2>Luentopäiväkirja</h2>
+		<p>Ohjelmallinen Sisällönhallinta 2015</p>
+	</div>
+</div>
+
+<div class="container">
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+			<h2> Viikko 1 <a name="viikko1"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.1</h3>
+
+				<p> Käytännön asiat. En päässyt aloitusluennolle paikalle koska tieto tuli vähän viime tipassa, mutta aloitusluennon aiheena olivat kurssin käytännön asiat, järjestelyt ja tavoitteet. Aloitusluennon materiaalista bongasinkin luentopäiväkirja mahdollisuuden ja sitä tässä aloittelen sitten kirjoittamaan. Materiaalin lopussa oli myös johdantoa aiheeseen: Ohjelmointi hypermedian apuvälineenä mahdollistaa muun muassa sisällönhallinnan automatisoinnin(APIt), toteutustyön automatisoinnin(navigointi,tietokannat,lomakkeet), monikanavajulkaisemisen(räätälöity vs joustava julkaiseminen) sekä vuorovaikutuksen toteuttamisen(esim. rekisteröityminen). Lisäksi puhuttiin palvelimen roolista ohjelmoinnissa eli asiakkaan ja palvelimen rooleista ja mahdollisuuksista jakaa laskentaa jommalle kummalle osapuolelle. Tällöin puhutaan käsitteistä älykäs vs. kevyt asiakas. Lopuksi mainittiin muunmuassa että kokoajan kasvavan saatavilla olevan informaation vuoksi (some,API,avoin data) kehittäjien luovuus on käytännössä ainut uusien palveluiden syntymistä rajoittava tekijä. Keskiviikkona pääsin sitten virallisesti aloittamaan kurssia koodiklinikan muodossa, joka vaikutti erittäin hyvältä! Koodiklinikoiden ajatuksena on ilmeisesti pohtia tekniikoita ja katsoa koodia ja erilaisia, mahdollisesti harjoitustyön kannalta hyvinkin oleellisia, tekniikoita sitten yhdessä. Oppimistapahtumana tilaisuus vaikutti mielekkäältä ja hyvinkin oppimista edistävältä. </p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p> Monikanavajulkaiseminen ja räätälöity vs. joustava julkaisu olivat jollakin tasolla ajatuksina tuttuja, mutta termit eivät ainakaan olleet joten sen nostaisin tärkeimmäksi asiaksi tältä viikolta. Uusia tuttavuuksia olivat myös termit Responsive Web Design, Progressive enhancement ja Unobtrusive JavaScript. Mielenkiintoista oli myös tajuta sanan NIH merkitys. Kirjaimet siis tarkoittavat "Not Invented Here" ja tämä tarkoittaa sitä, että järjestelmällisesti kieltäydytään käyttämästä valmiita asioita hyödyksi ja mieluummin kehitetään omat tilalle alusta asti. </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p> En keksi aloitusviikosta mitään karsittavaa. </p>
+		</div>
+
+		<div class="col-xs-6 col-lg-4">
+
+			<h3>Avainsanoja</h3>
+
+				<p>
+					<a href="#viikko1">Käytännön asiat</a>,
+					<a href="#viikko2">Web-arkkitehtuuri</a>,
+					<a href="#viikko3">Ruudunraapijat</a>,
+					<a href="#viikko4">Koostepalvelut</a>,
+					<a href="#viikko5">Surveypal</a>,
+					<a href="#viikko6">Verkkopalvelun arkkitehtuuri</a>,
+					<a href="#viikko7">Web API ja avoin data</a>,
+					<a href="#viikko8">Sisällönhallinta- ja julkaisujärjestelmät</a>,
+					<a href="#viikko9">Käytön seuranta ja mukautuvat järjestelmät</a>,
+					<a href="#viikko10">Data Science</a>,
+					<a href="#viikko11">Yksityisluento</a>
+				</p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+			
+			<h2> Viikko 2 <a name="viikko2"></a> </h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.2</h3>
+
+				<p> Web-arkkitehtuuri. Luennon aluksi tutkailtiin taululle piirretyn kuvan avulla Web-arkkitehtuuria. Kuvaan sisältyi client, HTTP, palvelin (HTTPD,filesystem,PHP->DB). HTTP-GET metodin lisäksi myös POST, jonka tarkoituksena on muuttaa palvelimen tilaa jotenkin. GET ja POST eri asioihin tarkoitettuja. Esimerkki arkkitehtuurin toiminnasta: Resurssi (sää,tampere), jolla tunniste (URL,URI,URN). Web-client tai browser tekee pyynnnön, pyynnön mukana matkaa tietoja, hakee tietoa kannasta (lämpötila,tuulen nopeus,ilmankosteus). SPA eli single page application. Päivittää tietoja itsekseen. API ensin ajattelu, kuumin aihe atm. Minimum viable product, pienimmän vaivan menetelmä? Suunnittelemalla rajapinta ensin saadaan ensin kartoitettua ydintoiminnallisuus jota käyttäjä haluaa. Node.js:ää kurkattiin pikaisesti. Puhuttiin myös muutoksesta kohti RESTful rajapintoja, eli rajapintoja joiden kutsuminen nojaa HTTP-GET-metodiin ja ne ovat luonteeltaan tilattomia. Mainittiin myös hyvä "Designing Beautiful REST APIs"-kalvosarja, joka vaikuttikin mielenkiintoiselta. (Kumpa olisin kandia kirjoittaessa sen jo nähnyt...) Tässä vaiheessa lähdin luennolta Futuricen Space Tyckiting kisaan, joten loppu tulee TTY-Piirin listauksesta. Ilmeisesti näytettiin vielä esimerkkinä Tesla Model S -sähköauton hallintaan tarkoitettua RESTful rajapintaa. Tämä on ajankohtainen aihe, sillä juuri tällä viikolla huomasin Sailfishille tulleen natiivin sovelluksen nimeltä Tesla. Se löytyy <a href="https://openrepos.net/content/yuvraaj/tesla">täältä:</a> Sovelluksen avulla voi muunmuassa nähdä auton sijainnin, lataustilanteen, vilkuttaa valoja tai soittaa torvea. Lopuksi vielä oli ilmeisesti esimerkkejä URI-tunnisteiston suunnittelusta, resursseista, JSON:ista ja PHP:sta, mutta niistä ei Piirissä ollut enempää asiaa. Koodiklinikan aiheina olisivat olleet Smarty, Mechanize, Beautiful Soup, Postman ja Swagger. Kaikki vaikuttivat mielenkiintoisilta asioilta kun kävin sivuilla vierailemassa.</p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p> Viisi uutta asiaa tulivat suoraan koodiklinikan aiheista. Toivottavasti niitä käsitellään hiukan ensiviikolla. API first -ajatteluun liittyen termi Minimum viable product oli uusi, sillä siis tarkoitetaan sitä, että sovelluksella on julkaistaessa vain ne ominaisuudet, jotka siltä välttämättä vaaditaan.  </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p> Nää on aika hankalia vastattavia, kun tiedonnälkä on kuitenkin aika suuri eikä kertauksesta ole koskaan haittaa ja uudet asiat on lähtökohtaisesti aina mielenkiintoisia. Mahdollinen Telnet-demo ehkä olisi karsittavissa, ellei sen historiallinen merkitys ole kovin suuri kurssin kannalta. </p>
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+			<h2> Viikko 3 <a name="viikko3"></a> </h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.3</h3>
+
+				<p> Ruudunraapijat eli scraperit. Sisällön neuvotteluprosessi, selaimen pyyntö ja siihen vastaaminen. Computational linguistics, kiinnostavaa tämän luentopäiväkirjan kannalta, voisi koittaa tuollaista jos on mahdollista vaan. Raw dat, Data tables(relaatiot avainsanojen mukaan + metadata), Visual structures, views. Mahdollisuus suosittelijajärjestelmän tekemiseen, esim blogia lukiessa ehdotuksia samankaltaisia. Tagipilvi. Raapijan osa tässä mallissa on nimenomaan raw data-> datatables. BI, raporttijärjestelmät, SAP. Data ei ole nykyään ongelma, sitä on paljon. Wikipedista esitettiin kuva ryömijän arkkitehtuurista. WWW->Monisäikeinen lataaja->Jono->Scheduler(päättää kuinka usein pitää päivittää)->tallennus. Ryöpijä(TM) yleensä lukee koko sivun ja laittaa sen talteen tekstinä. Ruudunraavinta/koodauskirja kirja journalisteille. ScraperWiki: tehdään yhdessä raavintaa. Ghost in the web. Emuloidaan selainta JavaScript kirjastolla, jolloin saadaan käytettyä dynaamista web-sivua. Raapija hakee nimenomaan dataa, yleensä yksittäisiä sivuja, voi olla myös semmoinen joka etenee esim wikipediassa linkkien mukaan. Puhuttiin datan siivoamisesta, Google Refine, Data Wrangler kopioi datan html formiin ja sitten kun maalaa tekstiä niin työkalu esittää arvauksia siitä mitä halutaan tehdä. Näin syntyy sääntöjä datan siivoamiseen. Open esimerkkejä. Koodiklinikalla käytiin läpi harjoitustyötä, mahdollisia aiheita ja työn pistetytystä. Oma haaveeni harkkatyöstä on avoimen rajapinnan rakentaminen suomen televisioaikatauluista. </p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p> Uusia termejä: sisällön neuvotteluprosessi, computational linguistics, Google Refine, Data Wrangler. </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p>  </p>
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+			<h2> Viikko 4 <a name="viikko4"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.4</h3>
+
+				<p>
+
+					Koostepalvelut. Yhdistetty data (linked data) mahdollistaa datan ohjelmallisen selaamisen ja lukemisen. Muita nimityksiä mashupille: Survos,muusaus,fuusaus. Koostepalvelun kehittäjä ei kerää pelkästään dataa vaan myös käyttöliittymä ym. komponennteja. Tarkoitus on kuitenkin esittää tieto uudella ja aiempaa paremmalla/selkeämmällä tavalla. Tulos on käyttäjälle enemmän kuin osiensa summa. Selain on täysin erilainen alusta muihin verrattuna, keitto, sinne voidaan laittaa mitä vaan ja painaa refresh-nappia ja aina tulee jotain toimivaa. Ilmaisuvoima on järjetön. Tenttitärppiä, kolme eri koostamisen tasoa: Sisällön tasolla(RSS/Atom, Web APIt(REST), raavinta, GRDDL), sovelluslogiikan tasolla(datan koostaminen suodattaminen ja muuntaminen, Yahoo! Pipes, Google Fusion Tables) tai käyttöliittymän tasolla() tai näiden yhdistelmänä. Esimerkki Zoomable Circle Packing, Visuaalisen informaation "mantra": ensin korkealla tasolla ja sitten zoomataan yksityiskohtiin. Esimerkkisovellus MyTube. Soittolista->Last.fm palvelusta esittäjän nimi & kuvaus, YouTube Bar, Visualisointi. Erilähteistä haetusta datasta tehtiin uusi XML-tiedosto yhdistetyillä tiedoilla ja siitä (ilmeisesti) JSONia jota sitten annettiin YouTuben BAR lisäosalle. Informaation visualisointi. Koostepalvelut esittelevät toimintamallin tietosisällön, toimintalogiikan ja käyttöliittymien automatisoidusta koostamisesta. Koostepalvelu - Xanadu ? (Transclusion - sen sijaan että copypaste viittaus -> raahataan viittaus alkuperäisestä lähteestä.) Menee ehkä vähän yli analysointi. Ongelmana on että toimijat eivät halua tukea tiedon uudelleenkäytön helppoutta, koska pelkona ihmisten ja mainostulojen menettäminen.
+
+				</p>
+
+				<p>	Koodiklinikka: </p>
+
+				<p>
+					Datan visualisointia web-ympäristössä ja siihen tarjolla olevia työkaluja. Highcharts helpompi oppia ja D3 vaikeampi. D3:n ideana on että JavaScriptin avulla manipuloidaan svg-tiedostoja. Elementti valitaan, luodaan datan perusteella, luoduille ja olemassa oleville annetaan sitten ominaisuuksia/toiminnallisuutta. D3 toteuttaa "Grammar of graphics" kirjan JavaScriptillä. Elementit tulevat ja poistuvat dokumentista.
+
+				 </p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p> Informaation visualisointi. </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p>  </p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+				<h2> Viikko 5 <a name="viikko5"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.5</h3>
+
+				<p>
+					Surveypal. Olin tiistain luennon aikaan Solitan järjestämässä Node.js koulutuksessa ja suurin osa luentopäiväkirjasta tuleekin kalvoista.
+				</p>
+
+				<p> Koodiklinikka: </p>
+
+				<p>
+					CodeIgniter esittelyä. Vaikutti ihan mielenkiintoiselta, mutta olen tosin valinnut jo oman toteutustekniikka pinoni harjoitustyöhön.
+				 </p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p>  </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p>  </p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+			<h2> Viikko 6 <a name="viikko6"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.6</h3>
+
+				<p> Verkkopalvelun arkkitehtuuri ja yleinen toiminnallisuus. Verkkopalveluiden kolme keskeistä toimintoa ovat pääsynhallinta(access), käyttäjän tunnistaminen(authentication) ja käyttöoikeuksien hallinta(autorization). Kolmikerrosmalli -> kohti javascriptiä eli hämärtyy. Lomakkeet on kaiken perusta, mutta kuitenkin vain HTML:ää. Lomakepohjainen tunnistus on nykyään suosittua. Sähköpostia voitaisiin käyttää käyttäjänimenä, mutta silloin tietomurtojen seurauksena voitaisiin päästä helposti käsiksi muihinkin tileihin. Käyttöoikeuksien hallinta: ei ollenkaan, jokaiselle käyttäjälle erikseen, roolien avulla, profiilien avulla. Salasanat hashina kantaan eikä selkokielisenä :) Uloskirjautuminen! Lomaketoteutuksen kommunikoivat Web-palvelimien kanssa HTTP:n avulla. GET turvallisiin, POST ei-turvallisiin kuten tilaus koska palvelun tila muuttuu. Pysyvät linkit, mutta kuitenkin versiointi pitää ottaa huomioon. Esimerkiksi viimeisin versio aina esillä, mutta jossain saatavilla versiokohtaisetkin linkit. Web-lomakkeiden kanssa huomioitavia asioita: Ohjeet, opasteet, virheilmoitukset. Istunnot tehdään evästeillä. Tietoturvan toteuttamisessa on tehtävä kompromissi verkkopalvelun käytettävyyden, suorituskyvyn, kustannustehokkuuden ja turvallisuuden välillä. Verkkopalveluiden yhteisiä ja yleisiä ominaisuuksia: CRUD, kansainvälistäminen/lokalisaatio, admin-oikeudet, taggaaminen, hakeminen, räätälöidyt sivut, laiteriippumattomuus, käytön tilastointi ja analysointi, forum, ostoskori, pollit.
+				</p>
+
+				<p>Koodiklinikka:</p>
+
+				<p>
+					Harkkatyön esittelyä. 
+				</p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p>  </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p>  </p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+			<h2> Viikko 7 <a name="viikko7"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.7</h3>
+
+				<p> Web APIt ja avoin data. Sain Digian työhaastattelun juuri luennon päälle, joten taas mennään kalvoista. </p>
+
+				<p> Koodiklinikka: </p>
+
+				<p>
+				Richardin pitämä Firebase + Angular.js koodidemo. Firebase on reaaliaikainen tietokanta joka tarjoaa kehittäjille mahdollisuuden tallentaa ja synkronoida tietoa monista eri sovelluksista/clienteistä. Vaatii rekisteröitymisen. Sovellus oli hieno ja nopsa toimissaan. Seuraavaksi esiteltiin plunker.com sivustoa joka on siis IDE netissä, voit tehdä ainakin html/css/js sovelluksia kirjastoineen eli jsFiddle enemmän toiminnallisuuden kanssa. Angular näytti ihan mielekkäältä. "ng-" alkuiset asiat ovat direktiivejä. 
+				</p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p>  </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p>  </p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+			<h2> Viikko 8 <a name="viikko8"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 3.8</h3>
+
+				<p>
+					Sisällönhallinta- ja julkaisujärjestelmät. Höpistään siitä mitä ollaan käyty läpi. Miten harkkatyötä kannattaisi lähteä tekemään. Oman harkkatyön "logiikka" on jo aikalailla valmis, koska scraper ja mashup asia toimii. Seuraavaksi mietin tarkemmin jatkanko tuolla sails.js frameworkillä vai ottaisinko expressin ja tekisin melkein kaiken itse vai ottaisinko sitten express-generator paketin joka tekisi paljon asioita valmiiksi. Informaatio muuttuu sisällöksi, kun se saa merkityksen. Sisällönhallintajärjestelmä on sisällön muokkaamiseen, hallintaan ja julkaisuun erikoistunut järjestelmä. Sisällön kapselointi yksiköihin. Sisältöyksikkö on sisällönhallinnan perusyksikkö. Se koostuu datasta ja metadatasta. Metatieto mahdollistaa automatisoidun tietojenkäsittelyn. Sisällönhallintajärjestelmästä saatavia lisäarvoja: tuottavuuden parantaminen, oikeuksien hallinta, työnkulun ohjaus, yhtenäinen ulkoasu, ulkoasun muokkaaminen. Huonon suunnittelun tai valintojen perusteella voi tapahtua mahdollisesti huonontumistakin. Esimerkiksi sivuston ulkoasun muuttaminen ilman sisältöyksiköiden käpistelyä. Tämä kyseinen sivu ei ihan näitä kaikkia sisällönhallinnan sääntöjä ainakaan täytä mutta ei varmaan tarkoituskaan. :D Sisällönhallintajärjestelmät voidaan luokitella sovellusalueen perusteella: media, enterprise, web, dokumentti, komponenttipohjaiset. Web-sisällönhallintajärjestelmä tarkoittaa erityisesti HTML-muotoisen datan käsittelyä. Online, Offline. Nopea esitys markdown -kielestä. Nimi oli outo mutta GitHubin readme.md selkisin nyt olemaan md eli MARKDOWN...:) Samoin Apiary palvelu jota katsoin jossa saa tehtyä helposti rajapinnan dokumentaation. Näytettiin latexille tehtyä Overleaf palvelua joka näytti siistiltä, tosin tykkään kyllä TexStudiosta ja muutenkin latexin kanssa leikkimisestä. Sisällön tuomisella tarkoitetaan sisällön tuomista järjestelmään ja se ei yleensä ole siinä muodossa kuin järjestelmä niitä tallentaa. Tuomiseen liittyy aina jonkunlainen jalostusprosessi. Tiedon tuottaminen. Tiedon tallentaminen eli tietokannat. Tietovarasto voidaan tuottaa monella tavalla: Määrämuotoinen tekstitiedosto, Rakenteinen dokumentti, Relaatiokanta, Dokumenttikanta. Kaikki sisältö on informaatiota mutta kaikki informaatio ei ole sisältöä. Raportointi/Analytiikka voisi nostaa tärkeimmäksi ominaisuudeksi. Julkaisujärjestelmien luokittelua: yksi kaikille, räätälöity, joustava. Tiedon vienti on myös yhdenlainen julkaisuprosessi. Vaaranpaikka kuitenkin jos omasta palvelusta voisi sitten exportata kaiken muihin sopivassa muodossa niin saattaa lähteä käyttäjät paremman palvelun mukaan helposti. (jos pelkää liikaa niin tulee vendor lock-in).
+				</p>
+
+				<p> Koodiklinikka: </p>
+				
+				<p>
+					Aiheena regexp eli regular expressions eli säännölliset lausekkeet. RE määritellään omilla merkeillään, esim [0-9] tarkoittaa että hyväksytään kaikki 0-9 välillä. Aika siisti python esimerkki joka markdown tiedoston muunsi HTML:ksi ja tulosti sen terminaalissa. Avainsanat python, markdown, pprint, flask (sillä sen saisi julkaistua webiin).
+
+				 </p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p>  </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p>  </p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+			<h2> Viikko 9 <a name="viikko9"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 4.1 </h3>
+
+				<p>
+					Käytön seuranta ja mukautuvat järjestelmät. Verkkopalvelun parantamista että käyttäjälle saadaan kokoajan parempi palvelu. AB-testausta ja MVP-ajatusta sivuten puhuttiin verkkopalvelun perustamisesta heti. Kaksi ääripäätä siis tehdä kauan ja kokeilematta ajatusta vs. MVP ja jokin pieni testi kärkeen löytyykö käyttäjiä. Mukautuvat järjestelmät, suosittelijajärjestelmät. Verkkopalvelun käytön tai tutkimuksen ohjaamisessa on tärkeää pystyä visualisoimaan ja näyttämään erilaisten mittareiden tuloksia. Käytönseurannan käyttäminen ja hyödyntäminen aina tasapainoilua tietosuojan ja käyttäjien saaman lisähyödyn välillä. Hyvin rakennettu palvelu tarjoaa mahdollisuuden ottaa käytönseuranta pois ja takaisin päälle halutessaan. Analytiikka ei aina kulje sinne asti minne pitäisi. <b>Mukautuva hypermedia</b> tarkoittaa sitä, että käyttäjästä luotuun malliin yhdistetään sovelluksesta ja sisällöstä luotu malli ja näiden yhdistelmän avulla mukautetaan sovelluksesta käyttäjälle näytettävät näkymät. Kansainvälistäminen ja kotoistaminen. Kielistringit omaansa, ensin merkataan jollain makroilla että tämä on käännettävä stringi ja sitten valmis ohjelma irrottaa ne omaansa ja sitten sen voi laittaa esimerkiksi transifex palveluun halukkaiden käännettäväksi. Kontekstiherkkyys. Toteutus ei ole niin tärkeää kuin hyvä kokemus ! Solitan twitterissä oli asiaan liittyvä tviittikin: Done is better than perfect. Sopii kyllä omaan tekemiseen hyvin vaikka kyllä sitä haluaisi oikein aina tehdä kuitenkin.
+				</p>
+
+				<p> Koodiklinikka: </p>
+
+				<p>
+					Käytön muokkaaminen, responsiivinen käyttöliittymä kun laitteita on niin paljon nykyään ja näytön kokoja ja resoluutioita on paljon. Kontekstin tunnistaminen verkossa. PHP:lla tehtyä esimerkkiä suoraan luentokalvoista, kielen tunnistaminen, HTTP_REFERER kertoo mistä on saavuttu sivulle, käytettävä selain, ruudun koko. Käytännössä selaimen tunnistaminen tehtäisiin mieluusti kaupallisella sovelluksella joka vastaisi nopeaan päivitystahtiin. HTTP-pyynnön mukana tulevat tiedot eivät ole useinkaan luotettavia tai formaaleja esimerkiksi kielikoodit eivät aina normalisoituja pieniksi kirjaimiksi tms. Paikkatiedon hyödyntäminen suuressa osassa nykyään ja auttaa kohdennettujen palvelujen rakentamisessa. Helppo antaa lisätietoa käyttäjälle mitä ympärillä voisi olla mahdollista tehdä.
+
+				 </p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p>  </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p>  </p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+			<h2> Viikko 10 <a name="viikko10"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 4.2 </h3>
+
+				<p>
+					Data Science. Juuso Parkkinen Reaktorilta tuli pitämään vierailuluentoa aiheesta data science, eli on aikalailla kuin minulle tehty tämä luento siis. Avainsanoja: Machine Learning, data science, big data, data analytics, web analytics, data mining. Mihin sitä voi käyttää? Mitä se on käytännössä? Mitä tarkoittaa olla datan ajama :D? Mitä se ei ole? 
+				</p>
+
+				<p>
+					Melkein kaikkea voidaan mitata ja data vaikuttaa ja tulee vaikuttamaan elämäämme jatkuvasti. Datan kanssa työskentely tarjoaa mielenkiintoisia mahdollisuuksia. Data palvelut yleistyvät ja on hyvä tietää mistä ne tulee ja miten ne toimivat.
+				</p>
+
+				<p>
+					Missä dataa käytetään? Business, luonnontieteissä (fysiikka), sosiaalisissa tieteissä, journalismi, softakehitys, itsensä mittaamisessa (Quantified self).
+				</p>
+
+				<p>
+					Esimerkkinä Netflix. Toinen Afrikasta, oltiin satelliittikuvista tunnistettu talojen kattoja ja jos rautakatto niin se on indikaattori kylän varallisuudesta vs puuheinämutakatto. Datajournalismista oli esimerkkinä YLEn visualisaatio kaikista ehdokkaista ja ne oli klusteroitu oikeisto/vasemmisto vs liberaali/konservatiivi asteikolle.
+				</p>
+
+				<p>
+					Esimerkkejä oli Louhos nimisestäkin paikasta, joka sisältää avoimen lähdekoodin datatieteilyalgoritmeja ja kaikkea datatieteeseen ja opensource ja opendata asioihin liittyvää. Esimerkiksi R:lle kehitetty rajapinta jolla voi hakea avoindata.fi palvelusta dataa käpisteltäväksi. Aika siistiä.
+				</p>
+
+				<p> Käyttötapauksia: Historia. </p>
+
+				<p>
+					Data tieteilijä taidot: ohjelmointi, hacker, matikka, tilastotiede, tietokanta, visualisaatio, kommunikaatio, domain knowledge, ongelmanratkaisu.
+				</p>
+
+				<p>
+					Data mining, tiede -prosessi: määrittele kysymys, hanki data, siivoa, tutki, mallinnus, kommunikoi tuloksista, analyysistä uudelleen toistettava, iteroi. 50-80% ajasta datan kanssa taisteluun.
+				</p>
+
+				<p>
+					Data-analyysin tärkeimmät askeleet: tutkivaa: tarvii täydentää vielä sit jälkeenpäin.
+				</p>
+
+				<p>
+					Data-driven mindset on mututuntuman vastakohta. Kiinnostunut, aktiivinen, bayesiläinen, rohkea, ketterä, läpinäkyvä, avulias, totuudenmukainen, viisas (ei aina data-driven). A/B-testaus on data driven kehityksen ilmentymä, koska kerätään tietoa versiosta ja sitten parannetaan taas.
+				</p>
+
+				<p>
+					Big data ei ole aina varsinaisista käyttötapauksista kerättyä dataa vaan lähinnä kaikki data, joten sen kanssa on oltava varovainen.
+				</p>
+
+				<h3> Viisi oivallusta </h3>
+
+				<p> Louhos alkoi kiinnostamaan kovasti.  </p>
+
+				<h3> Kolme karsittavaa asiaa viikon annista </h3>
+
+				<p> Ei kyllä ole mitään. </p>
+
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+
+			<h2> Viikko 11 <a name="viikko11"></a></h2>
+
+				<h3> Tiivistelmä luentoviikosta 4.3 </h3>
+
+				<p> Yksityisluento. Luennosta oli jäänyt tieto kulkematta kaikille, joten olin ainut luennolla. Katsottiin vähän automaattista raapimista tekevää työkalua, joka näytti toimivan aika hyvin. 
+				</p>
+
+				<hr>
+		</div>
+
+		<div class="col-xs-12 col-sm-6 col-lg-8">
+			<footer>
+				<p>&copy; Jonne Pihlanen 2015</p>
+			</footer>
+		</div>
+
+</div> <!-- /container -->
+
+<script>
+
+$(document).ready(function() {
+
+});
+
+
+</script>
+
+<% include footer %>
