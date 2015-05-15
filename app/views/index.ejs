@@ -17,21 +17,21 @@
 			<h2></h2>
 			<p></p>
 			<% if(user) { %>
-				<p><a class="btn btn-default" href="/" role="button">Edit &raquo;</a></p>
+				<p id="edit1"></p>
 			<% } %>
 		</div>
 		<div class="col-md-4 post2">
 			<h2></h2>
 			<p></p>
 			<% if(user) { %>
-				<p><a class="btn btn-default" href="/" role="button">Edit &raquo;</a></p>
+				<p id="edit2"></p>
 			<% } %>
 		</div>
 		<div class="col-md-4 post3">
 			<h2></h2>
 			<p></p>
 			<% if(user) { %>
-				<p><a class="btn btn-default" href="/" role="button">Edit &raquo;</a></p>
+				<p id="edit3"></p>
 			<% } %>
 		</div>
 	</div>
@@ -64,12 +64,15 @@ $(document).ready(function() {
 		if(i===2) {
 			$(".post1 h2").text(articles[i].title);
 			$(".post1 p:first").text(articles[i].text);
+			$("#edit1").html("<a class='btn btn-default' href='/post/" + articles[i]._id + "' role='button'>Edit &raquo;</a>");
 		} else if(i===1) {
 			$(".post2 h2").text(articles[i].title);
 			$(".post2 p:first").text(articles[i].text);
+			$("#edit2").html("<a class='btn btn-default' href='/post/" + articles[i]._id + "' role='button'>Edit &raquo;</a>");
 		} else {
 			$(".post3 h2").text(articles[i].title);
 			$(".post3 p:first").text(articles[i].text);
+			$("#edit3").html("<a class='btn btn-default' href='/post/" + articles[i]._id + "' role='button'>Edit &raquo;</a>");
 		}
 	}
 
