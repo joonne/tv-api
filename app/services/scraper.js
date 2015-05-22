@@ -53,7 +53,7 @@ function searchEpisodeNumber(description) {
       //console.log("Jakso " + number);
    } else {
       number = description.substr(start+6,2);
-      //console.log("Jakso " + number);      
+      //console.log("Jakso " + number);
    }
 
    if(isNaN(number/1)) {
@@ -100,7 +100,7 @@ function getSeriesIDs() {
                   seriesid = seriesid.substr(0,6);
                }
 
-               console.log(channel.channelName + " " + name + ": " + seriesid);
+               //console.log(channel.channelName + " " + name + ": " + seriesid);
                series.seriesid = seriesid;
 
                var newProgram = new Program();
@@ -134,7 +134,7 @@ function getBaseInformation() {
       var url = "http://www.telsu.fi/"+today+"/"+channels[channel];
 
       request(url, (function(channel) { return function(err,resp,body) {
-         
+
          $ = cheerio.load(body);
 
          $('._summary').each(function(i,elem) {
@@ -146,8 +146,8 @@ function getBaseInformation() {
 
             var description = $(this).text();
 
-            if(description.length === 0) {   
-               descriptions[i] = "Ei kuvausta saatavilla.";             
+            if(description.length === 0) {
+               descriptions[i] = "Ei kuvausta saatavilla.";
             } else {
                descriptions[i] = description;
                seasons[i] = searchSeasonNumber(description);
@@ -219,6 +219,8 @@ module.exports = {
       starts.length = 0;
       ends.length = 0;
       ids.length = 0;
+
+      console.log(moment().format('dddd'));
 
       Program.remove().exec();
       // There is expires field so documents older than 2 days will expire automatically

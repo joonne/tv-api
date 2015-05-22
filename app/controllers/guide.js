@@ -5,7 +5,7 @@ var express = require('express'),
   Program = require('../models/program.js');
 
 module.exports = function (app, passport) {
-  
+
   app.use('/', router);
 
 };
@@ -22,7 +22,9 @@ router.get('/api/rawdata', function (req, res, next) {
 
 	Program.find(function (err, programs) {
 
-		res.status(200).json(programs);
+    if(programs) {
+      res.status(200).json(programs);
+    }
 
 	});
 });

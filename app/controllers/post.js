@@ -43,7 +43,7 @@ module.exports = function (app,passport) {
     });
   });
 
-  router.get('/:id', function (req, res, next) {
+  router.get('/:id', isLoggedIn, function (req, res, next) {
 
     var id = req.params['id'];
     Article.findOne({'_id': id}, function(err, article) {
