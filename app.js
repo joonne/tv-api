@@ -22,10 +22,10 @@ require('./config/express')(app, config);
 
 var server = app.listen(config.port, config.ipaddr);
 
-var cronJob = cron.job("0 */30 * * * *", function(){
+var cronJob = cron.job("0 */2 * * * *", function(){
 	scraper.scrape();
     console.info('scraping as cron job started');
-}); 
+});
 cronJob.start();
 
 console.log("Listening at " + config.ipaddr + ":" + config.port);
