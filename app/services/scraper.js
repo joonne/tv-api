@@ -220,7 +220,7 @@ module.exports = {
       ends.length = 0;
       ids.length = 0;
 
-      console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+      console.log(moment().tz('Europe/Helsinki').format('dddd'));
 
       Program.remove().exec();
       // There is expires field so documents older than 2 days will expire automatically
