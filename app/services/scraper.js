@@ -11,9 +11,9 @@ var moment = require('moment');
 moment.locale('fi');
 
 var baseUrl = "http://www.telsu.fi/";
-//var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
-var channels = ["yle1","yle2","mtv3"];
-var today = moment().format('dddd');
+var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
+//var channels = ["yle1","yle2","mtv3"];
+var today = moment().tz('Europe/Helsinki').format('dddd')
 var content = "";
 var descriptions = [];
 var names = [];
@@ -219,8 +219,6 @@ module.exports = {
       starts.length = 0;
       ends.length = 0;
       ids.length = 0;
-
-      console.log(moment().tz('Europe/Helsinki').format('dddd'));
 
       Program.remove().exec();
       // There is expires field so documents older than 2 days will expire automatically

@@ -10,13 +10,13 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
-router.get('/api/:seriesid', function (req, res, next) {
+router.get('/api/program/:seriesid', function (req, res, next) {
 
   var seriesid = req.params['seriesid'];
 
   console.log("Requesting tv-shows with seriesid: " + seriesid);
 
-  Program.findOne(({'data.seriesid': seriesid}), function (err, program) {  
+  Program.findOne(({'data.seriesid': seriesid}), function (err, program) {
 
     if(program) {
       res.status(200).json({name: program.data.name, channelName: program.channelName, start: program.data.start});

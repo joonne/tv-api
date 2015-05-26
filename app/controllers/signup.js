@@ -5,7 +5,7 @@ var express = require('express'),
   User = require('../models/user.js');
 
 module.exports = function (app, passport) {
-  
+
   app.use('/', router);
 
   app.post('/signup', passport.authenticate('local-signup', {

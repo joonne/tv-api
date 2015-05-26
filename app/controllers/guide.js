@@ -17,19 +17,3 @@ router.get('/guide', function (req, res, next) {
     res.render('guide', { user: req.user, programs: programs});
   });
 });
-
-router.get('/api/rawdata', function (req, res, next) {
-
-	Program.find(function (err, programs) {
-
-    if(programs) {
-      res.status(200).json(programs);
-    }
-
-	});
-});
-
-router.get('/api/removeprograms', function (req, res, next) {
-  Program.remove().exec();
-  res.send("Programs removed");
-});
