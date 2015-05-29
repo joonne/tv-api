@@ -11,8 +11,8 @@ var moment = require('moment-timezone');
 moment.locale('fi');
 
 var baseUrl = "http://www.telsu.fi/";
-//var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
-var channels = ["yle1"];
+var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
+// var channels = ["yle1"];
 var content = "";
 var descriptions = [];
 var names = [];
