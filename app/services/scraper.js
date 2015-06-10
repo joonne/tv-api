@@ -20,215 +20,221 @@ var seasons = [];
 var episodes = [];
 var starts = [];
 var ends = [];
-var ids = [];
 
 var allPrograms = [];
 
 function searchSeasonNumber(description) {
 
-   var start = description.indexOf("Kausi");
-   var number;
+  var start = description.indexOf("Kausi");
+  var number;
 
-   if(description.charAt(start+8) !== '.') {
-      number = description.substr(start+6,1);
-   } else {
-      number = description.substr(start+6,2);
-   }
+  if(description.charAt(start+8) !== '.') {
+    number = description.substr(start+6,1);
+  } else {
+    number = description.substr(start+6,2);
+  }
 
-   if(isNaN(number/1)) {
-      return '-';
-   } else {
-      return number;
-   }
+  if(isNaN(number/1)) {
+    return '-';
+  } else {
+    return number;
+  }
 }
 
 function searchEpisodeNumber(description) {
 
-   var start = description.indexOf("Jakso");
-   var number;
+  var start = description.indexOf("Jakso");
+  var number;
 
-   if(description.charAt(start+8) !== '/') {
-      number = description.substr(start+6,1);
-      //console.log("Jakso " + number);
-   } else {
-      number = description.substr(start+6,2);
-      //console.log("Jakso " + number);
-   }
+  if(description.charAt(start+8) !== '/') {
+    number = description.substr(start+6,1);
+    //console.log("Jakso " + number);
+  } else {
+    number = description.substr(start+6,2);
+    //console.log("Jakso " + number);
+  }
 
-   if(isNaN(number/1)) {
-      return '-';
-   } else {
-      return number;
-   }
+  if(isNaN(number/1)) {
+    return '-';
+  } else {
+    return number;
+  }
 }
 
 function searchProgramName(summary) {
 
-   var start = summary.indexOf("(");
+  var start = summary.indexOf("(");
 
-   if(typeof(start) !== undefined) {
-      var name = summary.substr(0,start-1);
-      return name;
-   } else {
-      return summary;
-   }
+  if(typeof(start) !== undefined) {
+    var name = summary.substr(0,start-1);
+    return name;
+  } else {
+    return summary;
+  }
 }
 
 function getSeriesIDs() {
 
-   _.map(allPrograms, function(channel,index) {
-      _.map(channel.data, function(series) {
+  _.map(allPrograms, function(channel,index) {
+    _.map(channel.data, function(series) {
 
-         var name = series.name;
-         var url = "http://thetvdb.com/api/GetSeries.php?seriesname="+name+"&language=fi";
+      var name = series.name;
+      var url = "http://thetvdb.com/api/GetSeries.php?seriesname="+name+"&language=fi";
 
-         request(url, function(name) { return function(err,resp,body) {
+      request(url, function(name) { return function(err,resp,body) {
 
-            if(resp.statusCode === 200) {
+        if(resp.statusCode === 200) {
 
-               $ = cheerio.load(body, { xmlMode: true });
-               var seriesid = $('Series').find('seriesid').text();
+          $ = cheerio.load(body, { xmlMode: true });
+          var seriesid = $('Series').find('seriesid').text();
 
-               if(seriesid.substr(0,6) === seriesid.substr(6,6)) {
-                  seriesid = seriesid.substr(0,6);
-               } else if(seriesid.substr(0,5) === seriesid.substr(5,5)) {
-                  seriesid = seriesid.substr(0,5);
-               } else if(seriesid.length % 5 === 0) {
-                  seriesid = seriesid.substr(0,5);
-               } else {
-                  seriesid = seriesid.substr(0,6);
-               }
+          if(seriesid.substr(0,6) === seriesid.substr(6,6)) {
+            seriesid = seriesid.substr(0,6);
+          } else if(seriesid.substr(0,5) === seriesid.substr(5,5)) {
+            seriesid = seriesid.substr(0,5);
+          } else if(seriesid.length % 5 === 0) {
+            seriesid = seriesid.substr(0,5);
+          } else {
+            seriesid = seriesid.substr(0,6);
+          }
 
-               //console.log(channel.channelName + " " + name + ": " + seriesid);
-               series.seriesid = seriesid;
+          //console.log(channel.channelName + " " + name + ": " + seriesid);
+          series.seriesid = seriesid;
 
-               var newProgram = new Program();
+          var newProgram = new Program();
 
-               newProgram.channelName = channel.channelName;
-               newProgram.data.name = series.name;
-               newProgram.data.description = series.description;
-               newProgram.data.season = series.season;
-               newProgram.data.episode = series.episode;
-               newProgram.data.start = series.start;
-               newProgram.data.end = series.end;
-               newProgram.data.seriesid = series.seriesid;
+          newProgram.channelName = channel.channelName;
+          newProgram.data.name = series.name;
+          newProgram.data.description = series.description;
+          newProgram.data.season = series.season;
+          newProgram.data.episode = series.episode;
+          newProgram.data.start = series.start;
+          newProgram.data.end = series.end;
+          newProgram.data.seriesid = series.seriesid;
 
-               newProgram.save(function(err) {
-                  if(err) throw err;
-               });
+          newProgram.save(function(err) {
+            if(err) throw err;
+          });
 
-            }
+        }
 
-         }}(name));
-      });
-   });
+      }}(name));
+    });
+  });
 }
 
 
 // Gets information for every channel
 function getBaseInformation(today) {
 
-   for(channel in channels) {
+  allPrograms.length = 0;
+  descriptions.length = 0;
+  names.length = 0;
+  seasons.length = 0;
+  episodes.length = 0;
+  starts.length = 0;
+  ends.length = 0;
 
-      var url = "http://www.telsu.fi/"+today+"/"+channels[channel];
+  for(channel in channels) {
 
-      request(url, (function(channel) { return function(err,resp,body) {
+    var url = "http://www.telsu.fi/"+today+"/"+channels[channel];
 
-         $ = cheerio.load(body);
+    request(url, (function(channel) { return function(err,resp,body) {
 
-         $('._summary').each(function(i,elem) {
-            var programName = searchProgramName($(this).text());
-            names[i] = programName;
-         });
+      $ = cheerio.load(body);
 
-         $('._description').each(function(i,elem) {
+      $('._summary').each(function(i,elem) {
+        var programName = searchProgramName($(this).text());
+        names[i] = programName;
+      });
 
-            var description = $(this).text();
+      $('._description').each(function(i,elem) {
 
-            if(description.length === 0) {
-               descriptions[i] = "Ei kuvausta saatavilla.";
-            } else {
-               descriptions[i] = description;
-               seasons[i] = searchSeasonNumber(description);
-               episodes[i] = searchEpisodeNumber(description);
-            }
-         });
+        var description = $(this).text();
 
-         $('._start').each(function(i,elem) {
-            starts[i] = $(this).text();
-         });
+        if(description.length === 0) {
+          descriptions[i] = "Ei kuvausta saatavilla.";
+        } else {
+          descriptions[i] = description;
+          seasons[i] = searchSeasonNumber(description);
+          episodes[i] = searchEpisodeNumber(description);
+        }
+      });
 
-         $('._end').each(function(i,elem) {
-            ends[i] = $(this).text();
-         });
+      $('._start').each(function(i,elem) {
+        starts[i] = $(this).text();
+      });
 
-         var programs = [];
+      $('._end').each(function(i,elem) {
+        ends[i] = $(this).text();
+      });
 
-         // this combines information to JSON
-         for(var i = 0; i < names.length; ++i) {
+      var programs = [];
 
-            var name = names[i];
-            var description = descriptions[i];
-            var season = seasons[i];
-            var episode = episodes[i];
-            var start = starts[i];
-            var end = ends[i];
+      // this combines information to JSON
+      for(var i = 0; i < names.length; ++i) {
 
-            var temp = {
-               name: name,
-               description: description,
-               season: season,
-               episode: episode,
-               start: start,
-               end: end
-            };
+        var name = names[i];
+        var description = descriptions[i];
+        var season = seasons[i];
+        var episode = episodes[i];
+        var start = starts[i];
+        var end = ends[i];
 
-            programs.push(temp);
+        var temp = {
+          name: name,
+          description: description,
+          season: season,
+          episode: episode,
+          start: start,
+          end: end
+        };
 
-         }
+        programs.push(temp);
 
-         var channelName = channels[channel];
+      }
 
-         var temp = {
-            channelName: channelName,
-            data: programs
-         };
+      var channelName = channels[channel];
 
-         allPrograms.push(temp);
+      var temp = {
+        channelName: channelName,
+        data: programs
+      };
 
-         if(allPrograms.length === channels.length) {
-            eventEmitter.emit('base_finished');
-         }
+      allPrograms.push(temp);
+
+      if(allPrograms.length === channels.length) {
+        eventEmitter.emit('base_finished');
+      }
 
 
-      }})(channel));
-   }
+    }})(channel));
+  }
 }
 
 
 module.exports = {
 
-   scrape: function () {
+  scrape: function () {
 
-      allPrograms.length = 0;
-      descriptions.length = 0;
-      names.length = 0;
-      seasons.length = 0;
-      episodes.length = 0;
-      starts.length = 0;
-      ends.length = 0;
-      ids.length = 0;
+    allPrograms.length = 0;
+    descriptions.length = 0;
+    names.length = 0;
+    seasons.length = 0;
+    episodes.length = 0;
+    starts.length = 0;
+    ends.length = 0;
 
-      Program.remove().exec();
-      // There is expires field so documents older than 2 days will expire automatically
+    Program.remove().exec();
+    // There is expires field so documents older than 2 days will expire automatically
 
-      var today = moment().tz('Europe/Helsinki').format('dddd');
-      console.log(today);
+    var today = moment().tz('Europe/Helsinki').format('dddd');
+    console.log(today);
 
-      getBaseInformation(today);
+    getBaseInformation(today);
 
-      eventEmitter.once('base_finished', function() {
-         getSeriesIDs();
-      });
-   }
+    eventEmitter.once('base_finished', function() {
+      getSeriesIDs();
+    });
+  }
 }
