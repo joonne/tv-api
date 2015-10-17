@@ -25,7 +25,7 @@ router.get('/api/channel/:channel', function (req, res, next) {
 
 router.get('/api/rawdata', function (req, res, next) {
 
-	Program.find(function (err, programs) {
+	Program.find({}, function (err, programs) {
 
     if (err) return next(err);
     res.status(200).json(programs);

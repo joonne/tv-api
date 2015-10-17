@@ -12,7 +12,7 @@ moment.locale('fi');
 
 var baseUrl = "http://www.telsu.fi/";
 var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
-// var channels = ["yle1","yle2","mtv3"];
+var channels = ["yle1","yle2","mtv3"];
 var content = "";
 var descriptions = [];
 var names = [];
@@ -81,9 +81,9 @@ function getSeriesIDs() {
       var name = series.name;
       var url = "http://thetvdb.com/api/GetSeries.php?seriesname="+name+"&language=fi";
 
-      request(url, function(name) { return function(err,res,body) {
+      request(url, function(name) { return function(err,resp,body) {
 
-        if(res.statusCode === 200) {
+        if(resp.statusCode === 200) {
 
           $ = cheerio.load(body, { xmlMode: true });
           var seriesid = $('Series').find('seriesid').text();
@@ -125,9 +125,9 @@ function getSeriesIDs() {
 
 
 // Gets information for every channel
-function processBaseInformation(body, channelName) {
+function getBaseInformation(channel, today) {
 
-  // allPrograms.length = 0;
+  allPrograms.length = 0;
   descriptions.length = 0;
   names.length = 0;
   seasons.length = 0;
@@ -135,72 +135,81 @@ function processBaseInformation(body, channelName) {
   starts.length = 0;
   ends.length = 0;
 
-  $ = cheerio.load(body);
+  // for(channel in channels) {
 
-  $('._summary').each(function(i,elem) {
-    var programName = searchProgramName($(this).text());
-    names[i] = programName;
-  });
+    var url = "http://www.telsu.fi/"+today+"/"+channels[channel];
 
-  $('._description').each(function(i,elem) {
+    request(url, (function(channel) { return function(err,resp,body) {
 
-    var description = $(this).text();
+      $ = cheerio.load(body);
 
-    if(description.length === 0) {
-      descriptions[i] = "Ei kuvausta saatavilla.";
-    } else {
-      descriptions[i] = description;
-      seasons[i] = searchSeasonNumber(description);
-      episodes[i] = searchEpisodeNumber(description);
-    }
-  });
+      $('._summary').each(function(i,elem) {
+        var programName = searchProgramName($(this).text());
+        names[i] = programName;
+      });
 
-  $('._start').each(function(i,elem) {
-    starts[i] = $(this).text();
-  });
+      $('._description').each(function(i,elem) {
 
-  $('._end').each(function(i,elem) {
-    ends[i] = $(this).text();
-  });
+        var description = $(this).text();
 
-  var programs = [];
+        if(description.length === 0) {
+          descriptions[i] = "Ei kuvausta saatavilla.";
+        } else {
+          descriptions[i] = description;
+          seasons[i] = searchSeasonNumber(description);
+          episodes[i] = searchEpisodeNumber(description);
+        }
+      });
 
-  // this combines information to JSON
-  for(var i = 0; i < names.length; ++i) {
+      $('._start').each(function(i,elem) {
+        starts[i] = $(this).text();
+      });
 
-    var name = names[i];
-    var description = descriptions[i];
-    var season = seasons[i];
-    var episode = episodes[i];
-    var start = starts[i];
-    var end = ends[i];
+      $('._end').each(function(i,elem) {
+        ends[i] = $(this).text();
+      });
 
-    var temp = {
-      name: name,
-      description: description,
-      season: season,
-      episode: episode,
-      start: start,
-      end: end
-    };
+      var programs = [];
 
-    programs.push(temp);
+      // this combines information to JSON
+      for(var i = 0; i < names.length; ++i) {
 
-  }
+        var name = names[i];
+        var description = descriptions[i];
+        var season = seasons[i];
+        var episode = episodes[i];
+        var start = starts[i];
+        var end = ends[i];
 
-  var temp = {
-    channelName: channelName,
-    data: programs
-  };
+        var temp = {
+          name: name,
+          description: description,
+          season: season,
+          episode: episode,
+          start: start,
+          end: end
+        };
 
-  console.log(allPrograms.length + " === " + channels.length);
+        programs.push(temp);
 
-  allPrograms.push(temp);
+        console.log(name + " : " + channels[channel ]);
 
-  if(allPrograms.length === channels.length) {
-    console.log("all channels processed");
-    eventEmitter.emit('base_finished');
-  }
+      }
+
+      var channelName = channels[channel];
+
+      var temp = {
+        channelName: channelName,
+        data: programs
+      };
+
+      allPrograms.push(temp);
+
+      if(allPrograms.length === channels.length) {
+        eventEmitter.emit('base_finished');
+      }
+
+    }})(channel));
 }
 
 
@@ -222,68 +231,20 @@ module.exports = {
     var today = moment().tz('Europe/Helsinki').format('dddd');
     console.log(today);
 
-    // var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
+    request("http://www.telsu.fi/"+today+"/yle1", function(err, resp, body) {
 
-    request("http://www.telsu.fi/"+today+"/yle1", function(err, res, body) {
 
-      processBaseInformation(body, "yle1");
+    }
 
-      request("http://www.telsu.fi/"+today+"/yle2", function(err, res, body) {
 
-        processBaseInformation(body, "yle2");
 
-        request("http://www.telsu.fi/"+today+"/mtv3", function(err, res, body) {
+    // YlE1
+    var channel = 0;
+    getBaseInformation(channel, today);
 
-          processBaseInformation(body, "mtv3");
-
-          request("http://www.telsu.fi/"+today+"/nelonen", function(err, res, body) {
-
-            processBaseInformation(body, "nelonen");
-
-            request("http://www.telsu.fi/"+today+"/subtv", function(err, res, body) {
-
-              processBaseInformation(body, "subtv");
-
-              request("http://www.telsu.fi/"+today+"/liv", function(err, res, body) {
-
-                processBaseInformation(body, "liv");
-
-                request("http://www.telsu.fi/"+today+"/jim", function(err, res, body) {
-
-                  processBaseInformation(body, "jim");
-
-                  request("http://www.telsu.fi/"+today+"/viisi", function(err, res, body) {
-
-                    processBaseInformation(body, "viisi");
-
-                    request("http://www.telsu.fi/"+today+"/kutonen", function(err, res, body) {
-
-                      processBaseInformation(body, "kutonen");
-
-                      request("http://www.telsu.fi/"+today+"/fox", function(err, res, body) {
-
-                        processBaseInformation(body, "fox");
-
-                        request("http://www.telsu.fi/"+today+"/ava", function(err, res, body) {
-
-                          processBaseInformation(body, "ava");
-
-                          request("http://www.telsu.fi/"+today+"/hero", function(err, res, body) {
-
-                            processBaseInformation(body, "hero");
-
-                          });
-                        });
-                      });
-                    });
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    });
+    // YlE2
+    channel = 1;
+    getBaseInformation(channel, today);
 
     eventEmitter.once('base_finished', function() {
       getSeriesIDs();
