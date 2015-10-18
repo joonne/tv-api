@@ -43,22 +43,65 @@ function searchSeasonNumber(description) {
 
 function searchEpisodeNumber(description) {
 
-  var start = description.indexOf("Jakso");
-  var number;
+  if(description.indexOf("Jakso") !== -1) {
 
-  if(description.charAt(start+8) !== '/') {
-    number = description.substr(start+6,1);
-    //console.log("Jakso " + number);
+    var start = description.indexOf("Jakso");
+    var number;
+
+    if(description.charAt(start+8) !== '/') {
+      number = description.substr(start+6,1);
+    } else if(description.charAt(start+8 === '/')) {
+      number = description.substr(start+6,2);
+    }
+
+    if(isNaN(number/1)) {
+      return '-';
+    } else {
+      return number;
+    }
+
+  } else if(description.indexOf("jakso") !== -1) {
+
+    var start = description.indexOf("jakso");
+    var number;
+
+    if(description.charAt(start+8) !== '/') {
+      number = description.substr(start+6,1);
+    } else if(description.charAt(start+8 === '/')) {
+      number = description.substr(start+6,2);
+    }
+
+    if(isNaN(number/1)) {
+      return '-';
+    } else {
+      return number;
+    }
+
+  } else if(description.indexOf("osa") !== -1) {
+    console.log("osa found");
+
   } else {
-    number = description.substr(start+6,2);
-    //console.log("Jakso " + number);
+
+    var start = description.indexOf("Kausi");
+    var number;
+
+    if(description.charAt(start+11) !== '/') {
+      number = description.substr(start+9,1);
+      console.log("Jakso " + number);
+    } else if(description.charAt(start+11 === '/')) {
+      number = description.substr(start+9,2);
+      console.log("Jakso " + number);
+    }
+
+    if(isNaN(number/1)) {
+      return '-';
+    } else {
+      return number;
+    }
+
   }
 
-  if(isNaN(number/1)) {
-    return '-';
-  } else {
-    return number;
-  }
+  return '-';
 }
 
 function searchProgramName(summary) {
@@ -81,7 +124,9 @@ function getSeriesIDs() {
       var name = series.name;
       var url = "http://thetvdb.com/api/GetSeries.php?seriesname="+name+"&language=fi";
 
-      request(url, function(name) { return function(err,res,body) {
+      // request(url, function(name) { return function(err,res,body) {
+
+      request(url, function(err, res, body) {
 
         if(res.statusCode === 200) {
 
@@ -98,7 +143,7 @@ function getSeriesIDs() {
             seriesid = seriesid.substr(0,6);
           }
 
-          //console.log(channel.channelName + " " + name + ": " + seriesid);
+          console.log(channel.channelName + " " + name + ": " + seriesid);
           series.seriesid = seriesid;
 
           var newProgram = new Program();
@@ -117,8 +162,8 @@ function getSeriesIDs() {
           });
 
         }
-
-      }}(name));
+      });
+      // }}(name));
     });
   });
 }
@@ -186,6 +231,20 @@ function processBaseInformation(body, channelName) {
 
     programs.push(temp);
 
+    var newProgram = new Program();
+
+    newProgram.channelName = channelName;
+    newProgram.data.name = temp.name;
+    newProgram.data.description = temp.description;
+    newProgram.data.season = temp.season;
+    newProgram.data.episode = temp.episode;
+    newProgram.data.start = temp.start;
+    newProgram.data.end = temp.end;
+
+    newProgram.save(function(err) {
+      if(err) throw err;
+    });
+
   }
 
   var temp = {
@@ -193,9 +252,9 @@ function processBaseInformation(body, channelName) {
     data: programs
   };
 
-  console.log(allPrograms.length + " === " + channels.length);
-
   allPrograms.push(temp);
+
+  console.log(allPrograms.length + " === " + channels.length);
 
   if(allPrograms.length === channels.length) {
     console.log("all channels processed");
@@ -264,7 +323,7 @@ module.exports = {
 
                         processBaseInformation(body, "fox");
 
-                        request("http://www.telsu.fi/"+today+"/ava", function(err, res, body) {
+                        request("http://www.telsu.fi/"+today+"/mtv3ava", function(err, res, body) {
 
                           processBaseInformation(body, "ava");
 
@@ -285,9 +344,9 @@ module.exports = {
       });
     });
 
-    eventEmitter.once('base_finished', function() {
-      getSeriesIDs();
-    });
+    // eventEmitter.once('base_finished', function() {
+    //   getSeriesIDs();
+    // });
 
   }
 }
