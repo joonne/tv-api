@@ -1,37 +1,1843 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'start' ]
-2 info using npm@2.11.2
-3 info using node@v0.12.5
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart tvapi@0.0.1
-6 info start tvapi@0.0.1
-7 verbose unsafe-perm in lifecycle true
-8 info tvapi@0.0.1 Failed to exec start script
-9 verbose stack Error: tvapi@0.0.1 start: `node app.js`
-9 verbose stack Exit status 1
-9 verbose stack     at EventEmitter.<anonymous> (c:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:213:16)
-9 verbose stack     at EventEmitter.emit (events.js:110:17)
-9 verbose stack     at ChildProcess.<anonymous> (c:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
-9 verbose stack     at ChildProcess.emit (events.js:110:17)
-9 verbose stack     at maybeClose (child_process.js:1015:16)
-9 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
-10 verbose pkgid tvapi@0.0.1
-11 verbose cwd c:\Users\Jonne\Documents\GitHub\tvapi
-12 error Windows_NT 6.3.9600
-13 error argv "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
-14 error node v0.12.5
-15 error npm  v2.11.2
-16 error code ELIFECYCLE
-17 error tvapi@0.0.1 start: `node app.js`
-17 error Exit status 1
-18 error Failed at the tvapi@0.0.1 start script 'node app.js'.
-18 error This is most likely a problem with the tvapi package,
-18 error not with npm itself.
-18 error Tell the author that this fails on your system:
-18 error     node app.js
-18 error You can get their info via:
-18 error     npm owner ls tvapi
-18 error There is likely additional logging output above.
-19 verbose exit [ 1, true ]
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'request-promise' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.3
+4 verbose install initial load of c:\Users\Jonne\Documents\GitHub\tvapi\package.json
+5 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\bcrypt-nodejs\package.json
+6 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\body-parser\package.json
+7 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\bootstrap\package.json
+8 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\cheerio\package.json
+9 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\compression\package.json
+10 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\connect-flash\package.json
+11 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\connect-mongo\package.json
+12 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\connect-redis\package.json
+13 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\cookie-parser\package.json
+14 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\cron\package.json
+15 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\ejs\package.json
+16 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\express\package.json
+17 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\express-session\package.json
+18 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\glob\package.json
+19 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\grunt\package.json
+20 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\grunt-contrib-watch\package.json
+21 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\grunt-develop\package.json
+22 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\load-grunt-tasks\package.json
+23 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\lodash\package.json
+24 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\method-override\package.json
+25 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\moment\package.json
+26 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\moment-timezone\package.json
+27 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\mongoose\package.json
+28 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\morgan\package.json
+29 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\passport\package.json
+30 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\passport-local\package.json
+31 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\passport.socketio\package.json
+32 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request\package.json
+33 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\serve-favicon\package.json
+34 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\socket.io\package.json
+35 verbose installManyTop reading scoped package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\time-grunt\package.json
+36 info package.json bcrypt-nodejs@0.0.3 No license field.
+37 info package.json grunt-develop@0.4.0 No license field.
+38 info package.json grunt-contrib-watch@0.6.1 No license field.
+39 info package.json passport-local@1.0.0 No license field.
+40 info package.json grunt@0.4.5 No license field.
+41 info package.json connect-flash@0.1.1 No license field.
+42 info package.json connect-mongo@0.8.2 No license field.
+43 info package.json cron@1.0.9 No license field.
+44 info package.json mongoose@3.8.35 No license field.
+45 info package.json socket.io@1.3.7 No license field.
+46 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\package.json
+47 silly cache add args [ 'request-promise', null ]
+48 verbose cache add spec request-promise
+49 silly cache add parsed spec Result {
+49 silly cache add   raw: 'request-promise',
+49 silly cache add   scope: null,
+49 silly cache add   name: 'request-promise',
+49 silly cache add   rawSpec: '',
+49 silly cache add   spec: '*',
+49 silly cache add   type: 'range' }
+50 silly addNamed request-promise@*
+51 verbose addNamed "*" is a valid semver range for request-promise
+52 silly addNameRange { name: 'request-promise', range: '*', hasData: false }
+53 silly mapToRegistry name request-promise
+54 silly mapToRegistry using default registry
+55 silly mapToRegistry registry https://registry.npmjs.org/
+56 silly mapToRegistry uri https://registry.npmjs.org/request-promise
+57 verbose addNameRange registry:https://registry.npmjs.org/request-promise not in flight; fetching
+58 verbose request uri https://registry.npmjs.org/request-promise
+59 verbose request no auth needed
+60 info attempt registry request try #1 at 21:00:45
+61 verbose request id 9a55cb34c36f8945
+62 http request GET https://registry.npmjs.org/request-promise
+63 http 200 https://registry.npmjs.org/request-promise
+64 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+64 verbose headers   etag: '"83QUT25SXLRDASXZSAVMWZWKF"',
+64 verbose headers   'content-type': 'application/json',
+64 verbose headers   'cache-control': 'max-age=60',
+64 verbose headers   'content-length': '58423',
+64 verbose headers   'accept-ranges': 'bytes',
+64 verbose headers   date: 'Sun, 06 Dec 2015 19:00:46 GMT',
+64 verbose headers   via: '1.1 varnish',
+64 verbose headers   age: '0',
+64 verbose headers   connection: 'keep-alive',
+64 verbose headers   'x-served-by': 'cache-ams4145-AMS',
+64 verbose headers   'x-cache': 'HIT',
+64 verbose headers   'x-cache-hits': '1',
+64 verbose headers   'x-timer': 'S1449428445.700086,VS0,VE686',
+64 verbose headers   vary: 'Accept' }
+65 silly get cb [ 200,
+65 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+65 silly get     etag: '"83QUT25SXLRDASXZSAVMWZWKF"',
+65 silly get     'content-type': 'application/json',
+65 silly get     'cache-control': 'max-age=60',
+65 silly get     'content-length': '58423',
+65 silly get     'accept-ranges': 'bytes',
+65 silly get     date: 'Sun, 06 Dec 2015 19:00:46 GMT',
+65 silly get     via: '1.1 varnish',
+65 silly get     age: '0',
+65 silly get     connection: 'keep-alive',
+65 silly get     'x-served-by': 'cache-ams4145-AMS',
+65 silly get     'x-cache': 'HIT',
+65 silly get     'x-cache-hits': '1',
+65 silly get     'x-timer': 'S1449428445.700086,VS0,VE686',
+65 silly get     vary: 'Accept' } ]
+66 verbose get saving request-promise to C:\Users\Jonne\AppData\Roaming\npm-cache\registry.npmjs.org\request-promise\.cache.json
+67 silly addNameRange number 2 { name: 'request-promise', range: '*', hasData: true }
+68 silly addNameRange versions [ 'request-promise',
+68 silly addNameRange   [ '0.0.1',
+68 silly addNameRange     '0.0.2',
+68 silly addNameRange     '0.0.3',
+68 silly addNameRange     '0.0.4',
+68 silly addNameRange     '0.1.0',
+68 silly addNameRange     '0.1.1',
+68 silly addNameRange     '0.1.2',
+68 silly addNameRange     '0.1.3',
+68 silly addNameRange     '0.1.4',
+68 silly addNameRange     '0.2.0',
+68 silly addNameRange     '0.2.1',
+68 silly addNameRange     '0.2.2',
+68 silly addNameRange     '0.2.4',
+68 silly addNameRange     '0.2.5',
+68 silly addNameRange     '0.2.6',
+68 silly addNameRange     '0.3.0',
+68 silly addNameRange     '0.3.1',
+68 silly addNameRange     '0.2.7',
+68 silly addNameRange     '0.3.2',
+68 silly addNameRange     '0.3.3',
+68 silly addNameRange     '0.4.0',
+68 silly addNameRange     '0.4.1',
+68 silly addNameRange     '0.4.2',
+68 silly addNameRange     '0.4.3',
+68 silly addNameRange     '1.0.0',
+68 silly addNameRange     '1.0.1',
+68 silly addNameRange     '1.0.2' ] ]
+69 silly addNamed request-promise@1.0.2
+70 verbose addNamed "1.0.2" is a plain semver version for request-promise
+71 silly mapToRegistry name request-promise
+72 silly mapToRegistry using default registry
+73 silly mapToRegistry registry https://registry.npmjs.org/
+74 silly mapToRegistry uri https://registry.npmjs.org/request-promise
+75 verbose addRemoteTarball https://registry.npmjs.org/request-promise/-/request-promise-1.0.2.tgz not in flight; adding
+76 verbose addRemoteTarball [ 'https://registry.npmjs.org/request-promise/-/request-promise-1.0.2.tgz',
+76 verbose addRemoteTarball   '155f410608d9257c089c1d0b26f8d8f7a8aa86a1' ]
+77 info retry fetch attempt 1 at 21:00:46
+78 info attempt registry request try #1 at 21:00:46
+79 http fetch GET https://registry.npmjs.org/request-promise/-/request-promise-1.0.2.tgz
+80 http fetch 200 https://registry.npmjs.org/request-promise/-/request-promise-1.0.2.tgz
+81 silly fetchAndShaCheck shasum 155f410608d9257c089c1d0b26f8d8f7a8aa86a1
+82 verbose addTmpTarball C:\Users\Jonne\AppData\Local\Temp\npm-5940-669385d7\registry.npmjs.org\request-promise\-\request-promise-1.0.2.tgz not in flight; adding
+83 verbose addTmpTarball already have metadata; skipping unpack for request-promise@1.0.2
+84 silly cache afterAdd request-promise@1.0.2
+85 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\request-promise\1.0.2\package\package.json not in flight; writing
+86 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\request-promise\1.0.2\package\package.json written
+87 silly install resolved [ { name: 'request-promise',
+87 silly install resolved     version: '1.0.2',
+87 silly install resolved     description: 'The world-famous HTTP client \'Request\' now Promises/A+ compliant. Powered by Bluebird.',
+87 silly install resolved     keywords: [ 'xhr', 'http', 'https', 'promise', 'request', 'then', 'thenable' ],
+87 silly install resolved     homepage: 'https://github.com/request/request-promise',
+87 silly install resolved     bugs: { url: 'https://github.com/request/request-promise/issues' },
+87 silly install resolved     license: 'MIT',
+87 silly install resolved     author: { name: 'Ty Abonil' },
+87 silly install resolved     contributors: [ [Object] ],
+87 silly install resolved     main: './lib/rp.js',
+87 silly install resolved     repository:
+87 silly install resolved      { type: 'git',
+87 silly install resolved        url: 'https://github.com/request/request-promise.git' },
+87 silly install resolved     scripts: { test: 'gulp ci' },
+87 silly install resolved     dependencies:
+87 silly install resolved      { bluebird: '^2.3',
+87 silly install resolved        'cls-bluebird': '^1.0.1',
+87 silly install resolved        lodash: '^3.10.0',
+87 silly install resolved        request: '^2.34' },
+87 silly install resolved     devDependencies:
+87 silly install resolved      { 'body-parser': '1.12.x',
+87 silly install resolved        chai: '2.2.x',
+87 silly install resolved        'chai-as-promised': '4.3.x',
+87 silly install resolved        chalk: '^1.1.1',
+87 silly install resolved        cheerio: '^0.19.0',
+87 silly install resolved        'continuation-local-storage': '^3.1.4',
+87 silly install resolved        'event-stream': '3.3.x',
+87 silly install resolved        gulp: '3.8.x',
+87 silly install resolved        'gulp-coveralls': '0.1.x',
+87 silly install resolved        'gulp-istanbul': '0.8.x',
+87 silly install resolved        'gulp-jshint': '1.10.x',
+87 silly install resolved        'gulp-mocha': '2.0.x',
+87 silly install resolved        'jshint-stylish': '1.0.x',
+87 silly install resolved        rimraf: '2.3.x',
+87 silly install resolved        'run-sequence': '1.0.x' },
+87 silly install resolved     engines: { node: '>=0.10.0' },
+87 silly install resolved     gitHead: 'dbdeaba19592ba8e79ca27cfc9b320d99af93d30',
+87 silly install resolved     _id: 'request-promise@1.0.2',
+87 silly install resolved     _shasum: '155f410608d9257c089c1d0b26f8d8f7a8aa86a1',
+87 silly install resolved     _from: 'request-promise@*',
+87 silly install resolved     _npmVersion: '1.4.28',
+87 silly install resolved     _npmUser: { name: 'analog-nico', email: 'nicolai.kamenzky@testrails.org' },
+87 silly install resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+87 silly install resolved     dist:
+87 silly install resolved      { shasum: '155f410608d9257c089c1d0b26f8d8f7a8aa86a1',
+87 silly install resolved        tarball: 'http://registry.npmjs.org/request-promise/-/request-promise-1.0.2.tgz' },
+87 silly install resolved     directories: {},
+87 silly install resolved     _resolved: 'https://registry.npmjs.org/request-promise/-/request-promise-1.0.2.tgz' } ]
+88 info install request-promise@1.0.2 into c:\Users\Jonne\Documents\GitHub\tvapi
+89 info installOne request-promise@1.0.2
+90 verbose installOne of request-promise to c:\Users\Jonne\Documents\GitHub\tvapi not in flight; installing
+91 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\request-promise-f49b8959a3f0f1d2.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+92 silly install write writing request-promise 1.0.2 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+93 verbose unbuild node_modules\request-promise
+94 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+95 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+96 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\request-promise\1.0.2\package.tgz
+97 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+98 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise is being purged
+99 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+100 silly gunzTarPerm modes [ '777', '666' ]
+101 silly gunzTarPerm extractEntry package.json
+102 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+103 silly gunzTarPerm extractEntry .npmignore
+104 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+105 silly gunzTarPerm extractEntry README.md
+106 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+107 silly gunzTarPerm extractEntry LICENSE
+108 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+109 silly gunzTarPerm extractEntry errors.js
+110 silly gunzTarPerm modified mode [ 'errors.js', 420, 438 ]
+111 silly gunzTarPerm extractEntry lib/errors.js
+112 silly gunzTarPerm modified mode [ 'lib/errors.js', 420, 438 ]
+113 silly gunzTarPerm extractEntry lib/rp.js
+114 silly gunzTarPerm modified mode [ 'lib/rp.js', 420, 438 ]
+115 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\package.json
+116 info preinstall request-promise@1.0.2
+117 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\package.json
+118 silly prepareForInstallMany adding bluebird@^2.3 from request-promise dependencies
+119 silly prepareForInstallMany adding cls-bluebird@^1.0.1 from request-promise dependencies
+120 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\package.json
+121 silly cache add args [ 'cls-bluebird@^1.0.1', null ]
+122 verbose cache add spec cls-bluebird@^1.0.1
+123 silly cache add parsed spec Result {
+123 silly cache add   raw: 'cls-bluebird@^1.0.1',
+123 silly cache add   scope: null,
+123 silly cache add   name: 'cls-bluebird',
+123 silly cache add   rawSpec: '^1.0.1',
+123 silly cache add   spec: '>=1.0.1 <2.0.0',
+123 silly cache add   type: 'range' }
+124 silly addNamed cls-bluebird@>=1.0.1 <2.0.0
+125 verbose addNamed ">=1.0.1 <2.0.0" is a valid semver range for cls-bluebird
+126 silly addNameRange { name: 'cls-bluebird', range: '>=1.0.1 <2.0.0', hasData: false }
+127 silly mapToRegistry name cls-bluebird
+128 silly mapToRegistry using default registry
+129 silly mapToRegistry registry https://registry.npmjs.org/
+130 silly mapToRegistry uri https://registry.npmjs.org/cls-bluebird
+131 verbose addNameRange registry:https://registry.npmjs.org/cls-bluebird not in flight; fetching
+132 silly cache add args [ 'bluebird@^2.3', null ]
+133 verbose cache add spec bluebird@^2.3
+134 silly cache add parsed spec Result {
+134 silly cache add   raw: 'bluebird@^2.3',
+134 silly cache add   scope: null,
+134 silly cache add   name: 'bluebird',
+134 silly cache add   rawSpec: '^2.3',
+134 silly cache add   spec: '>=2.3.0 <3.0.0',
+134 silly cache add   type: 'range' }
+135 silly addNamed bluebird@>=2.3.0 <3.0.0
+136 verbose addNamed ">=2.3.0 <3.0.0" is a valid semver range for bluebird
+137 silly addNameRange { name: 'bluebird', range: '>=2.3.0 <3.0.0', hasData: false }
+138 silly mapToRegistry name bluebird
+139 silly mapToRegistry using default registry
+140 silly mapToRegistry registry https://registry.npmjs.org/
+141 silly mapToRegistry uri https://registry.npmjs.org/bluebird
+142 verbose addNameRange registry:https://registry.npmjs.org/bluebird not in flight; fetching
+143 verbose request uri https://registry.npmjs.org/cls-bluebird
+144 verbose request no auth needed
+145 info attempt registry request try #1 at 21:00:46
+146 http request GET https://registry.npmjs.org/cls-bluebird
+147 verbose request uri https://registry.npmjs.org/bluebird
+148 verbose request no auth needed
+149 info attempt registry request try #1 at 21:00:46
+150 verbose etag "7YE4F9ZNIMCAKEHNE0TYKM2B9"
+151 http request GET https://registry.npmjs.org/bluebird
+152 http 200 https://registry.npmjs.org/bluebird
+153 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+153 verbose headers   etag: '"8X9YJAF4H4XEFTA2SWMFYQ7MJ"',
+153 verbose headers   'content-type': 'application/json',
+153 verbose headers   'cache-control': 'max-age=60',
+153 verbose headers   'content-length': '331729',
+153 verbose headers   'accept-ranges': 'bytes',
+153 verbose headers   date: 'Sun, 06 Dec 2015 19:00:47 GMT',
+153 verbose headers   via: '1.1 varnish',
+153 verbose headers   age: '0',
+153 verbose headers   connection: 'keep-alive',
+153 verbose headers   'x-served-by': 'cache-ams4124-AMS',
+153 verbose headers   'x-cache': 'HIT',
+153 verbose headers   'x-cache-hits': '1',
+153 verbose headers   'x-timer': 'S1449428446.941361,VS0,VE162',
+153 verbose headers   vary: 'Accept' }
+154 silly get cb [ 200,
+154 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+154 silly get     etag: '"8X9YJAF4H4XEFTA2SWMFYQ7MJ"',
+154 silly get     'content-type': 'application/json',
+154 silly get     'cache-control': 'max-age=60',
+154 silly get     'content-length': '331729',
+154 silly get     'accept-ranges': 'bytes',
+154 silly get     date: 'Sun, 06 Dec 2015 19:00:47 GMT',
+154 silly get     via: '1.1 varnish',
+154 silly get     age: '0',
+154 silly get     connection: 'keep-alive',
+154 silly get     'x-served-by': 'cache-ams4124-AMS',
+154 silly get     'x-cache': 'HIT',
+154 silly get     'x-cache-hits': '1',
+154 silly get     'x-timer': 'S1449428446.941361,VS0,VE162',
+154 silly get     vary: 'Accept' } ]
+155 verbose get saving bluebird to C:\Users\Jonne\AppData\Roaming\npm-cache\registry.npmjs.org\bluebird\.cache.json
+156 silly addNameRange number 2 { name: 'bluebird', range: '>=2.3.0 <3.0.0', hasData: true }
+157 silly addNameRange versions [ 'bluebird',
+157 silly addNameRange   [ '0.7.1-1',
+157 silly addNameRange     '0.7.1-2',
+157 silly addNameRange     '0.7.1-3',
+157 silly addNameRange     '0.7.1-4',
+157 silly addNameRange     '0.7.1-5',
+157 silly addNameRange     '0.7.2-0',
+157 silly addNameRange     '0.7.3-0',
+157 silly addNameRange     '0.7.4-0',
+157 silly addNameRange     '0.7.4-1',
+157 silly addNameRange     '0.7.5-0',
+157 silly addNameRange     '0.7.6-0',
+157 silly addNameRange     '0.7.7-0',
+157 silly addNameRange     '0.7.7-1',
+157 silly addNameRange     '0.7.8-0',
+157 silly addNameRange     '0.7.8-1',
+157 silly addNameRange     '0.7.9-0',
+157 silly addNameRange     '0.7.9-1',
+157 silly addNameRange     '0.7.10-0',
+157 silly addNameRange     '0.7.10-1',
+157 silly addNameRange     '0.7.11-0',
+157 silly addNameRange     '0.7.12-0',
+157 silly addNameRange     '0.7.12-1',
+157 silly addNameRange     '0.7.12-2',
+157 silly addNameRange     '0.8.0-0',
+157 silly addNameRange     '0.8.0-1',
+157 silly addNameRange     '0.8.0-2',
+157 silly addNameRange     '0.8.0-3',
+157 silly addNameRange     '0.8.1-0',
+157 silly addNameRange     '0.8.2-0',
+157 silly addNameRange     '0.8.2-1',
+157 silly addNameRange     '0.8.2-2',
+157 silly addNameRange     '0.8.3-0',
+157 silly addNameRange     '0.8.3-1',
+157 silly addNameRange     '0.8.3-2',
+157 silly addNameRange     '0.8.3-3',
+157 silly addNameRange     '0.8.4-0',
+157 silly addNameRange     '0.8.4-1',
+157 silly addNameRange     '0.8.5-0',
+157 silly addNameRange     '0.8.5-1',
+157 silly addNameRange     '0.9.0-0',
+157 silly addNameRange     '0.9.1-0',
+157 silly addNameRange     '0.9.1-1',
+157 silly addNameRange     '0.9.2-0',
+157 silly addNameRange     '0.9.2-1',
+157 silly addNameRange     '0.9.3-0',
+157 silly addNameRange     '0.9.4-0',
+157 silly addNameRange     '0.9.4-1',
+157 silly addNameRange     '0.9.5-0',
+157 silly addNameRange     '0.9.6-0',
+157 silly addNameRange     '0.9.7-0',
+157 silly addNameRange     '0.9.8-0',
+157 silly addNameRange     '0.9.9-0',
+157 silly addNameRange     '0.9.10-0',
+157 silly addNameRange     '0.9.10-1',
+157 silly addNameRange     '0.9.11-0',
+157 silly addNameRange     '0.9.11-1',
+157 silly addNameRange     '0.10.0-0',
+157 silly addNameRange     '0.10.0-1',
+157 silly addNameRange     '0.10.1-0',
+157 silly addNameRange     '0.10.2-0',
+157 silly addNameRange     '0.10.2-1',
+157 silly addNameRange     '0.10.3-0',
+157 silly addNameRange     '0.10.4-0',
+157 silly addNameRange     '0.10.4-1',
+157 silly addNameRange     '0.10.5-0',
+157 silly addNameRange     '0.10.6-0',
+157 silly addNameRange     '0.10.7-0',
+157 silly addNameRange     '0.10.8-0',
+157 silly addNameRange     '0.10.9-0',
+157 silly addNameRange     '0.10.9-1',
+157 silly addNameRange     '0.10.10-0',
+157 silly addNameRange     '0.10.11-0',
+157 silly addNameRange     '0.10.11-1',
+157 silly addNameRange     '0.10.11-2',
+157 silly addNameRange     '0.10.11-4',
+157 silly addNameRange     '0.10.12-0',
+157 silly addNameRange     '0.10.13-0',
+157 silly addNameRange     '0.10.13-1',
+157 silly addNameRange     '0.10.14-0',
+157 silly addNameRange     '0.11.0-0',
+157 silly addNameRange     '0.11.1-0',
+157 silly addNameRange     '0.11.2-0',
+157 silly addNameRange     '0.11.3-0',
+157 silly addNameRange     '0.11.4-0',
+157 silly addNameRange     '0.11.4-1',
+157 silly addNameRange     '0.11.5-0',
+157 silly addNameRange     '0.11.5-1',
+157 silly addNameRange     '0.11.6-0',
+157 silly addNameRange     '1.0.0',
+157 silly addNameRange     '1.0.1',
+157 silly addNameRange     '1.0.2',
+157 silly addNameRange     '1.0.3',
+157 silly addNameRange     '1.0.4',
+157 silly addNameRange     '1.0.5',
+157 silly addNameRange     '1.0.7',
+157 silly addNameRange     '1.0.8',
+157 silly addNameRange     '1.1.0',
+157 silly addNameRange     '1.1.1',
+157 silly addNameRange     '1.2.0',
+157 silly addNameRange     '1.2.1',
+157 silly addNameRange     '1.2.2',
+157 silly addNameRange     '1.2.3',
+157 silly addNameRange     '1.2.4',
+157 silly addNameRange     '2.0.2',
+157 silly addNameRange     '2.0.3',
+157 silly addNameRange     '2.0.4',
+157 silly addNameRange     '2.0.5',
+157 silly addNameRange     '2.0.6',
+157 silly addNameRange     '2.0.7',
+157 silly addNameRange     '2.1.1',
+157 silly addNameRange     '2.1.2',
+157 silly addNameRange     '2.1.3',
+157 silly addNameRange     '2.2.0',
+157 silly addNameRange     '2.2.1',
+157 silly addNameRange     '2.2.2',
+157 silly addNameRange     '2.3.0',
+157 silly addNameRange     '2.3.1',
+157 silly addNameRange     '2.3.2',
+157 silly addNameRange     '2.3.3',
+157 silly addNameRange     '2.3.4',
+157 silly addNameRange     '2.3.5',
+157 silly addNameRange     '0.11.6',
+157 silly addNameRange     '2.3.6',
+157 silly addNameRange     '2.3.9',
+157 silly addNameRange     '2.3.10',
+157 silly addNameRange     '2.3.11',
+157 silly addNameRange     '2.4.0',
+157 silly addNameRange     '2.4.1',
+157 silly addNameRange     '2.4.2',
+157 silly addNameRange     '2.4.3',
+157 silly addNameRange     '2.5.0',
+157 silly addNameRange     '2.5.1',
+157 silly addNameRange     '2.5.2',
+157 silly addNameRange     '2.5.3',
+157 silly addNameRange     '2.6.0',
+157 silly addNameRange     '2.6.1',
+157 silly addNameRange     '2.6.2',
+157 silly addNameRange     '2.6.3',
+157 silly addNameRange     '2.6.4',
+157 silly addNameRange     '2.7.0',
+157 silly addNameRange     '2.7.1',
+157 silly addNameRange     '2.8.0',
+157 silly addNameRange     '2.8.1',
+157 silly addNameRange     '2.8.2',
+157 silly addNameRange     '2.9.0',
+157 silly addNameRange     '2.9.1',
+157 silly addNameRange     '2.9.2',
+157 silly addNameRange     '2.9.3',
+157 silly addNameRange     '2.9.4',
+157 silly addNameRange     '2.9.5',
+157 silly addNameRange     '2.9.6',
+157 silly addNameRange     '2.9.7',
+157 silly addNameRange     '2.9.8',
+157 silly addNameRange     '2.9.9',
+157 silly addNameRange     '2.9.10',
+157 silly addNameRange     '2.9.11',
+157 silly addNameRange     '2.9.12',
+157 silly addNameRange     '2.9.13',
+157 silly addNameRange     '2.9.14',
+157 silly addNameRange     '2.9.15',
+157 silly addNameRange     '2.9.16',
+157 silly addNameRange     '2.9.17',
+157 silly addNameRange     '2.9.18',
+157 silly addNameRange     '2.9.19',
+157 silly addNameRange     '2.9.20',
+157 silly addNameRange     '2.9.21',
+157 silly addNameRange     '2.9.22',
+157 silly addNameRange     '2.9.23',
+157 silly addNameRange     '2.9.24',
+157 silly addNameRange     '2.9.25',
+157 silly addNameRange     '2.9.26',
+157 silly addNameRange     '2.9.27',
+157 silly addNameRange     '2.9.28',
+157 silly addNameRange     '2.9.29',
+157 silly addNameRange     '2.9.30',
+157 silly addNameRange     '2.9.31',
+157 silly addNameRange     '2.9.32',
+157 silly addNameRange     '2.9.33',
+157 silly addNameRange     '2.9.34',
+157 silly addNameRange     '2.10.0',
+157 silly addNameRange     '2.10.1',
+157 silly addNameRange     '2.10.2',
+157 silly addNameRange     '3.0.0',
+157 silly addNameRange     '3.0.1',
+157 silly addNameRange     '3.0.2',
+157 silly addNameRange     '3.0.3',
+157 silly addNameRange     '3.0.4',
+157 silly addNameRange     '3.0.5',
+157 silly addNameRange     '3.0.6' ] ]
+158 silly addNamed bluebird@2.10.2
+159 verbose addNamed "2.10.2" is a plain semver version for bluebird
+160 silly cache afterAdd bluebird@2.10.2
+161 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\bluebird\2.10.2\package\package.json not in flight; writing
+162 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\bluebird\2.10.2\package\package.json written
+163 http 200 https://registry.npmjs.org/cls-bluebird
+164 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+164 verbose headers   etag: '"57VU2W2HZELBPI4HVN4683ORP"',
+164 verbose headers   'content-type': 'application/json',
+164 verbose headers   'cache-control': 'max-age=60',
+164 verbose headers   'content-length': '3371',
+164 verbose headers   'accept-ranges': 'bytes',
+164 verbose headers   date: 'Sun, 06 Dec 2015 19:00:47 GMT',
+164 verbose headers   via: '1.1 varnish',
+164 verbose headers   age: '0',
+164 verbose headers   connection: 'keep-alive',
+164 verbose headers   'x-served-by': 'cache-ams4129-AMS',
+164 verbose headers   'x-cache': 'MISS',
+164 verbose headers   'x-cache-hits': '0',
+164 verbose headers   'x-timer': 'S1449428446.929529,VS0,VE710',
+164 verbose headers   vary: 'Accept' }
+165 silly get cb [ 200,
+165 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+165 silly get     etag: '"57VU2W2HZELBPI4HVN4683ORP"',
+165 silly get     'content-type': 'application/json',
+165 silly get     'cache-control': 'max-age=60',
+165 silly get     'content-length': '3371',
+165 silly get     'accept-ranges': 'bytes',
+165 silly get     date: 'Sun, 06 Dec 2015 19:00:47 GMT',
+165 silly get     via: '1.1 varnish',
+165 silly get     age: '0',
+165 silly get     connection: 'keep-alive',
+165 silly get     'x-served-by': 'cache-ams4129-AMS',
+165 silly get     'x-cache': 'MISS',
+165 silly get     'x-cache-hits': '0',
+165 silly get     'x-timer': 'S1449428446.929529,VS0,VE710',
+165 silly get     vary: 'Accept' } ]
+166 verbose get saving cls-bluebird to C:\Users\Jonne\AppData\Roaming\npm-cache\registry.npmjs.org\cls-bluebird\.cache.json
+167 silly addNameRange number 2 { name: 'cls-bluebird', range: '>=1.0.1 <2.0.0', hasData: true }
+168 silly addNameRange versions [ 'cls-bluebird', [ '1.0.0', '1.0.1' ] ]
+169 silly addNamed cls-bluebird@1.0.1
+170 verbose addNamed "1.0.1" is a plain semver version for cls-bluebird
+171 silly mapToRegistry name cls-bluebird
+172 silly mapToRegistry using default registry
+173 silly mapToRegistry registry https://registry.npmjs.org/
+174 silly mapToRegistry uri https://registry.npmjs.org/cls-bluebird
+175 verbose addRemoteTarball https://registry.npmjs.org/cls-bluebird/-/cls-bluebird-1.0.1.tgz not in flight; adding
+176 verbose addRemoteTarball [ 'https://registry.npmjs.org/cls-bluebird/-/cls-bluebird-1.0.1.tgz',
+176 verbose addRemoteTarball   'c59f46b0c03fc896cd5b6e3566bd8cb6ef172cfb' ]
+177 info retry fetch attempt 1 at 21:00:47
+178 info attempt registry request try #1 at 21:00:47
+179 http fetch GET https://registry.npmjs.org/cls-bluebird/-/cls-bluebird-1.0.1.tgz
+180 http fetch 200 https://registry.npmjs.org/cls-bluebird/-/cls-bluebird-1.0.1.tgz
+181 silly fetchAndShaCheck shasum c59f46b0c03fc896cd5b6e3566bd8cb6ef172cfb
+182 verbose addTmpTarball C:\Users\Jonne\AppData\Local\Temp\npm-5940-669385d7\registry.npmjs.org\cls-bluebird\-\cls-bluebird-1.0.1.tgz not in flight; adding
+183 verbose addTmpTarball already have metadata; skipping unpack for cls-bluebird@1.0.1
+184 silly cache afterAdd cls-bluebird@1.0.1
+185 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\cls-bluebird\1.0.1\package\package.json not in flight; writing
+186 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\cls-bluebird\1.0.1\package\package.json written
+187 silly install resolved [ { name: 'bluebird',
+187 silly install resolved     description: 'Full featured Promises/A+ implementation with exceptionally good performance',
+187 silly install resolved     version: '2.10.2',
+187 silly install resolved     keywords:
+187 silly install resolved      [ 'promise',
+187 silly install resolved        'performance',
+187 silly install resolved        'promises',
+187 silly install resolved        'promises-a',
+187 silly install resolved        'promises-aplus',
+187 silly install resolved        'async',
+187 silly install resolved        'await',
+187 silly install resolved        'deferred',
+187 silly install resolved        'deferreds',
+187 silly install resolved        'future',
+187 silly install resolved        'flow control',
+187 silly install resolved        'dsl',
+187 silly install resolved        'fluent interface',
+187 silly install resolved        'parallel',
+187 silly install resolved        'thread',
+187 silly install resolved        'concurrency' ],
+187 silly install resolved     scripts:
+187 silly install resolved      { lint: 'node scripts/jshint.js',
+187 silly install resolved        test: 'node tools/test.js',
+187 silly install resolved        istanbul: 'istanbul',
+187 silly install resolved        prepublish: 'node tools/build.js --no-debug --main --zalgo --browser --minify',
+187 silly install resolved        'generate-browser-core': 'node tools/build.js --features=core --no-debug --main --zalgo --browser --minify && mv js/browser/bluebird.js js/browser/bluebird.core.js && mv js/browser/bluebird.min.js js/browser/bluebird.core.min.js' },
+187 silly install resolved     homepage: 'https://github.com/petkaantonov/bluebird',
+187 silly install resolved     repository:
+187 silly install resolved      { type: 'git',
+187 silly install resolved        url: 'git://github.com/petkaantonov/bluebird.git' },
+187 silly install resolved     bugs: { url: 'http://github.com/petkaantonov/bluebird/issues' },
+187 silly install resolved     license: 'MIT',
+187 silly install resolved     author:
+187 silly install resolved      { name: 'Petka Antonov',
+187 silly install resolved        email: 'petka_antonov@hotmail.com',
+187 silly install resolved        url: 'http://github.com/petkaantonov/' },
+187 silly install resolved     devDependencies:
+187 silly install resolved      { acorn: '~0.6.0',
+187 silly install resolved        baconjs: '^0.7.43',
+187 silly install resolved        bluebird: '^2.9.2',
+187 silly install resolved        'body-parser': '^1.10.2',
+187 silly install resolved        browserify: '^8.1.1',
+187 silly install resolved        'cli-table': '~0.3.1',
+187 silly install resolved        co: '^4.2.0',
+187 silly install resolved        'cross-spawn': '^0.2.3',
+187 silly install resolved        glob: '^4.3.2',
+187 silly install resolved        'grunt-saucelabs': '~8.4.1',
+187 silly install resolved        highland: '^2.3.0',
+187 silly install resolved        istanbul: '^0.3.5',
+187 silly install resolved        jshint: '^2.6.0',
+187 silly install resolved        'jshint-stylish': '~0.2.0',
+187 silly install resolved        mkdirp: '~0.5.0',
+187 silly install resolved        mocha: '~2.1',
+187 silly install resolved        open: '~0.0.5',
+187 silly install resolved        optimist: '~0.6.1',
+187 silly install resolved        rimraf: '~2.2.6',
+187 silly install resolved        rx: '^2.3.25',
+187 silly install resolved        'serve-static': '^1.7.1',
+187 silly install resolved        sinon: '~1.7.3',
+187 silly install resolved        'uglify-js': '~2.4.16',
+187 silly install resolved        kefir: '^2.4.1' },
+187 silly install resolved     main: './js/main/bluebird.js',
+187 silly install resolved     browser: './js/browser/bluebird.js',
+187 silly install resolved     files: [ 'js/browser', 'js/main', 'js/zalgo', 'zalgo.js' ],
+187 silly install resolved     gitHead: '02c0fd252cf7c0c86e6b27bb06422c404829b539',
+187 silly install resolved     _id: 'bluebird@2.10.2',
+187 silly install resolved     _shasum: '024a5517295308857f14f91f1106fc3b555f446b',
+187 silly install resolved     _from: 'bluebird@>=2.3.0 <3.0.0',
+187 silly install resolved     _npmVersion: '2.11.1',
+187 silly install resolved     _nodeVersion: '2.3.0',
+187 silly install resolved     _npmUser: { name: 'esailija', email: 'petka_antonov@hotmail.com' },
+187 silly install resolved     maintainers: [ [Object] ],
+187 silly install resolved     dist:
+187 silly install resolved      { shasum: '024a5517295308857f14f91f1106fc3b555f446b',
+187 silly install resolved        tarball: 'http://registry.npmjs.org/bluebird/-/bluebird-2.10.2.tgz' },
+187 silly install resolved     directories: {},
+187 silly install resolved     _resolved: 'https://registry.npmjs.org/bluebird/-/bluebird-2.10.2.tgz',
+187 silly install resolved     readme: 'ERROR: No README data found!' },
+187 silly install resolved   { name: 'cls-bluebird',
+187 silly install resolved     version: '1.0.1',
+187 silly install resolved     description: 'Make bluebird work with the continuation-local-storage module.',
+187 silly install resolved     main: 'shim.js',
+187 silly install resolved     scripts: { test: 'tap test/*.tap.js' },
+187 silly install resolved     repository:
+187 silly install resolved      { type: 'git',
+187 silly install resolved        url: 'git+https://github.com/TimBeyer/cls-bluebird.git' },
+187 silly install resolved     keywords:
+187 silly install resolved      [ 'continuation-local-storage',
+187 silly install resolved        'bluebird',
+187 silly install resolved        'promises',
+187 silly install resolved        'async',
+187 silly install resolved        'glue',
+187 silly install resolved        'baling-wire' ],
+187 silly install resolved     author: { name: 'Tim Beyer', email: 'tim.beyer@gmail.com' },
+187 silly install resolved     license: 'BSD-2-Clause',
+187 silly install resolved     bugs: { url: 'https://github.com/TimBeyer/cls-bluebird/issues' },
+187 silly install resolved     dependencies: { shimmer: '~1' },
+187 silly install resolved     devDependencies: { tap: '~0.4.4', redis: '~0.9.0' },
+187 silly install resolved     peerDependencies: { 'continuation-local-storage': '~3', bluebird: '>=1.0.3' },
+187 silly install resolved     gitHead: '6319b46801153f4332443f37f1a7f87b176ffc5d',
+187 silly install resolved     homepage: 'https://github.com/TimBeyer/cls-bluebird#readme',
+187 silly install resolved     _id: 'cls-bluebird@1.0.1',
+187 silly install resolved     _shasum: 'c59f46b0c03fc896cd5b6e3566bd8cb6ef172cfb',
+187 silly install resolved     _from: 'cls-bluebird@>=1.0.1 <2.0.0',
+187 silly install resolved     _npmVersion: '2.9.0',
+187 silly install resolved     _nodeVersion: '0.12.2',
+187 silly install resolved     _npmUser: { name: 'timbeyer', email: 'tim.beyer@gmail.com' },
+187 silly install resolved     maintainers: [ [Object] ],
+187 silly install resolved     dist:
+187 silly install resolved      { shasum: 'c59f46b0c03fc896cd5b6e3566bd8cb6ef172cfb',
+187 silly install resolved        tarball: 'http://registry.npmjs.org/cls-bluebird/-/cls-bluebird-1.0.1.tgz' },
+187 silly install resolved     directories: {},
+187 silly install resolved     _resolved: 'https://registry.npmjs.org/cls-bluebird/-/cls-bluebird-1.0.1.tgz' } ]
+188 info install bluebird@2.10.2 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+189 info install cls-bluebird@1.0.1 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+190 info installOne bluebird@2.10.2
+191 verbose installOne of bluebird to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise not in flight; installing
+192 info installOne cls-bluebird@1.0.1
+193 verbose installOne of cls-bluebird to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise not in flight; installing
+194 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\bluebird-ff01c65420c3b010.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+195 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\cls-bluebird-2c526cadcabd9403.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+196 silly install write writing bluebird 2.10.2 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+197 silly install write writing cls-bluebird 1.0.1 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+198 verbose unbuild node_modules\request-promise\node_modules\bluebird
+199 verbose unbuild node_modules\request-promise\node_modules\cls-bluebird
+200 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+201 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+202 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\bluebird\2.10.2\package.tgz
+203 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+204 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird is being purged
+205 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+206 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+207 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+208 silly gunzTarPerm modes [ '777', '666' ]
+209 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\cls-bluebird\1.0.1\package.tgz
+210 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+211 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird is being purged
+212 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+213 silly gunzTarPerm modes [ '777', '666' ]
+214 silly gunzTarPerm extractEntry package.json
+215 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+216 silly gunzTarPerm extractEntry .npmignore
+217 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+218 silly gunzTarPerm extractEntry README.md
+219 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+220 silly gunzTarPerm extractEntry package.json
+221 silly gunzTarPerm modified mode [ 'package.json', 436, 438 ]
+222 silly gunzTarPerm extractEntry README.md
+223 silly gunzTarPerm modified mode [ 'README.md', 436, 438 ]
+224 silly gunzTarPerm extractEntry LICENSE
+225 silly gunzTarPerm modified mode [ 'LICENSE', 436, 438 ]
+226 silly gunzTarPerm extractEntry shim.js
+227 silly gunzTarPerm modified mode [ 'shim.js', 420, 438 ]
+228 silly gunzTarPerm extractEntry changelog.md
+229 silly gunzTarPerm modified mode [ 'changelog.md', 436, 438 ]
+230 silly gunzTarPerm extractEntry js/browser/bluebird.js
+231 silly gunzTarPerm modified mode [ 'js/browser/bluebird.js', 436, 438 ]
+232 silly gunzTarPerm extractEntry js/browser/bluebird.min.js
+233 silly gunzTarPerm modified mode [ 'js/browser/bluebird.min.js', 436, 438 ]
+234 silly gunzTarPerm extractEntry js/main/any.js
+235 silly gunzTarPerm modified mode [ 'js/main/any.js', 436, 438 ]
+236 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\package.json
+237 silly gunzTarPerm extractEntry js/main/finally.js
+238 silly gunzTarPerm modified mode [ 'js/main/finally.js', 436, 438 ]
+239 silly gunzTarPerm extractEntry js/main/generators.js
+240 silly gunzTarPerm modified mode [ 'js/main/generators.js', 436, 438 ]
+241 silly gunzTarPerm extractEntry js/main/join.js
+242 silly gunzTarPerm modified mode [ 'js/main/join.js', 436, 438 ]
+243 silly gunzTarPerm extractEntry js/main/filter.js
+244 silly gunzTarPerm modified mode [ 'js/main/filter.js', 436, 438 ]
+245 silly gunzTarPerm extractEntry js/main/method.js
+246 silly gunzTarPerm modified mode [ 'js/main/method.js', 436, 438 ]
+247 info preinstall cls-bluebird@1.0.1
+248 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\package.json
+249 silly prepareForInstallMany adding shimmer@~1 from cls-bluebird dependencies
+250 silly prepareForInstallMany adding continuation-local-storage@~3 from cls-bluebird peerDependencies
+251 warn peerDependencies The peer dependency continuation-local-storage@~3 included from cls-bluebird will no
+252 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+253 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+254 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\package.json
+255 silly gunzTarPerm extractEntry js/main/nodeify.js
+256 silly gunzTarPerm modified mode [ 'js/main/nodeify.js', 436, 438 ]
+257 silly gunzTarPerm extractEntry js/main/progress.js
+258 silly gunzTarPerm modified mode [ 'js/main/progress.js', 436, 438 ]
+259 silly gunzTarPerm extractEntry js/main/promise.js
+260 silly gunzTarPerm modified mode [ 'js/main/promise.js', 436, 438 ]
+261 silly gunzTarPerm extractEntry js/main/promise_array.js
+262 silly gunzTarPerm modified mode [ 'js/main/promise_array.js', 436, 438 ]
+263 silly gunzTarPerm extractEntry js/main/es5.js
+264 silly gunzTarPerm modified mode [ 'js/main/es5.js', 436, 438 ]
+265 silly cache add args [ 'shimmer@~1', null ]
+266 verbose cache add spec shimmer@~1
+267 silly cache add parsed spec Result {
+267 silly cache add   raw: 'shimmer@~1',
+267 silly cache add   scope: null,
+267 silly cache add   name: 'shimmer',
+267 silly cache add   rawSpec: '~1',
+267 silly cache add   spec: '>=1.0.0 <2.0.0',
+267 silly cache add   type: 'range' }
+268 silly addNamed shimmer@>=1.0.0 <2.0.0
+269 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for shimmer
+270 silly addNameRange { name: 'shimmer', range: '>=1.0.0 <2.0.0', hasData: false }
+271 silly mapToRegistry name shimmer
+272 silly mapToRegistry using default registry
+273 silly mapToRegistry registry https://registry.npmjs.org/
+274 silly mapToRegistry uri https://registry.npmjs.org/shimmer
+275 verbose addNameRange registry:https://registry.npmjs.org/shimmer not in flight; fetching
+276 verbose request uri https://registry.npmjs.org/shimmer
+277 verbose request no auth needed
+278 info attempt registry request try #1 at 21:00:47
+279 http request GET https://registry.npmjs.org/shimmer
+280 silly gunzTarPerm extractEntry js/main/promise_resolver.js
+281 silly gunzTarPerm modified mode [ 'js/main/promise_resolver.js', 436, 438 ]
+282 silly gunzTarPerm extractEntry js/main/errors.js
+283 silly gunzTarPerm modified mode [ 'js/main/errors.js', 436, 438 ]
+284 silly gunzTarPerm extractEntry js/main/promisify.js
+285 silly gunzTarPerm modified mode [ 'js/main/promisify.js', 436, 438 ]
+286 silly gunzTarPerm extractEntry js/main/each.js
+287 silly gunzTarPerm modified mode [ 'js/main/each.js', 436, 438 ]
+288 silly gunzTarPerm extractEntry js/main/props.js
+289 silly gunzTarPerm modified mode [ 'js/main/props.js', 436, 438 ]
+290 silly gunzTarPerm extractEntry js/main/direct_resolve.js
+291 silly gunzTarPerm modified mode [ 'js/main/direct_resolve.js', 436, 438 ]
+292 silly gunzTarPerm extractEntry js/main/queue.js
+293 silly gunzTarPerm modified mode [ 'js/main/queue.js', 436, 438 ]
+294 silly gunzTarPerm extractEntry js/main/debuggability.js
+295 silly gunzTarPerm modified mode [ 'js/main/debuggability.js', 436, 438 ]
+296 silly gunzTarPerm extractEntry js/main/race.js
+297 silly gunzTarPerm modified mode [ 'js/main/race.js', 436, 438 ]
+298 silly gunzTarPerm extractEntry js/main/context.js
+299 silly gunzTarPerm modified mode [ 'js/main/context.js', 436, 438 ]
+300 silly gunzTarPerm extractEntry js/main/reduce.js
+301 silly gunzTarPerm modified mode [ 'js/main/reduce.js', 436, 438 ]
+302 silly gunzTarPerm extractEntry js/main/catch_filter.js
+303 silly gunzTarPerm modified mode [ 'js/main/catch_filter.js', 436, 438 ]
+304 silly gunzTarPerm extractEntry js/main/schedule.js
+305 silly gunzTarPerm modified mode [ 'js/main/schedule.js', 436, 438 ]
+306 silly gunzTarPerm extractEntry js/main/captured_trace.js
+307 silly gunzTarPerm modified mode [ 'js/main/captured_trace.js', 436, 438 ]
+308 silly gunzTarPerm extractEntry js/main/settle.js
+309 silly gunzTarPerm modified mode [ 'js/main/settle.js', 436, 438 ]
+310 silly gunzTarPerm extractEntry js/main/cancel.js
+311 silly gunzTarPerm modified mode [ 'js/main/cancel.js', 436, 438 ]
+312 silly gunzTarPerm extractEntry js/main/some.js
+313 silly gunzTarPerm modified mode [ 'js/main/some.js', 436, 438 ]
+314 silly gunzTarPerm extractEntry js/main/call_get.js
+315 silly gunzTarPerm modified mode [ 'js/main/call_get.js', 436, 438 ]
+316 silly gunzTarPerm extractEntry js/main/synchronous_inspection.js
+317 silly gunzTarPerm modified mode [ 'js/main/synchronous_inspection.js', 436, 438 ]
+318 silly gunzTarPerm extractEntry js/main/bluebird.js
+319 silly gunzTarPerm modified mode [ 'js/main/bluebird.js', 436, 438 ]
+320 silly gunzTarPerm extractEntry js/main/thenables.js
+321 silly gunzTarPerm modified mode [ 'js/main/thenables.js', 436, 438 ]
+322 silly gunzTarPerm extractEntry js/main/bind.js
+323 silly gunzTarPerm modified mode [ 'js/main/bind.js', 436, 438 ]
+324 silly gunzTarPerm extractEntry js/main/timers.js
+325 silly gunzTarPerm modified mode [ 'js/main/timers.js', 436, 438 ]
+326 silly gunzTarPerm extractEntry js/main/async.js
+327 silly gunzTarPerm modified mode [ 'js/main/async.js', 436, 438 ]
+328 silly gunzTarPerm extractEntry js/main/using.js
+329 silly gunzTarPerm modified mode [ 'js/main/using.js', 436, 438 ]
+330 silly gunzTarPerm extractEntry js/main/assert.js
+331 silly gunzTarPerm modified mode [ 'js/main/assert.js', 436, 438 ]
+332 silly gunzTarPerm extractEntry js/main/util.js
+333 silly gunzTarPerm modified mode [ 'js/main/util.js', 436, 438 ]
+334 silly gunzTarPerm extractEntry js/main/map.js
+335 silly gunzTarPerm modified mode [ 'js/main/map.js', 436, 438 ]
+336 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird\package.json
+337 info preinstall bluebird@2.10.2
+338 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird\package.json
+339 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird\package.json
+340 silly install resolved []
+341 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+342 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+343 info linkStuff bluebird@2.10.2
+344 silly linkStuff bluebird@2.10.2 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules as its parent node_modules
+345 verbose linkBins bluebird@2.10.2
+346 verbose linkMans bluebird@2.10.2
+347 verbose rebuildBundles bluebird@2.10.2
+348 info install bluebird@2.10.2
+349 info postinstall bluebird@2.10.2
+350 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\bluebird-ff01c65420c3b010.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird
+351 http 200 https://registry.npmjs.org/shimmer
+352 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+352 verbose headers   etag: '"AZ6SK79E6LPGMLNM7KULHOBCZ"',
+352 verbose headers   'content-type': 'application/json',
+352 verbose headers   'cache-control': 'max-age=60',
+352 verbose headers   'content-length': '13401',
+352 verbose headers   'accept-ranges': 'bytes',
+352 verbose headers   date: 'Sun, 06 Dec 2015 19:00:48 GMT',
+352 verbose headers   via: '1.1 varnish',
+352 verbose headers   age: '0',
+352 verbose headers   connection: 'keep-alive',
+352 verbose headers   'x-served-by': 'cache-ams4140-AMS',
+352 verbose headers   'x-cache': 'HIT',
+352 verbose headers   'x-cache-hits': '1',
+352 verbose headers   'x-timer': 'S1449428448.002030,VS0,VE404',
+352 verbose headers   vary: 'Accept' }
+353 silly get cb [ 200,
+353 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+353 silly get     etag: '"AZ6SK79E6LPGMLNM7KULHOBCZ"',
+353 silly get     'content-type': 'application/json',
+353 silly get     'cache-control': 'max-age=60',
+353 silly get     'content-length': '13401',
+353 silly get     'accept-ranges': 'bytes',
+353 silly get     date: 'Sun, 06 Dec 2015 19:00:48 GMT',
+353 silly get     via: '1.1 varnish',
+353 silly get     age: '0',
+353 silly get     connection: 'keep-alive',
+353 silly get     'x-served-by': 'cache-ams4140-AMS',
+353 silly get     'x-cache': 'HIT',
+353 silly get     'x-cache-hits': '1',
+353 silly get     'x-timer': 'S1449428448.002030,VS0,VE404',
+353 silly get     vary: 'Accept' } ]
+354 verbose get saving shimmer to C:\Users\Jonne\AppData\Roaming\npm-cache\registry.npmjs.org\shimmer\.cache.json
+355 silly addNameRange number 2 { name: 'shimmer', range: '>=1.0.0 <2.0.0', hasData: true }
+356 silly addNameRange versions [ 'shimmer',
+356 silly addNameRange   [ '0.6.0',
+356 silly addNameRange     '0.6.1',
+356 silly addNameRange     '0.7.1',
+356 silly addNameRange     '0.7.3',
+356 silly addNameRange     '0.8.0',
+356 silly addNameRange     '0.8.1',
+356 silly addNameRange     '0.9.0',
+356 silly addNameRange     '0.9.1',
+356 silly addNameRange     '0.9.2',
+356 silly addNameRange     '1.0.0',
+356 silly addNameRange     '1.1.0' ] ]
+357 silly addNamed shimmer@1.1.0
+358 verbose addNamed "1.1.0" is a plain semver version for shimmer
+359 silly mapToRegistry name shimmer
+360 silly mapToRegistry using default registry
+361 silly mapToRegistry registry https://registry.npmjs.org/
+362 silly mapToRegistry uri https://registry.npmjs.org/shimmer
+363 verbose addRemoteTarball https://registry.npmjs.org/shimmer/-/shimmer-1.1.0.tgz not in flight; adding
+364 verbose addRemoteTarball [ 'https://registry.npmjs.org/shimmer/-/shimmer-1.1.0.tgz',
+364 verbose addRemoteTarball   '97d7377137ffbbab425522e429fe0aa89a488b35' ]
+365 info retry fetch attempt 1 at 21:00:48
+366 info attempt registry request try #1 at 21:00:48
+367 http fetch GET https://registry.npmjs.org/shimmer/-/shimmer-1.1.0.tgz
+368 http fetch 200 https://registry.npmjs.org/shimmer/-/shimmer-1.1.0.tgz
+369 silly fetchAndShaCheck shasum 97d7377137ffbbab425522e429fe0aa89a488b35
+370 verbose addTmpTarball C:\Users\Jonne\AppData\Local\Temp\npm-5940-669385d7\registry.npmjs.org\shimmer\-\shimmer-1.1.0.tgz not in flight; adding
+371 verbose addTmpTarball already have metadata; skipping unpack for shimmer@1.1.0
+372 silly cache afterAdd shimmer@1.1.0
+373 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.1.0\package\package.json not in flight; writing
+374 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.1.0\package\package.json written
+375 silly install resolved [ { name: 'shimmer',
+375 silly install resolved     version: '1.1.0',
+375 silly install resolved     description: 'Safe(r) monkeypatching for JavaScript.',
+375 silly install resolved     main: 'index.js',
+375 silly install resolved     scripts: { test: 'standard && tap test/*.tap.js --coverage' },
+375 silly install resolved     repository:
+375 silly install resolved      { type: 'git',
+375 silly install resolved        url: 'git+https://github.com/othiym23/shimmer.git' },
+375 silly install resolved     keywords: [ 'monkeypatch', 'swizzle', 'wrapping', 'danger', 'hmm', 'shim' ],
+375 silly install resolved     author: { name: 'Forrest L Norvell', email: 'ogd@aoaioxxysz.net' },
+375 silly install resolved     license: 'BSD-2-Clause',
+375 silly install resolved     devDependencies: { sinon: '^1.17.2', standard: '^5.3.1', tap: '^2.2.0' },
+375 silly install resolved     gitHead: '5e642d89a64dc6786f8043ce2534e6a3f2cee420',
+375 silly install resolved     bugs: { url: 'https://github.com/othiym23/shimmer/issues' },
+375 silly install resolved     homepage: 'https://github.com/othiym23/shimmer#readme',
+375 silly install resolved     _id: 'shimmer@1.1.0',
+375 silly install resolved     _shasum: '97d7377137ffbbab425522e429fe0aa89a488b35',
+375 silly install resolved     _from: 'shimmer@>=1.0.0 <2.0.0',
+375 silly install resolved     _npmVersion: '3.3.11',
+375 silly install resolved     _nodeVersion: '4.2.1',
+375 silly install resolved     _npmUser: { name: 'othiym23', email: 'ogd@aoaioxxysz.net' },
+375 silly install resolved     dist:
+375 silly install resolved      { shasum: '97d7377137ffbbab425522e429fe0aa89a488b35',
+375 silly install resolved        tarball: 'http://registry.npmjs.org/shimmer/-/shimmer-1.1.0.tgz' },
+375 silly install resolved     maintainers: [ [Object] ],
+375 silly install resolved     directories: {},
+375 silly install resolved     _resolved: 'https://registry.npmjs.org/shimmer/-/shimmer-1.1.0.tgz' } ]
+376 info install shimmer@1.1.0 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+377 info installOne shimmer@1.1.0
+378 verbose installOne of shimmer to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird not in flight; installing
+379 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\shimmer-91021a0f6f771a56.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+380 silly install write writing shimmer 1.1.0 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+381 verbose unbuild node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+382 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+383 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+384 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.1.0\package.tgz
+385 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+386 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer is being purged
+387 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+388 silly gunzTarPerm modes [ '777', '666' ]
+389 silly gunzTarPerm extractEntry package.json
+390 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+391 silly gunzTarPerm extractEntry .npmignore
+392 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+393 silly gunzTarPerm extractEntry README.md
+394 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+395 silly gunzTarPerm extractEntry index.js
+396 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+397 silly gunzTarPerm extractEntry .travis.yml
+398 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+399 silly gunzTarPerm extractEntry test/init.tap.js
+400 silly gunzTarPerm modified mode [ 'test/init.tap.js', 420, 438 ]
+401 silly gunzTarPerm extractEntry test/massWrap.tap.js
+402 silly gunzTarPerm modified mode [ 'test/massWrap.tap.js', 420, 438 ]
+403 silly gunzTarPerm extractEntry test/unwrap.tap.js
+404 silly gunzTarPerm modified mode [ 'test/unwrap.tap.js', 420, 438 ]
+405 silly gunzTarPerm extractEntry test/wrap.tap.js
+406 silly gunzTarPerm modified mode [ 'test/wrap.tap.js', 420, 438 ]
+407 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer\package.json
+408 info preinstall shimmer@1.1.0
+409 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer\package.json
+410 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer\package.json
+411 silly install resolved []
+412 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+413 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+414 info linkStuff shimmer@1.1.0
+415 silly linkStuff shimmer@1.1.0 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules as its parent node_modules
+416 verbose linkBins shimmer@1.1.0
+417 verbose linkMans shimmer@1.1.0
+418 verbose rebuildBundles shimmer@1.1.0
+419 info install shimmer@1.1.0
+420 info postinstall shimmer@1.1.0
+421 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\shimmer-91021a0f6f771a56.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\node_modules\shimmer
+422 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+423 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+424 info linkStuff cls-bluebird@1.0.1
+425 silly linkStuff cls-bluebird@1.0.1 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules as its parent node_modules
+426 verbose linkBins cls-bluebird@1.0.1
+427 verbose linkMans cls-bluebird@1.0.1
+428 verbose rebuildBundles cls-bluebird@1.0.1
+429 verbose rebuildBundles [ 'shimmer' ]
+430 info install cls-bluebird@1.0.1
+431 info postinstall cls-bluebird@1.0.1
+432 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\package.json
+433 verbose targetResolver reading package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\bluebird\package.json
+434 verbose targetResolver reading package data from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird\package.json
+435 silly cache add args [ 'continuation-local-storage@~3', null ]
+436 verbose cache add spec continuation-local-storage@~3
+437 silly cache add parsed spec Result {
+437 silly cache add   raw: 'continuation-local-storage@~3',
+437 silly cache add   scope: null,
+437 silly cache add   name: 'continuation-local-storage',
+437 silly cache add   rawSpec: '~3',
+437 silly cache add   spec: '>=3.0.0 <4.0.0',
+437 silly cache add   type: 'range' }
+438 silly addNamed continuation-local-storage@>=3.0.0 <4.0.0
+439 verbose addNamed ">=3.0.0 <4.0.0" is a valid semver range for continuation-local-storage
+440 silly addNameRange { name: 'continuation-local-storage',
+440 silly addNameRange   range: '>=3.0.0 <4.0.0',
+440 silly addNameRange   hasData: false }
+441 silly mapToRegistry name continuation-local-storage
+442 silly mapToRegistry using default registry
+443 silly mapToRegistry registry https://registry.npmjs.org/
+444 silly mapToRegistry uri https://registry.npmjs.org/continuation-local-storage
+445 verbose addNameRange registry:https://registry.npmjs.org/continuation-local-storage not in flight; fetching
+446 verbose request uri https://registry.npmjs.org/continuation-local-storage
+447 verbose request no auth needed
+448 info attempt registry request try #1 at 21:00:48
+449 http request GET https://registry.npmjs.org/continuation-local-storage
+450 http 200 https://registry.npmjs.org/continuation-local-storage
+451 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+451 verbose headers   etag: '"DO261J9BXISRXY4MJEM53WPK5"',
+451 verbose headers   'content-type': 'application/json',
+451 verbose headers   'cache-control': 'max-age=60',
+451 verbose headers   'content-length': '51738',
+451 verbose headers   'accept-ranges': 'bytes',
+451 verbose headers   date: 'Sun, 06 Dec 2015 19:00:49 GMT',
+451 verbose headers   via: '1.1 varnish',
+451 verbose headers   age: '0',
+451 verbose headers   connection: 'keep-alive',
+451 verbose headers   'x-served-by': 'cache-ams4121-AMS',
+451 verbose headers   'x-cache': 'HIT',
+451 verbose headers   'x-cache-hits': '1',
+451 verbose headers   'x-timer': 'S1449428448.779326,VS0,VE673',
+451 verbose headers   vary: 'Accept' }
+452 silly get cb [ 200,
+452 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+452 silly get     etag: '"DO261J9BXISRXY4MJEM53WPK5"',
+452 silly get     'content-type': 'application/json',
+452 silly get     'cache-control': 'max-age=60',
+452 silly get     'content-length': '51738',
+452 silly get     'accept-ranges': 'bytes',
+452 silly get     date: 'Sun, 06 Dec 2015 19:00:49 GMT',
+452 silly get     via: '1.1 varnish',
+452 silly get     age: '0',
+452 silly get     connection: 'keep-alive',
+452 silly get     'x-served-by': 'cache-ams4121-AMS',
+452 silly get     'x-cache': 'HIT',
+452 silly get     'x-cache-hits': '1',
+452 silly get     'x-timer': 'S1449428448.779326,VS0,VE673',
+452 silly get     vary: 'Accept' } ]
+453 verbose get saving continuation-local-storage to C:\Users\Jonne\AppData\Roaming\npm-cache\registry.npmjs.org\continuation-local-storage\.cache.json
+454 silly addNameRange number 2 { name: 'continuation-local-storage',
+454 silly addNameRange   range: '>=3.0.0 <4.0.0',
+454 silly addNameRange   hasData: true }
+455 silly addNameRange versions [ 'continuation-local-storage',
+455 silly addNameRange   [ '0.1.1',
+455 silly addNameRange     '1.0.0',
+455 silly addNameRange     '1.0.1',
+455 silly addNameRange     '1.1.0',
+455 silly addNameRange     '1.1.1',
+455 silly addNameRange     '2.0.0',
+455 silly addNameRange     '2.1.0',
+455 silly addNameRange     '2.1.1',
+455 silly addNameRange     '2.1.2',
+455 silly addNameRange     '2.2.0',
+455 silly addNameRange     '2.2.1',
+455 silly addNameRange     '2.3.0',
+455 silly addNameRange     '2.3.1',
+455 silly addNameRange     '2.3.2',
+455 silly addNameRange     '2.3.3',
+455 silly addNameRange     '2.3.4',
+455 silly addNameRange     '2.4.0',
+455 silly addNameRange     '2.4.1',
+455 silly addNameRange     '2.4.2',
+455 silly addNameRange     '2.4.3',
+455 silly addNameRange     '2.4.4',
+455 silly addNameRange     '2.5.0',
+455 silly addNameRange     '2.5.1',
+455 silly addNameRange     '2.5.2',
+455 silly addNameRange     '2.6.0',
+455 silly addNameRange     '2.6.1',
+455 silly addNameRange     '2.6.2',
+455 silly addNameRange     '3.0.0',
+455 silly addNameRange     '3.1.0',
+455 silly addNameRange     '3.1.1',
+455 silly addNameRange     '3.1.2',
+455 silly addNameRange     '3.1.3',
+455 silly addNameRange     '3.1.4' ] ]
+456 silly addNamed continuation-local-storage@3.1.4
+457 verbose addNamed "3.1.4" is a plain semver version for continuation-local-storage
+458 silly mapToRegistry name continuation-local-storage
+459 silly mapToRegistry using default registry
+460 silly mapToRegistry registry https://registry.npmjs.org/
+461 silly mapToRegistry uri https://registry.npmjs.org/continuation-local-storage
+462 verbose addRemoteTarball https://registry.npmjs.org/continuation-local-storage/-/continuation-local-storage-3.1.4.tgz not in flight; adding
+463 verbose addRemoteTarball [ 'https://registry.npmjs.org/continuation-local-storage/-/continuation-local-storage-3.1.4.tgz',
+463 verbose addRemoteTarball   'cd9d604853ef17b4527d006f7b906e3e7375a2e1' ]
+464 info retry fetch attempt 1 at 21:00:49
+465 info attempt registry request try #1 at 21:00:49
+466 http fetch GET https://registry.npmjs.org/continuation-local-storage/-/continuation-local-storage-3.1.4.tgz
+467 http fetch 200 https://registry.npmjs.org/continuation-local-storage/-/continuation-local-storage-3.1.4.tgz
+468 silly fetchAndShaCheck shasum cd9d604853ef17b4527d006f7b906e3e7375a2e1
+469 verbose addTmpTarball C:\Users\Jonne\AppData\Local\Temp\npm-5940-669385d7\registry.npmjs.org\continuation-local-storage\-\continuation-local-storage-3.1.4.tgz not in flight; adding
+470 verbose addTmpTarball already have metadata; skipping unpack for continuation-local-storage@3.1.4
+471 silly cache afterAdd continuation-local-storage@3.1.4
+472 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\continuation-local-storage\3.1.4\package\package.json not in flight; writing
+473 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\continuation-local-storage\3.1.4\package\package.json written
+474 silly install resolved [ { name: 'continuation-local-storage',
+474 silly install resolved     version: '3.1.4',
+474 silly install resolved     description: 'userland implementation of https://github.com/joyent/node/issues/5243',
+474 silly install resolved     main: 'context.js',
+474 silly install resolved     directories: { test: 'test' },
+474 silly install resolved     scripts: { test: 'tap test/*.tap.js' },
+474 silly install resolved     repository:
+474 silly install resolved      { type: 'git',
+474 silly install resolved        url: 'https://github.com/othiym23/node-continuation-local-storage.git' },
+474 silly install resolved     keywords:
+474 silly install resolved      [ 'threading',
+474 silly install resolved        'shared',
+474 silly install resolved        'context',
+474 silly install resolved        'domains',
+474 silly install resolved        'tracing',
+474 silly install resolved        'logging' ],
+474 silly install resolved     author: { name: 'Forrest L Norvell', email: 'ogd@aoaioxxysz.net' },
+474 silly install resolved     contributors: [ [Object], [Object] ],
+474 silly install resolved     license: 'BSD',
+474 silly install resolved     devDependencies: { tap: '^0.7.1' },
+474 silly install resolved     dependencies: { 'async-listener': '^0.5.0', 'emitter-listener': '^1.0.1' },
+474 silly install resolved     gitHead: '03a918c1d61c6194415b01a23c4386ad827a0e69',
+474 silly install resolved     bugs: { url: 'https://github.com/othiym23/node-continuation-local-storage/issues' },
+474 silly install resolved     homepage: 'https://github.com/othiym23/node-continuation-local-storage',
+474 silly install resolved     _id: 'continuation-local-storage@3.1.4',
+474 silly install resolved     _shasum: 'cd9d604853ef17b4527d006f7b906e3e7375a2e1',
+474 silly install resolved     _from: 'continuation-local-storage@>=3.0.0 <4.0.0',
+474 silly install resolved     _npmVersion: '2.7.0',
+474 silly install resolved     _nodeVersion: '1.4.3',
+474 silly install resolved     _npmUser: { name: 'othiym23', email: 'ogd@aoaioxxysz.net' },
+474 silly install resolved     maintainers: [ [Object] ],
+474 silly install resolved     dist:
+474 silly install resolved      { shasum: 'cd9d604853ef17b4527d006f7b906e3e7375a2e1',
+474 silly install resolved        tarball: 'http://registry.npmjs.org/continuation-local-storage/-/continuation-local-storage-3.1.4.tgz' },
+474 silly install resolved     _resolved: 'https://registry.npmjs.org/continuation-local-storage/-/continuation-local-storage-3.1.4.tgz' } ]
+475 info install continuation-local-storage@3.1.4 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+476 info installOne continuation-local-storage@3.1.4
+477 verbose installOne of continuation-local-storage to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise not in flight; installing
+478 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\continuation-local-stora-c139d7338c696d1f.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+479 silly install write writing continuation-local-storage 3.1.4 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+480 verbose unbuild node_modules\request-promise\node_modules\continuation-local-storage
+481 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+482 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+483 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\continuation-local-storage\3.1.4\package.tgz
+484 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+485 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage is being purged
+486 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+487 silly gunzTarPerm modes [ '777', '666' ]
+488 silly gunzTarPerm extractEntry package.json
+489 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+490 silly gunzTarPerm extractEntry .npmignore
+491 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+492 silly gunzTarPerm extractEntry README.md
+493 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+494 silly gunzTarPerm extractEntry context.js
+495 silly gunzTarPerm modified mode [ 'context.js', 420, 438 ]
+496 silly gunzTarPerm extractEntry .eslintrc
+497 silly gunzTarPerm modified mode [ '.eslintrc', 420, 438 ]
+498 silly gunzTarPerm extractEntry CHANGELOG.md
+499 silly gunzTarPerm modified mode [ 'CHANGELOG.md', 420, 438 ]
+500 silly gunzTarPerm extractEntry test/async-context.tap.js
+501 silly gunzTarPerm modified mode [ 'test/async-context.tap.js', 420, 438 ]
+502 silly gunzTarPerm extractEntry test/dns.tap.js
+503 silly gunzTarPerm modified mode [ 'test/dns.tap.js', 420, 438 ]
+504 silly gunzTarPerm extractEntry test/error-handling.tap.js
+505 silly gunzTarPerm modified mode [ 'test/error-handling.tap.js', 420, 438 ]
+506 silly gunzTarPerm extractEntry test/fs.tap.js
+507 silly gunzTarPerm modified mode [ 'test/fs.tap.js', 420, 438 ]
+508 silly gunzTarPerm extractEntry test/interleave-contexts.tap.js
+509 silly gunzTarPerm modified mode [ 'test/interleave-contexts.tap.js', 420, 438 ]
+510 silly gunzTarPerm extractEntry test/crypto.tap.js
+511 silly gunzTarPerm modified mode [ 'test/crypto.tap.js', 420, 438 ]
+512 silly gunzTarPerm extractEntry test/namespaces.tap.js
+513 silly gunzTarPerm modified mode [ 'test/namespaces.tap.js', 420, 438 ]
+514 silly gunzTarPerm extractEntry test/nesting.tap.js
+515 silly gunzTarPerm modified mode [ 'test/nesting.tap.js', 420, 438 ]
+516 silly gunzTarPerm extractEntry test/net-events.tap.js
+517 silly gunzTarPerm modified mode [ 'test/net-events.tap.js', 420, 438 ]
+518 silly gunzTarPerm extractEntry test/proper-exit.tap.js
+519 silly gunzTarPerm modified mode [ 'test/proper-exit.tap.js', 420, 438 ]
+520 silly gunzTarPerm extractEntry test/simple.tap.js
+521 silly gunzTarPerm modified mode [ 'test/simple.tap.js', 420, 438 ]
+522 silly gunzTarPerm extractEntry test/bind.tap.js
+523 silly gunzTarPerm modified mode [ 'test/bind.tap.js', 420, 438 ]
+524 silly gunzTarPerm extractEntry test/timers.tap.js
+525 silly gunzTarPerm modified mode [ 'test/timers.tap.js', 420, 438 ]
+526 silly gunzTarPerm extractEntry test/bind-emitter.tap.js
+527 silly gunzTarPerm modified mode [ 'test/bind-emitter.tap.js', 420, 438 ]
+528 silly gunzTarPerm extractEntry test/tracer-scenarios.tap.js
+529 silly gunzTarPerm modified mode [ 'test/tracer-scenarios.tap.js', 420, 438 ]
+530 silly gunzTarPerm extractEntry test/async-no-run-queue-multiple.tap.js
+531 silly gunzTarPerm modified mode [ 'test/async-no-run-queue-multiple.tap.js', 420, 438 ]
+532 silly gunzTarPerm extractEntry test/zlib.tap.js
+533 silly gunzTarPerm modified mode [ 'test/zlib.tap.js', 420, 438 ]
+534 silly gunzTarPerm extractEntry test/monkeypatching.tap.js
+535 silly gunzTarPerm modified mode [ 'test/monkeypatching.tap.js', 420, 438 ]
+536 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\package.json
+537 info preinstall continuation-local-storage@3.1.4
+538 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\package.json
+539 silly prepareForInstallMany adding async-listener@^0.5.0 from continuation-local-storage dependencies
+540 silly prepareForInstallMany adding emitter-listener@^1.0.1 from continuation-local-storage dependencies
+541 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\package.json
+542 silly cache add args [ 'async-listener@^0.5.0', null ]
+543 verbose cache add spec async-listener@^0.5.0
+544 silly cache add args [ 'emitter-listener@^1.0.1', null ]
+545 verbose cache add spec emitter-listener@^1.0.1
+546 silly cache add parsed spec Result {
+546 silly cache add   raw: 'async-listener@^0.5.0',
+546 silly cache add   scope: null,
+546 silly cache add   name: 'async-listener',
+546 silly cache add   rawSpec: '^0.5.0',
+546 silly cache add   spec: '>=0.5.0 <0.6.0',
+546 silly cache add   type: 'range' }
+547 silly addNamed async-listener@>=0.5.0 <0.6.0
+548 verbose addNamed ">=0.5.0 <0.6.0" is a valid semver range for async-listener
+549 silly addNameRange { name: 'async-listener',
+549 silly addNameRange   range: '>=0.5.0 <0.6.0',
+549 silly addNameRange   hasData: false }
+550 silly mapToRegistry name async-listener
+551 silly mapToRegistry using default registry
+552 silly mapToRegistry registry https://registry.npmjs.org/
+553 silly mapToRegistry uri https://registry.npmjs.org/async-listener
+554 verbose addNameRange registry:https://registry.npmjs.org/async-listener not in flight; fetching
+555 silly cache add parsed spec Result {
+555 silly cache add   raw: 'emitter-listener@^1.0.1',
+555 silly cache add   scope: null,
+555 silly cache add   name: 'emitter-listener',
+555 silly cache add   rawSpec: '^1.0.1',
+555 silly cache add   spec: '>=1.0.1 <2.0.0',
+555 silly cache add   type: 'range' }
+556 silly addNamed emitter-listener@>=1.0.1 <2.0.0
+557 verbose addNamed ">=1.0.1 <2.0.0" is a valid semver range for emitter-listener
+558 silly addNameRange { name: 'emitter-listener',
+558 silly addNameRange   range: '>=1.0.1 <2.0.0',
+558 silly addNameRange   hasData: false }
+559 silly mapToRegistry name emitter-listener
+560 silly mapToRegistry using default registry
+561 silly mapToRegistry registry https://registry.npmjs.org/
+562 silly mapToRegistry uri https://registry.npmjs.org/emitter-listener
+563 verbose addNameRange registry:https://registry.npmjs.org/emitter-listener not in flight; fetching
+564 verbose request uri https://registry.npmjs.org/async-listener
+565 verbose request no auth needed
+566 info attempt registry request try #1 at 21:00:50
+567 http request GET https://registry.npmjs.org/async-listener
+568 verbose request uri https://registry.npmjs.org/emitter-listener
+569 verbose request no auth needed
+570 info attempt registry request try #1 at 21:00:50
+571 http request GET https://registry.npmjs.org/emitter-listener
+572 http 200 https://registry.npmjs.org/async-listener
+573 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+573 verbose headers   etag: '"8H2YMDLWRKE53PJPBYR3Z7WJJ"',
+573 verbose headers   'content-type': 'application/json',
+573 verbose headers   'cache-control': 'max-age=60',
+573 verbose headers   'content-length': '30841',
+573 verbose headers   'accept-ranges': 'bytes',
+573 verbose headers   date: 'Sun, 06 Dec 2015 19:00:50 GMT',
+573 verbose headers   via: '1.1 varnish',
+573 verbose headers   age: '0',
+573 verbose headers   connection: 'keep-alive',
+573 verbose headers   'x-served-by': 'cache-ams4129-AMS',
+573 verbose headers   'x-cache': 'HIT',
+573 verbose headers   'x-cache-hits': '1',
+573 verbose headers   'x-timer': 'S1449428450.032938,VS0,VE177',
+573 verbose headers   vary: 'Accept' }
+574 silly get cb [ 200,
+574 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+574 silly get     etag: '"8H2YMDLWRKE53PJPBYR3Z7WJJ"',
+574 silly get     'content-type': 'application/json',
+574 silly get     'cache-control': 'max-age=60',
+574 silly get     'content-length': '30841',
+574 silly get     'accept-ranges': 'bytes',
+574 silly get     date: 'Sun, 06 Dec 2015 19:00:50 GMT',
+574 silly get     via: '1.1 varnish',
+574 silly get     age: '0',
+574 silly get     connection: 'keep-alive',
+574 silly get     'x-served-by': 'cache-ams4129-AMS',
+574 silly get     'x-cache': 'HIT',
+574 silly get     'x-cache-hits': '1',
+574 silly get     'x-timer': 'S1449428450.032938,VS0,VE177',
+574 silly get     vary: 'Accept' } ]
+575 verbose get saving async-listener to C:\Users\Jonne\AppData\Roaming\npm-cache\registry.npmjs.org\async-listener\.cache.json
+576 silly addNameRange number 2 { name: 'async-listener',
+576 silly addNameRange   range: '>=0.5.0 <0.6.0',
+576 silly addNameRange   hasData: true }
+577 silly addNameRange versions [ 'async-listener',
+577 silly addNameRange   [ '0.0.2',
+577 silly addNameRange     '0.0.3',
+577 silly addNameRange     '0.1.1',
+577 silly addNameRange     '0.1.2',
+577 silly addNameRange     '0.2.0',
+577 silly addNameRange     '0.2.1',
+577 silly addNameRange     '0.2.2',
+577 silly addNameRange     '0.3.0',
+577 silly addNameRange     '0.4.0',
+577 silly addNameRange     '0.4.1',
+577 silly addNameRange     '0.4.2',
+577 silly addNameRange     '0.4.3',
+577 silly addNameRange     '0.4.4',
+577 silly addNameRange     '0.4.5',
+577 silly addNameRange     '0.4.6',
+577 silly addNameRange     '0.4.7',
+577 silly addNameRange     '0.5.0',
+577 silly addNameRange     '0.5.1',
+577 silly addNameRange     '0.5.2',
+577 silly addNameRange     '0.5.3',
+577 silly addNameRange     '0.5.4',
+577 silly addNameRange     '0.5.5',
+577 silly addNameRange     '0.5.6' ] ]
+578 silly addNamed async-listener@0.5.6
+579 verbose addNamed "0.5.6" is a plain semver version for async-listener
+580 silly mapToRegistry name async-listener
+581 silly mapToRegistry using default registry
+582 silly mapToRegistry registry https://registry.npmjs.org/
+583 silly mapToRegistry uri https://registry.npmjs.org/async-listener
+584 verbose addRemoteTarball https://registry.npmjs.org/async-listener/-/async-listener-0.5.6.tgz not in flight; adding
+585 verbose addRemoteTarball [ 'https://registry.npmjs.org/async-listener/-/async-listener-0.5.6.tgz',
+585 verbose addRemoteTarball   '0c5f7dfb7d5ba657098f3ca5d7be693f720e09f9' ]
+586 info retry fetch attempt 1 at 21:00:50
+587 info attempt registry request try #1 at 21:00:50
+588 http fetch GET https://registry.npmjs.org/async-listener/-/async-listener-0.5.6.tgz
+589 http fetch 200 https://registry.npmjs.org/async-listener/-/async-listener-0.5.6.tgz
+590 silly fetchAndShaCheck shasum 0c5f7dfb7d5ba657098f3ca5d7be693f720e09f9
+591 verbose addTmpTarball C:\Users\Jonne\AppData\Local\Temp\npm-5940-669385d7\registry.npmjs.org\async-listener\-\async-listener-0.5.6.tgz not in flight; adding
+592 verbose addTmpTarball already have metadata; skipping unpack for async-listener@0.5.6
+593 http 200 https://registry.npmjs.org/emitter-listener
+594 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+594 verbose headers   etag: '"4MTW3WO8RG81138IVUSH9ZSOJ"',
+594 verbose headers   'content-type': 'application/json',
+594 verbose headers   'cache-control': 'max-age=60',
+594 verbose headers   'content-length': '6959',
+594 verbose headers   'accept-ranges': 'bytes',
+594 verbose headers   date: 'Sun, 06 Dec 2015 19:00:50 GMT',
+594 verbose headers   via: '1.1 varnish',
+594 verbose headers   age: '0',
+594 verbose headers   connection: 'keep-alive',
+594 verbose headers   'x-served-by': 'cache-ams4141-AMS',
+594 verbose headers   'x-cache': 'HIT',
+594 verbose headers   'x-cache-hits': '1',
+594 verbose headers   'x-timer': 'S1449428450.031570,VS0,VE399',
+594 verbose headers   vary: 'Accept' }
+595 silly get cb [ 200,
+595 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+595 silly get     etag: '"4MTW3WO8RG81138IVUSH9ZSOJ"',
+595 silly get     'content-type': 'application/json',
+595 silly get     'cache-control': 'max-age=60',
+595 silly get     'content-length': '6959',
+595 silly get     'accept-ranges': 'bytes',
+595 silly get     date: 'Sun, 06 Dec 2015 19:00:50 GMT',
+595 silly get     via: '1.1 varnish',
+595 silly get     age: '0',
+595 silly get     connection: 'keep-alive',
+595 silly get     'x-served-by': 'cache-ams4141-AMS',
+595 silly get     'x-cache': 'HIT',
+595 silly get     'x-cache-hits': '1',
+595 silly get     'x-timer': 'S1449428450.031570,VS0,VE399',
+595 silly get     vary: 'Accept' } ]
+596 verbose get saving emitter-listener to C:\Users\Jonne\AppData\Roaming\npm-cache\registry.npmjs.org\emitter-listener\.cache.json
+597 silly cache afterAdd async-listener@0.5.6
+598 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\async-listener\0.5.6\package\package.json not in flight; writing
+599 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\async-listener\0.5.6\package\package.json written
+600 silly addNameRange number 2 { name: 'emitter-listener',
+600 silly addNameRange   range: '>=1.0.1 <2.0.0',
+600 silly addNameRange   hasData: true }
+601 silly addNameRange versions [ 'emitter-listener', [ '1.0.0', '1.0.1' ] ]
+602 silly addNamed emitter-listener@1.0.1
+603 verbose addNamed "1.0.1" is a plain semver version for emitter-listener
+604 silly mapToRegistry name emitter-listener
+605 silly mapToRegistry using default registry
+606 silly mapToRegistry registry https://registry.npmjs.org/
+607 silly mapToRegistry uri https://registry.npmjs.org/emitter-listener
+608 verbose addRemoteTarball https://registry.npmjs.org/emitter-listener/-/emitter-listener-1.0.1.tgz not in flight; adding
+609 verbose addRemoteTarball [ 'https://registry.npmjs.org/emitter-listener/-/emitter-listener-1.0.1.tgz',
+609 verbose addRemoteTarball   'b2499ea6e58230a52c268d5df261eecd9f10fe97' ]
+610 info retry fetch attempt 1 at 21:00:50
+611 info attempt registry request try #1 at 21:00:50
+612 http fetch GET https://registry.npmjs.org/emitter-listener/-/emitter-listener-1.0.1.tgz
+613 http fetch 200 https://registry.npmjs.org/emitter-listener/-/emitter-listener-1.0.1.tgz
+614 silly fetchAndShaCheck shasum b2499ea6e58230a52c268d5df261eecd9f10fe97
+615 verbose addTmpTarball C:\Users\Jonne\AppData\Local\Temp\npm-5940-669385d7\registry.npmjs.org\emitter-listener\-\emitter-listener-1.0.1.tgz not in flight; adding
+616 verbose addTmpTarball already have metadata; skipping unpack for emitter-listener@1.0.1
+617 silly cache afterAdd emitter-listener@1.0.1
+618 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\emitter-listener\1.0.1\package\package.json not in flight; writing
+619 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\emitter-listener\1.0.1\package\package.json written
+620 silly install resolved [ { name: 'async-listener',
+620 silly install resolved     version: '0.5.6',
+620 silly install resolved     description: 'Polyfill exporting trevnorris\'s 0.11+ asyncListener API.',
+620 silly install resolved     author: { name: 'Forrest L Norvell', email: 'ogd@aoaioxxysz.net' },
+620 silly install resolved     contributors: [ [Object], [Object] ],
+620 silly install resolved     main: 'index.js',
+620 silly install resolved     scripts: { test: 'tap test/*.tap.js' },
+620 silly install resolved     repository:
+620 silly install resolved      { type: 'git',
+620 silly install resolved        url: 'git+https://github.com/othiym23/async-listener.git' },
+620 silly install resolved     keywords: [ 'polyfill', 'shim', 'zesty', 'crazed', 'experimental' ],
+620 silly install resolved     license: 'BSD-2-Clause',
+620 silly install resolved     bugs: { url: 'https://github.com/othiym23/async-listener/issues' },
+620 silly install resolved     engines: { node: '<=0.11.8 || >0.11.10' },
+620 silly install resolved     dependencies: { shimmer: '1.0.0' },
+620 silly install resolved     devDependencies: { tap: '^0.7.1' },
+620 silly install resolved     gitHead: '913d799af371d348a739a1e2703ab1ffc42d79b3',
+620 silly install resolved     homepage: 'https://github.com/othiym23/async-listener#readme',
+620 silly install resolved     _id: 'async-listener@0.5.6',
+620 silly install resolved     _shasum: '0c5f7dfb7d5ba657098f3ca5d7be693f720e09f9',
+620 silly install resolved     _from: 'async-listener@>=0.5.0 <0.6.0',
+620 silly install resolved     _npmVersion: '2.13.3',
+620 silly install resolved     _nodeVersion: '3.0.0',
+620 silly install resolved     _npmUser: { name: 'qard', email: 'admin@stephenbelanger.com' },
+620 silly install resolved     dist:
+620 silly install resolved      { shasum: '0c5f7dfb7d5ba657098f3ca5d7be693f720e09f9',
+620 silly install resolved        tarball: 'http://registry.npmjs.org/async-listener/-/async-listener-0.5.6.tgz' },
+620 silly install resolved     maintainers: [ [Object], [Object] ],
+620 silly install resolved     directories: {},
+620 silly install resolved     _resolved: 'https://registry.npmjs.org/async-listener/-/async-listener-0.5.6.tgz' },
+620 silly install resolved   { name: 'emitter-listener',
+620 silly install resolved     version: '1.0.1',
+620 silly install resolved     description: '(Meta)observability for EventEmitters.',
+620 silly install resolved     main: 'listener.js',
+620 silly install resolved     directories: { test: 'test' },
+620 silly install resolved     scripts: { test: 'tap test/*.tap.js' },
+620 silly install resolved     repository:
+620 silly install resolved      { type: 'git',
+620 silly install resolved        url: 'https://github.com/othiym23/emitter-listener' },
+620 silly install resolved     keywords:
+620 silly install resolved      [ 'wow',
+620 silly install resolved        'such',
+620 silly install resolved        'introspection',
+620 silly install resolved        'amaze',
+620 silly install resolved        'listener',
+620 silly install resolved        'so',
+620 silly install resolved        'observe' ],
+620 silly install resolved     author: { name: 'Forrest L Norvell', email: 'ogd@aoaioxxysz.net' },
+620 silly install resolved     license: 'BSD-2-Clause',
+620 silly install resolved     bugs: { url: 'https://github.com/othiym23/emitter-listener/issues' },
+620 silly install resolved     homepage: 'https://github.com/othiym23/emitter-listener',
+620 silly install resolved     devDependencies: { tap: '~0.4.6' },
+620 silly install resolved     dependencies: { shimmer: '1.0.0' },
+620 silly install resolved     readme: '## Add dynamic instrumentation to emitters\n\n`shimmer` does a bunch of the work necessary to wrap other methods in\na wrapper you provide:\n\n```javascript\nvar EventEmitter = require(\'events\').EventEmitter;\nvar wrapEmitter = require(\'emitter-listener\');\n\nvar ee = new EventEmitter();\n\nvar id = 0;\n\nwrapEmitter(\n  ee,\n  function mark(listener) {\n    listener.id = id++;\n  },\n  function prepare(listener) {\n    console.log(\'listener id is %d\', listener.id);\n  }\n);\n```\n\n### Mandatory disclaimer\n\nThere are times when it\'s necessary to monkeypatch default behavior in\nJavaScript and Node. However, changing the behavior of the runtime on the fly\nis rarely a good idea, and you should be using this module because you need to,\nnot because it seems like fun.\n\n#### wrapEmitter(emitter, mark, prepare)\n\nWrap an EventEmitter\'s event listeners. Each listener will be passed to\n`mark` when it is registered with `.addListener()` or `.on()`, and then\neach listener is passed to `prepare` to be wrapped before it\'s called\nby the `.emit()` call. `wrapListener` deals with the single listener\nvs array of listeners logic, and also ensures that edge cases like\n`.removeListener()` being called from within an `.emit()` for the same\nevent type is handled properly.\n\nThe wrapped EE can be restored to its pristine state by using\nemitter.__unwrap(), but this should only be used if you *really* know\nwhat you\'re doing.\n',
+620 silly install resolved     readmeFilename: 'README.md',
+620 silly install resolved     _id: 'emitter-listener@1.0.1',
+620 silly install resolved     dist:
+620 silly install resolved      { shasum: 'b2499ea6e58230a52c268d5df261eecd9f10fe97',
+620 silly install resolved        tarball: 'http://registry.npmjs.org/emitter-listener/-/emitter-listener-1.0.1.tgz' },
+620 silly install resolved     _from: 'emitter-listener@>=1.0.1 <2.0.0',
+620 silly install resolved     _npmVersion: '1.3.14',
+620 silly install resolved     _npmUser: { name: 'othiym23', email: 'ogd@aoaioxxysz.net' },
+620 silly install resolved     maintainers: [ [Object] ],
+620 silly install resolved     _shasum: 'b2499ea6e58230a52c268d5df261eecd9f10fe97',
+620 silly install resolved     _resolved: 'https://registry.npmjs.org/emitter-listener/-/emitter-listener-1.0.1.tgz' } ]
+621 info install async-listener@0.5.6 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+622 info install emitter-listener@1.0.1 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+623 info installOne async-listener@0.5.6
+624 verbose installOne of async-listener to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage not in flight; installing
+625 info installOne emitter-listener@1.0.1
+626 verbose installOne of emitter-listener to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage not in flight; installing
+627 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\async-listener-1eab1280efe1abe3.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+628 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\emitter-listener-4abeadd434e7ffd2.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+629 silly install write writing async-listener 0.5.6 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+630 silly install write writing emitter-listener 1.0.1 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+631 verbose unbuild node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+632 verbose unbuild node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+633 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+634 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+635 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\async-listener\0.5.6\package.tgz
+636 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+637 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener is being purged
+638 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+639 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+640 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+641 silly gunzTarPerm modes [ '777', '666' ]
+642 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\emitter-listener\1.0.1\package.tgz
+643 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+644 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener is being purged
+645 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+646 silly gunzTarPerm modes [ '777', '666' ]
+647 silly gunzTarPerm extractEntry package.json
+648 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+649 silly gunzTarPerm extractEntry package.json
+650 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+651 silly gunzTarPerm extractEntry .npmignore
+652 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+653 silly gunzTarPerm extractEntry README.md
+654 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+655 silly gunzTarPerm extractEntry .npmignore
+656 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+657 silly gunzTarPerm extractEntry README.md
+658 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+659 silly gunzTarPerm extractEntry glue.js
+660 silly gunzTarPerm modified mode [ 'glue.js', 420, 438 ]
+661 silly gunzTarPerm extractEntry index.js
+662 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+663 silly gunzTarPerm extractEntry test/add-remove.tap.js
+664 silly gunzTarPerm modified mode [ 'test/add-remove.tap.js', 420, 438 ]
+665 silly gunzTarPerm extractEntry test/core-asynclistener-error-throw-in-error.simple.js
+666 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-throw-in-error.simple.js',
+666 silly gunzTarPerm   420,
+666 silly gunzTarPerm   438 ]
+667 silly gunzTarPerm extractEntry test/core-asynclistener-error.simple.js
+668 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error.simple.js', 420, 438 ]
+669 silly gunzTarPerm extractEntry test/core-asynclistener-nexttick-remove.simple.js
+670 silly gunzTarPerm modified mode [ 'test/core-asynclistener-nexttick-remove.simple.js', 420, 438 ]
+671 silly gunzTarPerm extractEntry test/core-asynclistener-error-throw-in-before.simple.js
+672 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-throw-in-before.simple.js',
+672 silly gunzTarPerm   420,
+672 silly gunzTarPerm   438 ]
+673 silly gunzTarPerm extractEntry test/connection-handler-disconnects.tap.js
+674 silly gunzTarPerm modified mode [ 'test/connection-handler-disconnects.tap.js', 420, 438 ]
+675 silly gunzTarPerm extractEntry test/core-asynclistener-remove-inflight-error.simple.js
+676 silly gunzTarPerm modified mode [ 'test/core-asynclistener-remove-inflight-error.simple.js',
+676 silly gunzTarPerm   420,
+676 silly gunzTarPerm   438 ]
+677 silly gunzTarPerm extractEntry test/core-asynclistener-remove-inflight.simple.js
+678 silly gunzTarPerm modified mode [ 'test/core-asynclistener-remove-inflight.simple.js', 420, 438 ]
+679 silly gunzTarPerm extractEntry test/core-asynclistener.simple.js
+680 silly gunzTarPerm modified mode [ 'test/core-asynclistener.simple.js', 420, 438 ]
+681 silly gunzTarPerm extractEntry test/errors-this-tick.tap.js
+682 silly gunzTarPerm modified mode [ 'test/errors-this-tick.tap.js', 420, 438 ]
+683 silly gunzTarPerm extractEntry test/core-asynclistener-error-throw-in-before-multiple.simple.js
+684 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-throw-in-before-multiple.simple.js',
+684 silly gunzTarPerm   420,
+684 silly gunzTarPerm   438 ]
+685 silly gunzTarPerm extractEntry test/fork-listen2-problem.tap.js
+686 silly gunzTarPerm modified mode [ 'test/fork-listen2-problem.tap.js', 420, 438 ]
+687 silly gunzTarPerm extractEntry test/core-asynclistener-error-throw-in-after.simple.js
+688 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-throw-in-after.simple.js',
+688 silly gunzTarPerm   420,
+688 silly gunzTarPerm   438 ]
+689 silly gunzTarPerm extractEntry test/fork-listener.js
+690 silly gunzTarPerm modified mode [ 'test/fork-listener.js', 420, 438 ]
+691 silly gunzTarPerm extractEntry test/core-asynclistener-error-net.simple.js
+692 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-net.simple.js', 420, 438 ]
+693 silly gunzTarPerm extractEntry test/handle.tap.js
+694 silly gunzTarPerm modified mode [ 'test/handle.tap.js', 420, 438 ]
+695 silly gunzTarPerm extractEntry test/core-asynclistener-error-multiple-unhandled.simple.js
+696 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-multiple-unhandled.simple.js',
+696 silly gunzTarPerm   420,
+696 silly gunzTarPerm   438 ]
+697 silly gunzTarPerm extractEntry test/native-promises.tap.js
+698 silly gunzTarPerm modified mode [ 'test/native-promises.tap.js', 420, 438 ]
+699 silly gunzTarPerm extractEntry test/core-asynclistener-error-multiple-mix.simple.js
+700 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-multiple-mix.simple.js',
+700 silly gunzTarPerm   420,
+700 silly gunzTarPerm   438 ]
+701 silly gunzTarPerm extractEntry test/no-after-following-error.tap.js
+702 silly gunzTarPerm modified mode [ 'test/no-after-following-error.tap.js', 420, 438 ]
+703 silly gunzTarPerm extractEntry test/core-asynclistener-error-multiple-handled.simple.js
+704 silly gunzTarPerm modified mode [ 'test/core-asynclistener-error-multiple-handled.simple.js',
+704 silly gunzTarPerm   420,
+704 silly gunzTarPerm   438 ]
+705 silly gunzTarPerm extractEntry test/overlapping-nexttick.tap.js
+706 silly gunzTarPerm modified mode [ 'test/overlapping-nexttick.tap.js', 420, 438 ]
+707 silly gunzTarPerm extractEntry test/simple-counter.tap.js
+708 silly gunzTarPerm modified mode [ 'test/simple-counter.tap.js', 420, 438 ]
+709 silly gunzTarPerm extractEntry test/simple-counter-with-io.tap.js
+710 silly gunzTarPerm modified mode [ 'test/simple-counter-with-io.tap.js', 420, 438 ]
+711 silly gunzTarPerm extractEntry test/core-asynclistener-only-add.simple.js
+712 silly gunzTarPerm modified mode [ 'test/core-asynclistener-only-add.simple.js', 420, 438 ]
+713 silly gunzTarPerm extractEntry test/simplified-error.simple.js
+714 silly gunzTarPerm modified mode [ 'test/simplified-error.simple.js', 420, 438 ]
+715 silly gunzTarPerm extractEntry test/core-asynclistener-remove-before.simple.js
+716 silly gunzTarPerm modified mode [ 'test/core-asynclistener-remove-before.simple.js', 420, 438 ]
+717 silly gunzTarPerm extractEntry test/core/core-asynclistener-add-inflight.js
+718 silly gunzTarPerm modified mode [ 'test/core/core-asynclistener-add-inflight.js', 420, 438 ]
+719 silly gunzTarPerm extractEntry test/core/core-asynclistener-error-throw-in-before-inflight.js
+720 silly gunzTarPerm modified mode [ 'test/core/core-asynclistener-error-throw-in-before-inflight.js',
+720 silly gunzTarPerm   420,
+720 silly gunzTarPerm   438 ]
+721 silly gunzTarPerm extractEntry listener.js
+722 silly gunzTarPerm modified mode [ 'listener.js', 420, 438 ]
+723 silly gunzTarPerm extractEntry test/basic.tap.js
+724 silly gunzTarPerm modified mode [ 'test/basic.tap.js', 420, 438 ]
+725 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\package.json
+726 info preinstall emitter-listener@1.0.1
+727 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\package.json
+728 silly prepareForInstallMany adding shimmer@1.0.0 from emitter-listener dependencies
+729 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\package.json
+730 silly cache add args [ 'shimmer@1.0.0', null ]
+731 verbose cache add spec shimmer@1.0.0
+732 silly cache add parsed spec Result {
+732 silly cache add   raw: 'shimmer@1.0.0',
+732 silly cache add   scope: null,
+732 silly cache add   name: 'shimmer',
+732 silly cache add   rawSpec: '1.0.0',
+732 silly cache add   spec: '1.0.0',
+732 silly cache add   type: 'version' }
+733 silly addNamed shimmer@1.0.0
+734 verbose addNamed "1.0.0" is a plain semver version for shimmer
+735 silly mapToRegistry name shimmer
+736 silly mapToRegistry using default registry
+737 silly mapToRegistry registry https://registry.npmjs.org/
+738 silly mapToRegistry uri https://registry.npmjs.org/shimmer
+739 verbose addNameVersion registry:https://registry.npmjs.org/shimmer not in flight; fetching
+740 verbose get https://registry.npmjs.org/shimmer not expired, no request
+741 silly mapToRegistry name shimmer
+742 silly mapToRegistry using default registry
+743 silly mapToRegistry registry https://registry.npmjs.org/
+744 silly mapToRegistry uri https://registry.npmjs.org/shimmer
+745 verbose addRemoteTarball https://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz not in flight; adding
+746 verbose addRemoteTarball [ 'https://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz',
+746 verbose addRemoteTarball   '49c2d71c678360b802be18b278382d1cbb805c39' ]
+747 info retry fetch attempt 1 at 21:00:50
+748 info attempt registry request try #1 at 21:00:50
+749 http fetch GET https://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz
+750 http fetch 200 https://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz
+751 silly fetchAndShaCheck shasum 49c2d71c678360b802be18b278382d1cbb805c39
+752 verbose addTmpTarball C:\Users\Jonne\AppData\Local\Temp\npm-5940-669385d7\registry.npmjs.org\shimmer\-\shimmer-1.0.0.tgz not in flight; adding
+753 verbose addTmpTarball already have metadata; skipping unpack for shimmer@1.0.0
+754 silly cache afterAdd shimmer@1.0.0
+755 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.0.0\package\package.json not in flight; writing
+756 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.0.0\package\package.json written
+757 silly install resolved [ { name: 'shimmer',
+757 silly install resolved     version: '1.0.0',
+757 silly install resolved     description: 'Safe(r) monkeypatching for JavaScript.',
+757 silly install resolved     main: 'index.js',
+757 silly install resolved     scripts: { test: 'tap test/*.tap.js' },
+757 silly install resolved     repository: { type: 'git', url: 'https://github.com/othiym23/shimmer.git' },
+757 silly install resolved     keywords: [ 'monkeypatch', 'swizzle', 'wrapping', 'danger', 'hmm', 'shim' ],
+757 silly install resolved     author: { name: 'Forrest L Norvell', email: 'ogd@aoaioxxysz.net' },
+757 silly install resolved     license: 'BSD',
+757 silly install resolved     devDependencies: { tap: '~0.4.3', sinon: '~1.7.2' },
+757 silly install resolved     bugs: { url: 'https://github.com/othiym23/shimmer/issues' },
+757 silly install resolved     homepage: 'https://github.com/othiym23/shimmer',
+757 silly install resolved     _id: 'shimmer@1.0.0',
+757 silly install resolved     dist:
+757 silly install resolved      { shasum: '49c2d71c678360b802be18b278382d1cbb805c39',
+757 silly install resolved        tarball: 'http://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz' },
+757 silly install resolved     _from: 'shimmer@1.0.0',
+757 silly install resolved     _npmVersion: '1.3.14',
+757 silly install resolved     _npmUser: { name: 'othiym23', email: 'ogd@aoaioxxysz.net' },
+757 silly install resolved     maintainers: [ [Object] ],
+757 silly install resolved     directories: {},
+757 silly install resolved     _shasum: '49c2d71c678360b802be18b278382d1cbb805c39',
+757 silly install resolved     _resolved: 'https://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz' } ]
+758 info install shimmer@1.0.0 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+759 info installOne shimmer@1.0.0
+760 verbose installOne of shimmer to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener not in flight; installing
+761 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\shimmer-add7251352c0c232.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+762 silly install write writing shimmer 1.0.0 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+763 verbose unbuild node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+764 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+765 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+766 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.0.0\package.tgz
+767 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+768 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer is being purged
+769 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+770 silly gunzTarPerm modes [ '777', '666' ]
+771 silly gunzTarPerm extractEntry package.json
+772 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+773 silly gunzTarPerm extractEntry .npmignore
+774 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+775 silly gunzTarPerm extractEntry README.md
+776 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+777 silly gunzTarPerm extractEntry index.js
+778 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+779 silly gunzTarPerm extractEntry test/init.tap.js
+780 silly gunzTarPerm modified mode [ 'test/init.tap.js', 420, 438 ]
+781 silly gunzTarPerm extractEntry test/massWrap.tap.js
+782 silly gunzTarPerm modified mode [ 'test/massWrap.tap.js', 420, 438 ]
+783 silly gunzTarPerm extractEntry test/unwrap.tap.js
+784 silly gunzTarPerm modified mode [ 'test/unwrap.tap.js', 420, 438 ]
+785 silly gunzTarPerm extractEntry test/wrap.tap.js
+786 silly gunzTarPerm modified mode [ 'test/wrap.tap.js', 420, 438 ]
+787 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\package.json
+788 info preinstall async-listener@0.5.6
+789 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\package.json
+790 silly prepareForInstallMany adding shimmer@1.0.0 from async-listener dependencies
+791 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\package.json
+792 silly cache add args [ 'shimmer@1.0.0', null ]
+793 verbose cache add spec shimmer@1.0.0
+794 silly cache add parsed spec Result {
+794 silly cache add   raw: 'shimmer@1.0.0',
+794 silly cache add   scope: null,
+794 silly cache add   name: 'shimmer',
+794 silly cache add   rawSpec: '1.0.0',
+794 silly cache add   spec: '1.0.0',
+794 silly cache add   type: 'version' }
+795 silly addNamed shimmer@1.0.0
+796 verbose addNamed "1.0.0" is a plain semver version for shimmer
+797 silly mapToRegistry name shimmer
+798 silly mapToRegistry using default registry
+799 silly mapToRegistry registry https://registry.npmjs.org/
+800 silly mapToRegistry uri https://registry.npmjs.org/shimmer
+801 verbose addNameVersion registry:https://registry.npmjs.org/shimmer not in flight; fetching
+802 verbose get https://registry.npmjs.org/shimmer not expired, no request
+803 silly cache afterAdd shimmer@1.0.0
+804 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.0.0\package\package.json not in flight; writing
+805 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer\package.json
+806 verbose afterAdd C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.0.0\package\package.json written
+807 silly install resolved [ { name: 'shimmer',
+807 silly install resolved     version: '1.0.0',
+807 silly install resolved     description: 'Safe(r) monkeypatching for JavaScript.',
+807 silly install resolved     main: 'index.js',
+807 silly install resolved     scripts: { test: 'tap test/*.tap.js' },
+807 silly install resolved     repository:
+807 silly install resolved      { type: 'git',
+807 silly install resolved        url: 'git+https://github.com/othiym23/shimmer.git' },
+807 silly install resolved     keywords: [ 'monkeypatch', 'swizzle', 'wrapping', 'danger', 'hmm', 'shim' ],
+807 silly install resolved     author: { name: 'Forrest L Norvell', email: 'ogd@aoaioxxysz.net' },
+807 silly install resolved     license: 'BSD',
+807 silly install resolved     devDependencies: { tap: '~0.4.3', sinon: '~1.7.2' },
+807 silly install resolved     bugs: { url: 'https://github.com/othiym23/shimmer/issues' },
+807 silly install resolved     homepage: 'https://github.com/othiym23/shimmer',
+807 silly install resolved     _id: 'shimmer@1.0.0',
+807 silly install resolved     dist:
+807 silly install resolved      { shasum: '49c2d71c678360b802be18b278382d1cbb805c39',
+807 silly install resolved        tarball: 'http://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz' },
+807 silly install resolved     _from: 'shimmer@1.0.0',
+807 silly install resolved     _npmVersion: '1.3.14',
+807 silly install resolved     _npmUser: { name: 'othiym23', email: 'ogd@aoaioxxysz.net' },
+807 silly install resolved     maintainers: [ [Object] ],
+807 silly install resolved     directories: {},
+807 silly install resolved     _shasum: '49c2d71c678360b802be18b278382d1cbb805c39',
+807 silly install resolved     _resolved: 'https://registry.npmjs.org/shimmer/-/shimmer-1.0.0.tgz',
+807 silly install resolved     readme: 'ERROR: No README data found!' } ]
+808 info install shimmer@1.0.0 into c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+809 info installOne shimmer@1.0.0
+810 verbose installOne of shimmer to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener not in flight; installing
+811 verbose lock using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\shimmer-ccfd93320298ad6b.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+812 silly install write writing shimmer 1.0.0 to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+813 verbose unbuild node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+814 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer is being purged from base c:\Users\Jonne\Documents\GitHub\tvapi
+815 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+816 verbose tar unpack C:\Users\Jonne\AppData\Roaming\npm-cache\shimmer\1.0.0\package.tgz
+817 verbose tar unpacking to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+818 silly gentlyRm c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer is being purged
+819 verbose gentlyRm don't care about contents; nuking c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+820 silly gunzTarPerm modes [ '777', '666' ]
+821 info preinstall shimmer@1.0.0
+822 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer\package.json
+823 silly gunzTarPerm extractEntry package.json
+824 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+825 silly gunzTarPerm extractEntry .npmignore
+826 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+827 silly gunzTarPerm extractEntry README.md
+828 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+829 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer\package.json
+830 silly gunzTarPerm extractEntry index.js
+831 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
+832 silly gunzTarPerm extractEntry test/init.tap.js
+833 silly gunzTarPerm modified mode [ 'test/init.tap.js', 420, 438 ]
+834 silly install resolved []
+835 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+836 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+837 silly gunzTarPerm extractEntry test/massWrap.tap.js
+838 silly gunzTarPerm modified mode [ 'test/massWrap.tap.js', 420, 438 ]
+839 silly gunzTarPerm extractEntry test/unwrap.tap.js
+840 silly gunzTarPerm modified mode [ 'test/unwrap.tap.js', 420, 438 ]
+841 silly gunzTarPerm extractEntry test/wrap.tap.js
+842 silly gunzTarPerm modified mode [ 'test/wrap.tap.js', 420, 438 ]
+843 info linkStuff shimmer@1.0.0
+844 silly linkStuff shimmer@1.0.0 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules as its parent node_modules
+845 verbose linkBins shimmer@1.0.0
+846 verbose linkMans shimmer@1.0.0
+847 verbose rebuildBundles shimmer@1.0.0
+848 info install shimmer@1.0.0
+849 info postinstall shimmer@1.0.0
+850 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\shimmer-add7251352c0c232.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener\node_modules\shimmer
+851 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+852 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+853 info linkStuff emitter-listener@1.0.1
+854 silly linkStuff emitter-listener@1.0.1 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules as its parent node_modules
+855 verbose linkBins emitter-listener@1.0.1
+856 verbose linkMans emitter-listener@1.0.1
+857 verbose rebuildBundles emitter-listener@1.0.1
+858 verbose rebuildBundles [ 'shimmer' ]
+859 info install emitter-listener@1.0.1
+860 info postinstall emitter-listener@1.0.1
+861 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\emitter-listener-4abeadd434e7ffd2.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\emitter-listener
+862 verbose write writing to c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer\package.json
+863 info preinstall shimmer@1.0.0
+864 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer\package.json
+865 verbose readDependencies loading dependencies from c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer\package.json
+866 silly install resolved []
+867 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+868 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+869 info linkStuff shimmer@1.0.0
+870 silly linkStuff shimmer@1.0.0 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules as its parent node_modules
+871 verbose linkBins shimmer@1.0.0
+872 verbose linkMans shimmer@1.0.0
+873 verbose rebuildBundles shimmer@1.0.0
+874 info install shimmer@1.0.0
+875 info postinstall shimmer@1.0.0
+876 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\shimmer-ccfd93320298ad6b.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener\node_modules\shimmer
+877 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+878 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+879 info linkStuff async-listener@0.5.6
+880 silly linkStuff async-listener@0.5.6 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules as its parent node_modules
+881 verbose linkBins async-listener@0.5.6
+882 verbose linkMans async-listener@0.5.6
+883 verbose rebuildBundles async-listener@0.5.6
+884 verbose rebuildBundles [ 'shimmer' ]
+885 info install async-listener@0.5.6
+886 info postinstall async-listener@0.5.6
+887 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\async-listener-1eab1280efe1abe3.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage\node_modules\async-listener
+888 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+889 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+890 info linkStuff continuation-local-storage@3.1.4
+891 silly linkStuff continuation-local-storage@3.1.4 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules as its parent node_modules
+892 verbose linkBins continuation-local-storage@3.1.4
+893 verbose linkMans continuation-local-storage@3.1.4
+894 verbose rebuildBundles continuation-local-storage@3.1.4
+895 verbose rebuildBundles [ 'async-listener', 'emitter-listener' ]
+896 info install continuation-local-storage@3.1.4
+897 info postinstall continuation-local-storage@3.1.4
+898 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\continuation-local-stora-c139d7338c696d1f.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\continuation-local-storage
+899 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\cls-bluebird-2c526cadcabd9403.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise\node_modules\cls-bluebird
+900 verbose about to build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+901 info build c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+902 info linkStuff request-promise@1.0.2
+903 silly linkStuff request-promise@1.0.2 has c:\Users\Jonne\Documents\GitHub\tvapi\node_modules as its parent node_modules
+904 verbose linkBins request-promise@1.0.2
+905 verbose linkMans request-promise@1.0.2
+906 verbose rebuildBundles request-promise@1.0.2
+907 verbose rebuildBundles [ 'bluebird', 'cls-bluebird', 'continuation-local-storage' ]
+908 info install request-promise@1.0.2
+909 info postinstall request-promise@1.0.2
+910 verbose unlock done using C:\Users\Jonne\AppData\Roaming\npm-cache\_locks\request-promise-f49b8959a3f0f1d2.lock for c:\Users\Jonne\Documents\GitHub\tvapi\node_modules\request-promise
+911 verbose validateInstall loading c:\Users\Jonne\Documents\GitHub\tvapi\package.json for validation
+912 verbose stack Error: The package passport@0.2.2 does not satisfy its siblings' peerDependencies requirements!
+912 verbose stack     at c:\Program Files\nodejs\node_modules\npm\lib\install.js:125:32
+912 verbose stack     at c:\Program Files\nodejs\node_modules\npm\lib\install.js:268:7
+912 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:142:5
+912 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+912 verbose stack     at cb (c:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+912 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+912 verbose stack     at cb (c:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+912 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+912 verbose stack     at cb (c:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\async-map.js:47:24)
+912 verbose stack     at c:\Program Files\nodejs\node_modules\npm\node_modules\read-installed\read-installed.js:263:14
+913 verbose cwd c:\Users\Jonne\Documents\GitHub\tvapi
+914 error Windows_NT 6.3.9600
+915 error argv "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "request-promise"
+916 error node v4.2.3
+917 error npm  v2.14.7
+918 error code EPEERINVALID
+919 error peerinvalid The package passport@0.2.2 does not satisfy its siblings' peerDependencies requirements!
+919 error peerinvalid Peer passport.socketio@3.6.1 wants passport@~0.3.0
+920 verbose exit [ 1, true ]

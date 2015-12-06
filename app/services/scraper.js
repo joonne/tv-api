@@ -1,10 +1,12 @@
-var cheerio = require('cheerio');
-var http = require('http');
-var _ = require('lodash');
-var request = require('request');
-var events = require('events');
-var eventEmitter = new events.EventEmitter();
-var Program = require('../models/program.js');
+'use strict';
+
+var cheerio = require('cheerio'),
+  _ = require('lodash'),
+  request = require('request'),
+  events = require('events'),
+  eventEmitter = new events.EventEmitter(),
+  Program = require('../models/program.js'),
+  rp = require('request-promise');
 
 // We need finnish localization
 var moment = require('moment-timezone');
@@ -118,15 +120,13 @@ function searchProgramName(summary) {
 
 function getSeriesIDs() {
 
-  _.map(allPrograms, function(channel,index) {
-    _.map(channel.data, function(series) {
+  _.map(allPrograms, (channel,index) => {
+    _.map(channel.data, (series) => {
 
       var name = series.name;
       var url = "http://thetvdb.com/api/GetSeries.php?seriesname="+name+"&language=fi";
 
-      // request(url, function(name) { return function(err,res,body) {
-
-      request(url, function(err, res, body) {
+      request(url, (err, res, body) => {
 
         if(res.statusCode === 200) {
 
@@ -163,7 +163,6 @@ function getSeriesIDs() {
 
         }
       });
-      // }}(name));
     });
   });
 }
@@ -180,7 +179,7 @@ function processBaseInformation(body, channelName) {
   starts.length = 0;
   ends.length = 0;
 
-  $ = cheerio.load(body);
+  let $ = cheerio.load(body);
 
   $('._summary').each(function(i,elem) {
     var programName = searchProgramName($(this).text());
@@ -283,51 +282,51 @@ module.exports = {
 
     // var channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
 
-    request("http://www.telsu.fi/"+today+"/yle1", function(err, res, body) {
+    request("http://www.telsu.fi/"+today+"/yle1", (err, res, body) => {
 
       processBaseInformation(body, "yle1");
 
-      request("http://www.telsu.fi/"+today+"/yle2", function(err, res, body) {
+      request("http://www.telsu.fi/"+today+"/yle2", (err, res, body) => {
 
         processBaseInformation(body, "yle2");
 
-        request("http://www.telsu.fi/"+today+"/mtv3", function(err, res, body) {
+        request("http://www.telsu.fi/"+today+"/mtv3", (err, res, body) => {
 
           processBaseInformation(body, "mtv3");
 
-          request("http://www.telsu.fi/"+today+"/nelonen", function(err, res, body) {
+          request("http://www.telsu.fi/"+today+"/nelonen", (err, res, body) => {
 
             processBaseInformation(body, "nelonen");
 
-            request("http://www.telsu.fi/"+today+"/subtv", function(err, res, body) {
+            request("http://www.telsu.fi/"+today+"/subtv", (err, res, body) => {
 
               processBaseInformation(body, "subtv");
 
-              request("http://www.telsu.fi/"+today+"/liv", function(err, res, body) {
+              request("http://www.telsu.fi/"+today+"/liv", (err, res, body) => {
 
                 processBaseInformation(body, "liv");
 
-                request("http://www.telsu.fi/"+today+"/jim", function(err, res, body) {
+                request("http://www.telsu.fi/"+today+"/jim", (err, res, body) => {
 
                   processBaseInformation(body, "jim");
 
-                  request("http://www.telsu.fi/"+today+"/viisi", function(err, res, body) {
+                  request("http://www.telsu.fi/"+today+"/viisi", (err, res, body) => {
 
                     processBaseInformation(body, "viisi");
 
-                    request("http://www.telsu.fi/"+today+"/kutonen", function(err, res, body) {
+                    request("http://www.telsu.fi/"+today+"/kutonen", (err, res, body) => {
 
                       processBaseInformation(body, "kutonen");
 
-                      request("http://www.telsu.fi/"+today+"/fox", function(err, res, body) {
+                      request("http://www.telsu.fi/"+today+"/fox", (err, res, body) => {
 
                         processBaseInformation(body, "fox");
 
-                        request("http://www.telsu.fi/"+today+"/mtv3ava", function(err, res, body) {
+                        request("http://www.telsu.fi/"+today+"/mtv3ava", (err, res, body) => {
 
                           processBaseInformation(body, "ava");
 
-                          request("http://www.telsu.fi/"+today+"/hero", function(err, res, body) {
+                          request("http://www.telsu.fi/"+today+"/hero", (err, res, body) => {
 
                             processBaseInformation(body, "hero");
 
