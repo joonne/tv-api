@@ -24,7 +24,7 @@ require('./config/express')(app, config);
 
 app.listen(config.port, config.ipaddr);
 
-var cronJob = cron.job("0 */2 * * * *", () => {
+var cronJob = cron.job("0 */1 * * * *", () => {
 	scraper.scrape();
     console.info('scraping as cron job started');
 });

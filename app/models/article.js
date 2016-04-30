@@ -10,5 +10,4 @@ var ArticleSchema = new Schema({
   createdAt: { type: String, default: Date.now }
 });
 
-mongoose.model('Article', ArticleSchema);
-
+module.exports = mongoose.model('Article', ArticleSchema);
