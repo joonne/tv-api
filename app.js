@@ -24,7 +24,7 @@ const app = express();
 
 require('./config/express')(app, config);
 
-app.listen(config.port, config.ipaddr);
+app.listen(config.port, config.ip_address);
 
 var cronJob = cron.job("0 */10 * * * *", () => {
 	scraper.scrape();
@@ -32,4 +32,4 @@ var cronJob = cron.job("0 */10 * * * *", () => {
 });
 cronJob.start();
 
-console.log("Listening at " + config.ipaddr + ":" + config.port);
+console.log("Listening at " + config.ip_address + ":" + config.port);
