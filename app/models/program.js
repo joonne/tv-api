@@ -1,9 +1,9 @@
 // /models/program.js
 
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-var ProgramSchema = new Schema({
+const ProgramSchema = new Schema({
 	channelName: String,
 	createdAt: { type: Date, expires: 172800, default: Date.now },
 	data: {

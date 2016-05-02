@@ -34,7 +34,7 @@ var config = {
   development: {
     root: rootPath,
     app: {
-      name: 'tvapi'
+      name: 'tv-api'
     },
     port: port,
     ipaddr: server_ip_address,
@@ -44,7 +44,7 @@ var config = {
   test: {
     root: rootPath,
     app: {
-      name: 'tvapi'
+      name: 'tv-api'
     },
     port: port,
     ipaddr: server_ip_address,
@@ -54,7 +54,7 @@ var config = {
   production: {
     root: rootPath,
     app: {
-      name: 'tvapi'
+      name: 'tv-api'
     },
     port: port,
     ipaddr: server_ip_address,

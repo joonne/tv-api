@@ -291,14 +291,15 @@ function scrape () {
         results.forEach((channel, index) => {
             processBaseInformation(channel, channels[index]);
         });
+        
 
-        let reducedPrograms = allPrograms.map((channel) => {
-            return channel.data.map((series) => {
-                return shouldSearchForId(series.name);
-            });
-        });
-
-        console.log(allPrograms.length, reducedPrograms.length);
+        // let reducedPrograms = allPrograms.map((channel) => {
+        //     return channel.data.map((series) => {
+        //         return shouldSearchForId(series.name);
+        //     });
+        // });
+        //
+        // console.log(allPrograms.length, reducedPrograms.length);
 
         // promises = [];
         // allPrograms.map((channel) => {
