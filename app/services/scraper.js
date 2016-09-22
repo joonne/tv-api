@@ -1,103 +1,74 @@
-'use strict';
+const cheerio = require('cheerio');
+const events = require('events');
+const Program = require('../models/program');
+const rp = require('request-promise');
+const moment = require('moment-timezone');
 
-const cheerio = require('cheerio'),
-    _ = require('lodash'),
-    request = require('request'),
-    events = require('events'),
-    eventEmitter = new events.EventEmitter(),
-    Program = require('../models/program.js'),
-    rp = require('request-promise');
+const eventEmitter = new events.EventEmitter();
 
 // We need finnish localization
-const moment = require('moment-timezone');
 moment.locale('fi');
 
-const baseUrl = "http://www.telsu.fi/";
-const channels = ["yle1","yle2","mtv3","nelonen","subtv","liv","jim","viisi","kutonen","fox","ava","hero"];
-// const channels = ["yle1"];
-let content = "";
-let descriptions = [];
-let names = [];
-let seasons = [];
-let episodes = [];
-let starts = [];
-let ends = [];
+const channels = ['yle1', 'yle2', 'mtv3', 'nelonen', 'subtv', 'liv', 'jim', 'viisi', 'kutonen', 'fox', 'ava', 'hero'];
+// const channels = ['yle1'];
 
-let allPrograms = [];
+const descriptions = [];
+const names = [];
+const seasons = [];
+const episodes = [];
+const starts = [];
+const ends = [];
+const allPrograms = [];
 
 function searchSeasonNumber(description) {
+    const start = description.indexOf('Kausi');
+    let seasonNumber = 0;
 
-    let start = description.indexOf("Kausi");
-    let number;
-
-    if(description.charAt(start+8) !== '.') {
-        number = description.substr(start+6,1);
+    if (description.charAt(start + 8) !== '.') {
+        seasonNumber = description.substr(start + 6, 1);
     } else {
-        number = description.substr(start+6,2);
+        seasonNumber = description.substr(start + 6, 2);
     }
-
-    if(isNaN(number/1)) {
-        return '-';
-    } else {
-        return number;
-    }
+    return isNaN(seasonNumber / 1) ? '-' : seasonNumber;
 }
 
 function searchEpisodeNumber(description) {
+    let start = 0;
+    let episodeNumber = 0;
 
-    let start, number;
+    if (description.indexOf('Jakso') !== -1) {
+        start = description.indexOf('Jakso');
 
-    if(description.indexOf("Jakso") !== -1) {
-
-        start = description.indexOf("Jakso");
-
-        if(description.charAt(start+8) !== '/') {
-            number = description.substr(start+6,1);
-        } else if(description.charAt(start+8 === '/')) {
-            number = description.substr(start+6,2);
+        if (description.charAt(start + 8) !== '/') {
+            episodeNumber = description.substr(start + 6, 1);
+        } else if (description.charAt(start + 8 === '/')) {
+            episodeNumber = description.substr(start + 6, 2);
         }
 
-        if(isNaN(number/1)) {
-            return '-';
-        } else {
-            return number;
+        return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
+
+    } else if (description.indexOf('jakso') !== -1) {
+        start = description.indexOf('jakso');
+
+        if (description.charAt(start + 8) !== '/') {
+            episodeNumber = description.substr(start + 6, 1);
+        } else if (description.charAt(start + 8 === '/')) {
+            episodeNumber = description.substr(start + 6, 2);
         }
 
-    } else if(description.indexOf("jakso") !== -1) {
-
-        start = description.indexOf("jakso");
-
-        if(description.charAt(start+8) !== '/') {
-            number = description.substr(start+6,1);
-        } else if(description.charAt(start+8 === '/')) {
-            number = description.substr(start+6,2);
-        }
-
-        if(isNaN(number/1)) {
-            return '-';
-        } else {
-            return number;
-        }
-
-    } else if(description.indexOf("osa") !== -1) {
-
-        console.log("osa found");
-
+        return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
+    } else if (description.indexOf('osa') !== -1) {
+        console.log('osa found');
     } else {
+        start = description.indexOf('Kausi');
 
-        start = description.indexOf("Kausi");
-
-        if(description.charAt(start+11) !== '/') {
-            number = description.substr(start+9,1);
-        } else if(description.charAt(start+11 === '/')) {
-            number = description.substr(start+9,2);
+        if (description.charAt(start + 11) !== '/') {
+            episodeNumber = description.substr(start + 9, 1);
+        } else if (description.charAt(start + 11 === '/')) {
+            episodeNumber = description.substr(start + 9, 2);
         }
 
-        if(isNaN(number/1)) {
-            return '-';
-        } else {
-            return number;
-        }
+        return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
     }
 
     return '-';
@@ -105,10 +76,10 @@ function searchEpisodeNumber(description) {
 
 function searchProgramName(summary) {
 
-    let start = summary.indexOf("(");
+    let start = summary.indexOf('(');
 
-    if(typeof start !== undefined) {
-        var name = summary.substr(0,start-1);
+    if (typeof start !== undefined) {
+        var name = summary.substr(0, start - 1);
         return name;
     } else {
         return summary;
@@ -121,21 +92,23 @@ function getSeriesID(body) {
 
     console.log(body);
 
-    let $ = cheerio.load(body, { xmlMode: true });
+    let $ = cheerio.load(body, {
+        xmlMode: true
+    });
     let seriesid = $('Data').find('Series').find('seriesid').text();
 
-    if(seriesid.substr(0,6) === seriesid.substr(6,6)) {
-        seriesid = seriesid.substr(0,6);
-    } else if(seriesid.substr(0,5) === seriesid.substr(5,5)) {
-        seriesid = seriesid.substr(0,5);
-    } else if(seriesid.length % 5 === 0) {
-        seriesid = seriesid.substr(0,5);
+    if (seriesid.substr(0, 6) === seriesid.substr(6, 6)) {
+        seriesid = seriesid.substr(0, 6);
+    } else if (seriesid.substr(0, 5) === seriesid.substr(5, 5)) {
+        seriesid = seriesid.substr(0, 5);
+    } else if (seriesid.length % 5 === 0) {
+        seriesid = seriesid.substr(0, 5);
     } else {
-        seriesid = seriesid.substr(0,6);
+        seriesid = seriesid.substr(0, 6);
     }
 
     series.seriesid = seriesid;
-    console.log(series.name + ": " + series.seriesid);
+    console.log(series.name + ': ' + series.seriesid);
 
     // var program = new Program();
     //
@@ -149,15 +122,13 @@ function getSeriesID(body) {
     // newProgram.data.seriesid = series.seriesid;
     //
     // newProgram.save(function(err) {
-    //     if(err) throw err;
+    //     if (err) throw err;
     // });
-
 }
 
 
 // Gets information for every channel
 function processBaseInformation(body, channelName) {
-
     // allPrograms.length = 0;
     descriptions.length = 0;
     names.length = 0;
@@ -168,20 +139,20 @@ function processBaseInformation(body, channelName) {
 
     let $ = cheerio.load(body);
 
-    $('._summary').each((i,elem) => {
+    $('._summary').each((i, elem) => {
         let summary = elem.children[0].data;
         names[i] = searchProgramName(summary);
     });
 
-    $('._description').each((i,elem) => {
+    $('._description').each((i, elem) => {
 
         console.log(elem.children);
-        let description = elem.children.length > 0 ? elem.children[0].data : "";
+        let description = elem.children.length > 0 ? elem.children[0].data : '';
 
-        if(description.length === 0) {
-            descriptions[i] = "Ei kuvausta saatavilla.";
-            seasons[i] = "-";
-            episodes[i] = "-";
+        if (description.length === 0) {
+            descriptions[i] = 'Ei kuvausta saatavilla.';
+            seasons[i] = '-';
+            episodes[i] = '-';
         } else {
             descriptions[i] = description;
             seasons[i] = searchSeasonNumber(description);
@@ -189,18 +160,18 @@ function processBaseInformation(body, channelName) {
         }
     });
 
-    $('._start').each((i,elem) => {
-        starts[i] = elem.children.length > 0 ? elem.children[0].data : "";
+    $('._start').each((i, elem) => {
+        starts[i] = elem.children.length > 0 ? elem.children[0].data : '';
     });
 
-    $('._end').each((i,elem) => {
-        ends[i] = elem.children.length > 0 ? elem.children[0].data : "";
+    $('._end').each((i, elem) => {
+        ends[i] = elem.children.length > 0 ? elem.children[0].data : '';
     });
 
     let programs = [];
 
     // this combines information to JSON
-    for(var i = 0; i < names.length; ++i) {
+    for (var i = 0; i < names.length; ++i) {
 
         let name = names[i];
         let description = descriptions[i];
@@ -231,7 +202,7 @@ function processBaseInformation(body, channelName) {
         newProgram.data.end = temp.end;
 
         newProgram.save((err) => {
-            if(err) throw err;
+            if (err) throw err;
         });
 
     }
@@ -245,28 +216,26 @@ function processBaseInformation(body, channelName) {
 
     allPrograms.push(temp);
 
-    console.log(allPrograms.length + " === " + channels.length);
+    console.log(allPrograms.length + ' === ' + channels.length);
 
-    if(allPrograms.length === channels.length) {
-        console.log("all channels processed");
+    if (allPrograms.length === channels.length) {
+        console.log('all channels processed');
         eventEmitter.emit('base_finished');
     }
 }
 
 function shouldSearchForId(name) {
     const lookUpTable = [
-        "uuti"
+        'uuti'
     ];
 
-    let result = lookUpTable.reduce((item, acc) => {
-        return name.indexOf(item) > -1 ? true : acc;
-    }, false);
+    let result = lookUpTable.reduce((item, acc) => name.indexOf(item) > -1 ? true : acc, false);
 
     console.log(result);
     return result;
 }
 
-function scrape () {
+function scrape() {
 
     allPrograms.length = 0;
     descriptions.length = 0;
@@ -278,20 +247,19 @@ function scrape () {
 
     Program.remove().exec();
 
-    let today = moment().tz('Europe/Helsinki').format('dddd');
-    console.log(today);
+    const today = moment().tz('Europe/Helsinki').format('dddd');
 
-    let promises = [];
+    const promises = [];
 
     channels.map((channel) => {
-        promises.push(rp("http://www.telsu.fi/"+today+"/"+channel));
+        promises.push(rp(`http://www.telsu.fi/${today}/${channel}`));
     });
 
     Promise.all(promises).then((results) => {
         results.forEach((channel, index) => {
             processBaseInformation(channel, channels[index]);
         });
-        
+
 
         // let reducedPrograms = allPrograms.map((channel) => {
         //     return channel.data.map((series) => {
@@ -305,8 +273,8 @@ function scrape () {
         // allPrograms.map((channel) => {
         //     channel.data.map((series) => {
         //         let name = series.name;
-        //         if(shouldSearchForId(name)) {
-        //             promises.push(rp("http://thetvdb.com/api/GetSeries.php?seriesname="+name+"&language=fi"));
+        //         if (shouldSearchForId(name)) {
+        //             promises.push(rp('http://thetvdb.com/api/GetSeries.php?seriesname='+name+'&language=fi'));
         //         }
         //     });
         // });
@@ -317,12 +285,12 @@ function scrape () {
         //             getSeriesID(series);
         //         });
         //     }).catch(error => {
-        //         console.log("error", error);
+        //         console.log('error', error);
         //     });
     });
 }
 
 
 module.exports = {
-    scrape: scrape
+    scrape
 };
