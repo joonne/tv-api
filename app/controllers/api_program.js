@@ -14,17 +14,17 @@ router.get('/api/program/:seriesid', (req, res) => {
     const seriesid = req.params.seriesid;
 
     Program.findOne(({
-      'data.seriesid': seriesid
+        'data.seriesid': seriesid,
     }), (err, program) => {
         if (program) {
             return res.status(200).json({
                 name: program.data.name,
                 channelName: program.channelName,
-                start: program.data.start
+                start: program.data.start,
             });
         }
         return res.status(404).json({
-            error: 'seriesid not found'
+            error: 'seriesid not found',
         });
     });
 });

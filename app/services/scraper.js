@@ -46,7 +46,6 @@ function searchEpisodeNumber(description) {
         }
 
         return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
-
     } else if (description.indexOf('jakso') !== -1) {
         start = description.indexOf('jakso');
 
@@ -58,7 +57,7 @@ function searchEpisodeNumber(description) {
 
         return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
     } else if (description.indexOf('osa') !== -1) {
-        console.log('osa found');
+        console.log('osa found'); // eslint-disable-line
     } else {
         start = description.indexOf('Kausi');
 
@@ -75,25 +74,20 @@ function searchEpisodeNumber(description) {
 }
 
 function searchProgramName(summary) {
+    const start = summary.indexOf('(');
 
-    let start = summary.indexOf('(');
-
-    if (typeof start !== undefined) {
-        var name = summary.substr(0, start - 1);
+    if (typeof start !== 'undefined') {
+        const name = summary.substr(0, start - 1);
         return name;
-    } else {
-        return summary;
     }
+    return summary;
 }
 
-function getSeriesID(body) {
+function getSeriesID(body) { // eslint-disable-line
+    const series = {};
 
-    let series = {};
-
-    console.log(body);
-
-    let $ = cheerio.load(body, {
-        xmlMode: true
+    const $ = cheerio.load(body, {
+        xmlMode: true,
     });
     let seriesid = $('Data').find('Series').find('seriesid').text();
 
@@ -108,7 +102,6 @@ function getSeriesID(body) {
     }
 
     series.seriesid = seriesid;
-    console.log(series.name + ': ' + series.seriesid);
 
     // var program = new Program();
     //
@@ -137,17 +130,15 @@ function processBaseInformation(body, channelName) {
     starts.length = 0;
     ends.length = 0;
 
-    let $ = cheerio.load(body);
+    const $ = cheerio.load(body);
 
     $('._summary').each((i, elem) => {
-        let summary = elem.children[0].data;
+        const summary = elem.children[0].data;
         names[i] = searchProgramName(summary);
     });
 
     $('._description').each((i, elem) => {
-
-        console.log(elem.children);
-        let description = elem.children.length > 0 ? elem.children[0].data : '';
+        const description = elem.children.length > 0 ? elem.children[0].data : '';
 
         if (description.length === 0) {
             descriptions[i] = 'Ei kuvausta saatavilla.';
@@ -168,30 +159,29 @@ function processBaseInformation(body, channelName) {
         ends[i] = elem.children.length > 0 ? elem.children[0].data : '';
     });
 
-    let programs = [];
+    const programs = [];
 
     // this combines information to JSON
-    for (var i = 0; i < names.length; ++i) {
+    for (let i = 0; i < names.length; i += 1) {
+        const name = names[i];
+        const description = descriptions[i];
+        const season = seasons[i];
+        const episode = episodes[i];
+        const start = starts[i];
+        const end = ends[i];
 
-        let name = names[i];
-        let description = descriptions[i];
-        let season = seasons[i];
-        let episode = episodes[i];
-        let start = starts[i];
-        let end = ends[i];
-
-        let temp = {
-            name: name,
-            description: description,
-            season: season,
-            episode: episode,
-            start: start,
-            end: end
+        const temp = {
+            name,
+            description,
+            season,
+            episode,
+            start,
+            end,
         };
 
         programs.push(temp);
 
-        let newProgram = new Program();
+        const newProgram = new Program();
 
         newProgram.channelName = channelName;
         newProgram.data.name = temp.name;
@@ -204,39 +194,21 @@ function processBaseInformation(body, channelName) {
         newProgram.save((err) => {
             if (err) throw err;
         });
-
     }
 
-    let temp = {
-        channelName: channelName,
-        data: programs
+    const temp = {
+        channelName,
+        data: programs,
     };
-
-    console.log(temp);
 
     allPrograms.push(temp);
 
-    console.log(allPrograms.length + ' === ' + channels.length);
-
     if (allPrograms.length === channels.length) {
-        console.log('all channels processed');
         eventEmitter.emit('base_finished');
     }
 }
 
-function shouldSearchForId(name) {
-    const lookUpTable = [
-        'uuti'
-    ];
-
-    let result = lookUpTable.reduce((item, acc) => name.indexOf(item) > -1 ? true : acc, false);
-
-    console.log(result);
-    return result;
-}
-
 function scrape() {
-
     allPrograms.length = 0;
     descriptions.length = 0;
     names.length = 0;
@@ -251,7 +223,7 @@ function scrape() {
 
     const promises = [];
 
-    channels.map((channel) => {
+    channels.forEach((channel) => {
         promises.push(rp(`http://www.telsu.fi/${today}/${channel}`));
     });
 
@@ -292,5 +264,5 @@ function scrape() {
 
 
 module.exports = {
-    scrape
+    scrape,
 };

@@ -9,12 +9,12 @@ const cron = require('cron');
 
 const db = mongoose.connection;
 db.on('error', () => {
-  throw new Error('unable to connect to database at ' + config.db);
+    throw new Error(`unable to connect to database at ${config.db}`);
 });
 
-const models = glob.sync(config.root + '/app/models/*.js');
+const models = glob.sync(`${config.root}/app/models/*.js`);
 models.forEach((model) => {
-  require(model);
+    require(model); // eslint-disable-line global-require
 });
 
 const app = express();
@@ -22,11 +22,10 @@ const app = express();
 require('./config/express')(app, config);
 
 app.listen(config.port, config.ip_address, () => {
-    console.info(`Listening at ${config.ip_address}:${config.port}`);
+    console.info(`Listening at ${config.ip_address}:${config.port}`); // eslint-disable-line
 });
 
-var cronJob = cron.job('0 */2 * * * *', () => {
-	scrape();
-    console.info('scraping as cron job started');
+const cronJob = cron.job('0 */2 * * * *', () => {
+    scrape();
 });
 cronJob.start();

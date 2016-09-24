@@ -9,7 +9,7 @@ const ProgramSchema = new Schema({
     createdAt: {
         type: Date,
         expires: 172800,
-        default: Date.now
+        default: Date.now,
     },
     data: {
         name: String,
@@ -18,8 +18,8 @@ const ProgramSchema = new Schema({
         episode: String,
         start: String,
         end: String,
-        seriesid: String
-    }
+        seriesid: String,
+    },
 });
 
 module.exports = mongoose.model('Program', ProgramSchema);

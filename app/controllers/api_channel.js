@@ -14,15 +14,15 @@ router.get('/api/channel/:channel', (req, res) => {
     const channel = req.params.channel;
 
     Program.find({
-        channelName: channel
+        channelName: channel,
     }).sort({
-        'data.start': 1
+        'data.start': 1,
     }).exec((err, programs) => {
         if (programs) {
             return res.status(200).json(programs);
         }
         return res.status(404).json({
-            error: 'channel not found'
+            error: 'channel not found',
         });
     });
 });
