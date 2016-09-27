@@ -9,6 +9,9 @@ const serverIpAddress = env.NODEJS_IP || '127.0.0.1';
 const name = 'tv-api';
 let mongodbConnectionString = `mongodb://127.0.0.1:27017/${name}`;
 
+// let mongodbConnectionString =
+//     'mongodb://heroku_b68w34dd:sf4v184jp3fs4gdg38l607aabo@ds035016.mlab.com:35016/heroku_b68w34dd';
+
 // take advantage of openshift env vars when available:
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
     mongodbConnectionString = process.env.OPENSHIFT_MONGODB_DB_URL;

@@ -58,6 +58,7 @@ function searchEpisodeNumber(description) {
         return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
     } else if (description.indexOf('osa') !== -1) {
         console.log('osa found'); // eslint-disable-line
+        console.log(description); // eslint-disable-line
     } else {
         start = description.indexOf('Kausi');
 
