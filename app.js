@@ -25,7 +25,7 @@ app.listen(config.port, () => {
     console.info(`Listening at ${config.ip_address}:${config.port}`); // eslint-disable-line
 });
 
-const cronJob = cron.job('0 */2 * * * *', () => {
+const cronJob = cron.job('0 */30 * * * *', () => {
     scrape();
 });
 cronJob.start();
