@@ -1,4 +1,4 @@
-// controllrs/api_channel.js
+// controllers/channel.js
 
 const express = require('express');
 const mongoose = require('mongoose');

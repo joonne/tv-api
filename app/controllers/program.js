@@ -1,4 +1,4 @@
-// controllrs/api_program.js
+// controllrs/program.js
 
 const express = require('express');
 const mongoose = require('mongoose');
