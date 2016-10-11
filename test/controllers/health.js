@@ -4,7 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../app');
 
-const should = chai.should();
+const should = chai.should(); // eslint-disable-line
 
 chai.use(chaiHttp);
 
