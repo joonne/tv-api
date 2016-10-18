@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const compress = require('compression');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 module.exports = (app, config) => {
     mongoose.connect(config.db);
@@ -21,6 +22,9 @@ module.exports = (app, config) => {
     app.use('/public', express.static(`${config.root}/public`));
     app.use(methodOverride());
     app.use(cookieParser());
+
+    // secure HTTP headers with helmet
+    app.use(helmet());
 
     const controllers = glob.sync(`${config.root}/app/controllers/*.js`);
     controllers.forEach((controller) => {
