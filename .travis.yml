@@ -8,7 +8,7 @@ deploy:
   user: jonne.pihlanen@gmail.com
   password:
     secure: CJ/ZyXQsFUZGV8iWXAJkRm8+B94GzXIIgzHmi+n29texNVbS/Fi+uYMOhub1VFfj1ob9QYpsj+uccY1AtykE34qFJByEChs760O6UOJFkCzVvETsg1yADfgTVaXS4ZzP10Xxk6r/hZL5WHFwZDP9YhqjAZiwBpq1/I7N5Kj+mXXZ4ORWWDVAvFUrxIT7UeqDwWA7nDkejaI0RLQ7gY7afbWSP3MFlZWWBB3WS53nzs74GcclZRbs5kcYJqEkEyrDZaUT88fpWlxoaFcaZp+4HkPgqkK2R5XQdtWA0lzYYAQG5TsZnM9QXlMRq+1lS5vZ3uHdq6nrKptxgj6XpEs8zG0AEZpWUJXWTu11+XZeSbkWKGwNnxG1dsC0VcM7bR5ck7bwKPInFyTg0AfCNrysujPFz4/UIzfxmQxmp0yIZsPpH4geZVoo4VfqIk0lYEbpxrSfKxgAbYpA+0qjS8tTIg+dvZrM48tE1BW+O27Ye1bU5BLZhVGXlgr533xp7IIIEiFdwNyd+my1FtrOisdzk0bnJ7DDEKNtI50SAtUyEyEpKCmYFEl5WH+/ws50Qiyj8PJc7bqLBAvJ12Yuf/I8iZiZFK5UY9vmYJRznJ+2B1Usfgmaq6nOvbwqJvWkJGsykFj+Mu8TkUI2aYiL+oEE2OMgV2kh23T9zysBw01d8Vw=
-  app: tv-api
+  app: tvapi
   domain: mashupjonne
   on:
     repo: joonne/tv-api
