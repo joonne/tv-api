@@ -10,7 +10,7 @@ module.exports = (app) => {
     app.use('/', router);
 };
 
-router.get('/api/channel/:channel', (req, res) => {
+router.get('/api/channels/:channel', (req, res) => {
     const channel = req.params.channel;
 
     Program.find({
@@ -27,14 +27,9 @@ router.get('/api/channel/:channel', (req, res) => {
     });
 });
 
-router.get('/api/rawdata', (req, res, next) => {
+router.get('/api/channels', (req, res, next) => {
     Program.find({}, (err, programs) => {
         if (err) return next(err);
         return res.status(200).json(programs);
     });
-});
-
-router.get('/api/config/removeprograms', (req, res) => {
-    Program.remove().exec();
-    return res.send('Programs removed');
 });
