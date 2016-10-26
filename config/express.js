@@ -45,4 +45,18 @@ module.exports = (app, config) => {
             title: 'error',
         });
     });
+
+    // graceful shutdown when interrupted (ctrl-c)
+    process.on('SIGINT', () => {
+        mongoose.connection.close(() => {
+            process.exit(1);
+        });
+    });
+
+    // graceful shutdown when the process is killed
+    process.on('SIGTERM', () => {
+        mongoose.connection.close(() => {
+            process.exit(1);
+        });
+    });
 };
