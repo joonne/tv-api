@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/joonne/tv-api.svg?branch=master)](https://travis-ci.org/joonne/tv-api)
 
-# TV API
+# TV-API
 tv-information scraper / API
 
 `GET /api/channels`
