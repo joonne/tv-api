@@ -10,7 +10,6 @@ const eventEmitter = new events.EventEmitter();
 moment.locale('fi');
 
 const channels = ['yle1', 'yle2', 'mtv3', 'nelonen', 'subtv', 'liv', 'jim', 'viisi', 'kutonen', 'fox', 'ava', 'hero'];
-// const channels = ['yle1'];
 
 const descriptions = [];
 const names = [];
@@ -22,19 +21,23 @@ const allPrograms = [];
 
 function searchSeasonNumber(description) {
     const start = description.indexOf('Kausi');
-    let seasonNumber = 0;
+    let seasonNumber = '-';
 
-    if (description.charAt(start + 8) !== '.') {
+    if (description.charAt(start + 7) === ',') {
         seasonNumber = description.substr(start + 6, 1);
-    } else {
+    } else if (description.charAt(start + 8) === ',') {
+        seasonNumber = description.substr(start + 6, 2);
+    } else if (description.charAt(start + 7) === '.') {
+        seasonNumber = description.substr(start + 6, 1);
+    } else if (description.charAt(start + 8) === '.') {
         seasonNumber = description.substr(start + 6, 2);
     }
-    return isNaN(seasonNumber / 1) ? '-' : seasonNumber;
+    return Number.isNaN(seasonNumber / 1) ? '-' : seasonNumber;
 }
 
 function searchEpisodeNumber(description) {
     let start = 0;
-    let episodeNumber = 0;
+    let episodeNumber = '-';
 
     if (description.indexOf('Jakso') !== -1) {
         start = description.indexOf('Jakso');
@@ -44,8 +47,6 @@ function searchEpisodeNumber(description) {
         } else if (description.charAt(start + 8 === '/')) {
             episodeNumber = description.substr(start + 6, 2);
         }
-
-        return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
     } else if (description.indexOf('jakso') !== -1) {
         start = description.indexOf('jakso');
 
@@ -54,12 +55,24 @@ function searchEpisodeNumber(description) {
         } else if (description.charAt(start + 8 === '/')) {
             episodeNumber = description.substr(start + 6, 2);
         }
-
-        return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
+    } else if (description.indexOf('Osa') !== -1) {
+        start = description.indexOf('Osa');
+        if (description.charAt(start + 5) === '.') {
+            episodeNumber = description.substr(start + 4, 1);
+        } else if (description.charAt(start + 6) === '.') {
+            episodeNumber = description.substr(start + 4, 2);
+        } else if (description.indexOf(':') !== -1) {
+            const end = description.indexOf(':');
+            episodeNumber = description.substr(start + 4, end - (start + 4));
+        }
     } else if (description.indexOf('osa') !== -1) {
-        console.log('osa found'); // eslint-disable-line
-        console.log(description); // eslint-disable-line
-    } else {
+        start = description.indexOf('osa');
+        if (description.charAt(start + 5) === '.') {
+            episodeNumber = description.substr(start + 4, 1);
+        } else if (description.charAt(start + 6) === '.') {
+            episodeNumber = description.substr(start + 4, 2);
+        }
+    } else if (description.indexOf('Kausi') !== -1) {
         start = description.indexOf('Kausi');
 
         if (description.charAt(start + 11) !== '/') {
@@ -67,11 +80,9 @@ function searchEpisodeNumber(description) {
         } else if (description.charAt(start + 11 === '/')) {
             episodeNumber = description.substr(start + 9, 2);
         }
-
-        return isNaN(episodeNumber / 1) ? '-' : episodeNumber;
     }
 
-    return '-';
+    return Number.isNaN(episodeNumber / 1) ? '-' : episodeNumber;
 }
 
 function searchProgramName(summary) {
@@ -82,6 +93,10 @@ function searchProgramName(summary) {
         return name;
     }
     return summary;
+}
+
+function formatDate(dateString) {
+    return moment(dateString, 'DD/MM/YYYY hh:mm').format();
 }
 
 function getSeriesID(body) { // eslint-disable-line
@@ -123,7 +138,6 @@ function getSeriesID(body) { // eslint-disable-line
 
 // Gets information for every channel
 function processBaseInformation(body, channelName) {
-    // allPrograms.length = 0;
     descriptions.length = 0;
     names.length = 0;
     seasons.length = 0;
@@ -153,11 +167,11 @@ function processBaseInformation(body, channelName) {
     });
 
     $('._start').each((i, elem) => {
-        starts[i] = elem.children.length > 0 ? elem.children[0].data : '';
+        starts[i] = elem.children.length > 0 ? formatDate(elem.children[0].data) : '';
     });
 
     $('._end').each((i, elem) => {
-        ends[i] = elem.children.length > 0 ? elem.children[0].data : '';
+        ends[i] = elem.children.length > 0 ? formatDate(elem.children[0].data) : '';
     });
 
     const programs = [];
