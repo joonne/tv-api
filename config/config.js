@@ -3,8 +3,7 @@
 const path = require('path');
 
 const rootPath = path.join(__dirname, '/..');
-// const port = process.env.OPENSHIFT_NODEJS_PORT || 10010;
-const port = 8081;
+const port = process.env.OPENSHIFT_NODEJS_PORT || 10010;
 const serverIpAddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 const name = 'tv-api';
 let mongodbConnectionString = `mongodb://127.0.0.1:27017/${name}`;

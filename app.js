@@ -21,7 +21,7 @@ const app = express();
 
 require('./config/express')(app, config);
 
-app.listen(config.port, () => {
+app.listen(config.port, config.ip_address, () => {
     console.info(`Listening at ${config.ip_address}:${config.port}`);
 });
 
