@@ -1,4 +1,4 @@
-// controllers/channel.js
+// controllrs/program.js
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -10,7 +10,7 @@ module.exports = (app) => {
     app.use('/', router);
 };
 
-router.get('/api/channels/:channel', (req, res) => {
+router.get('/api/programs/:channel', (req, res) => {
     const channel = req.params.channel;
 
     Program.find({
@@ -27,7 +27,7 @@ router.get('/api/channels/:channel', (req, res) => {
     });
 });
 
-router.get('/api/channels', (req, res, next) => {
+router.get('/api/programs', (req, res, next) => {
     Program.find({}, (err, programs) => {
         if (err) return next(err);
         return res.status(200).json(programs);

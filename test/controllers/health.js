@@ -8,7 +8,7 @@ const should = chai.should(); // eslint-disable-line
 
 chai.use(chaiHttp);
 
-describe('Openshift health check', () => {
+describe('openshift health check', () => {
     it('should GET 200 via /health', (done) => {
         chai.request(server)
             .get('/health')

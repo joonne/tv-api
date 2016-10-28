@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 
 module.exports = (app, config) => {
-    mongoose.Promise = global.Promise;
+    mongoose.Promise = Promise;
     mongoose.connect(config.db);
 
     app.use(logger('dev'));
