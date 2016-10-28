@@ -1,4 +1,4 @@
-// controllers/about.js
+// controllers/health.js
 
 const express = require('express');
 

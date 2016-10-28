@@ -32,13 +32,9 @@ module.exports = (app, config) => {
         require(controller)(app); // eslint-disable-line global-require
     });
 
-    app.use((req, res, next) => {
-        const err = new Error('Not Found');
-        err.status = 404;
-        next(err);
-    });
+    app.use((req, res) => res.status(404).send('Not Found'));
 
-    app.use((err, req, res) => {
+    app.use((err, req, res, next) => { // eslint-disable-line
         res.status(err.status || 500);
         return res.status(500).json({
             message: err.message,
@@ -50,14 +46,14 @@ module.exports = (app, config) => {
     // graceful shutdown when interrupted (ctrl-c)
     process.on('SIGINT', () => {
         mongoose.connection.close(() => {
-            process.exit(1);
+            process.exit();
         });
     });
 
     // graceful shutdown when the process is killed
     process.on('SIGTERM', () => {
         mongoose.connection.close(() => {
-            process.exit(1);
+            process.exit();
         });
     });
 };
