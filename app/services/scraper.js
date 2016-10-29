@@ -78,55 +78,18 @@ function searchEpisodeNumber(description) {
 }
 
 function searchProgramName(summary) {
+    let name = summary;
     const start = summary.indexOf('(');
 
-    if (typeof start !== 'undefined') {
-        const name = summary.substr(0, start - 1);
-        return name;
+    if (start !== -1) {
+        name = summary.substr(0, start - 1);
     }
-    return summary;
+    return name;
 }
 
 function formatDate(dateString) {
-    return moment(dateString, 'DD/MM/YYYY hh:mm').format();
+    return moment(dateString, 'DD/MM/YYYY hh:mm').tz('Europe/Helsinki').format();
 }
-
-function getSeriesID(body) { // eslint-disable-line
-    const series = {};
-
-    const $ = cheerio.load(body, {
-        xmlMode: true,
-    });
-    let seriesid = $('Data').find('Series').find('seriesid').text();
-
-    if (seriesid.substr(0, 6) === seriesid.substr(6, 6)) {
-        seriesid = seriesid.substr(0, 6);
-    } else if (seriesid.substr(0, 5) === seriesid.substr(5, 5)) {
-        seriesid = seriesid.substr(0, 5);
-    } else if (seriesid.length % 5 === 0) {
-        seriesid = seriesid.substr(0, 5);
-    } else {
-        seriesid = seriesid.substr(0, 6);
-    }
-
-    series.seriesid = seriesid;
-
-    // var program = new Program();
-    //
-    // newProgram.channelName = channel.channelName;
-    // newProgram.data.name = series.name;
-    // newProgram.data.description = series.description;
-    // newProgram.data.season = series.season;
-    // newProgram.data.episode = series.episode;
-    // newProgram.data.start = series.start;
-    // newProgram.data.end = series.end;
-    // newProgram.data.seriesid = series.seriesid;
-    //
-    // newProgram.save(function(err) {
-    //     if (err) throw err;
-    // });
-}
-
 
 // Gets information for every channel
 function processBaseInformation(body, channelName) {
@@ -233,37 +196,8 @@ function scrape() {
         results.forEach((channel, index) => {
             processBaseInformation(channel, channels[index]);
         });
-
-
-        // let reducedPrograms = allPrograms.map((channel) => {
-        //     return channel.data.map((series) => {
-        //         return shouldSearchForId(series.name);
-        //     });
-        // });
-        //
-        // console.log(allPrograms.length, reducedPrograms.length);
-
-        // promises = [];
-        // allPrograms.map((channel) => {
-        //     channel.data.map((series) => {
-        //         let name = series.name;
-        //         if (shouldSearchForId(name)) {
-        //             promises.push(rp('http://thetvdb.com/api/GetSeries.php?seriesname='+name+'&language=fi'));
-        //         }
-        //     });
-        // });
-        //
-        // Promise.all(promises)
-        //     .then((results) => {
-        //         results.map((series) => {
-        //             getSeriesID(series);
-        //         });
-        //     }).catch(error => {
-        //         console.log('error', error);
-        //     });
     });
 }
-
 
 module.exports = {
     searchSeasonNumber,
