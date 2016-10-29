@@ -39,24 +39,23 @@ function searchEpisodeNumber(description) {
     let start = 0;
     let episodeNumber = '-';
 
-    if (description.indexOf('Jakso') !== -1) {
-        start = description.indexOf('Jakso');
+    description = description.toLowerCase();
 
-        if (description.charAt(start + 8) !== '/') {
-            episodeNumber = description.substr(start + 6, 1);
-        } else if (description.charAt(start + 8 === '/')) {
-            episodeNumber = description.substr(start + 6, 2);
-        }
-    } else if (description.indexOf('jakso') !== -1) {
+    if (description.indexOf('jakso') !== -1) {
         start = description.indexOf('jakso');
 
-        if (description.charAt(start + 8) !== '/') {
+        if (description.charAt(start + 7) === '/') {
             episodeNumber = description.substr(start + 6, 1);
-        } else if (description.charAt(start + 8 === '/')) {
+        } else if (description.charAt(start + 8) === '/') {
+            episodeNumber = description.substr(start + 6, 2);
+        } else if (description.charAt(start + 7) === '.') {
+            episodeNumber = description.substr(start + 6, 1);
+        } else if (description.charAt(start + 8) === '.') {
             episodeNumber = description.substr(start + 6, 2);
         }
-    } else if (description.indexOf('Osa') !== -1) {
-        start = description.indexOf('Osa');
+    } else if (description.indexOf('osa') !== -1) {
+        start = description.indexOf('osa');
+
         if (description.charAt(start + 5) === '.') {
             episodeNumber = description.substr(start + 4, 1);
         } else if (description.charAt(start + 6) === '.') {
@@ -65,17 +64,10 @@ function searchEpisodeNumber(description) {
             const end = description.indexOf(':');
             episodeNumber = description.substr(start + 4, end - (start + 4));
         }
-    } else if (description.indexOf('osa') !== -1) {
-        start = description.indexOf('osa');
-        if (description.charAt(start + 5) === '.') {
-            episodeNumber = description.substr(start + 4, 1);
-        } else if (description.charAt(start + 6) === '.') {
-            episodeNumber = description.substr(start + 4, 2);
-        }
-    } else if (description.indexOf('Kausi') !== -1) {
-        start = description.indexOf('Kausi');
+    } else if (description.indexOf('kausi') !== -1) {
+        start = description.indexOf('kausi');
 
-        if (description.charAt(start + 11) !== '/') {
+        if (description.charAt(start + 10) === '/') {
             episodeNumber = description.substr(start + 9, 1);
         } else if (description.charAt(start + 11 === '/')) {
             episodeNumber = description.substr(start + 9, 2);
@@ -196,15 +188,10 @@ function processBaseInformation(body, channelName) {
 
         programs.push(temp);
 
-        const newProgram = new Program();
-
-        newProgram.channelName = channelName;
-        newProgram.data.name = temp.name;
-        newProgram.data.description = temp.description;
-        newProgram.data.season = temp.season;
-        newProgram.data.episode = temp.episode;
-        newProgram.data.start = temp.start;
-        newProgram.data.end = temp.end;
+        const newProgram = new Program({
+            channelName,
+            data: temp,
+        });
 
         newProgram.save((err) => {
             if (err) throw err;
@@ -279,5 +266,9 @@ function scrape() {
 
 
 module.exports = {
+    searchSeasonNumber,
+    searchEpisodeNumber,
+    searchProgramName,
+    formatDate,
     scrape,
 };
