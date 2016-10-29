@@ -9,7 +9,7 @@ const eventEmitter = new events.EventEmitter();
 // We need finnish localization
 moment.locale('fi');
 
-const channels = ['yle1', 'yle2', 'mtv3', 'nelonen', 'subtv', 'liv', 'jim', 'viisi', 'kutonen', 'fox', 'ava', 'hero'];
+const channels = ['yle1', 'yle2', 'mtv3', 'nelonen', 'subtv', 'liv', 'jim', 'viisi', 'kutonen', 'fox', 'mtv3ava', 'hero'];
 
 const descriptions = [];
 const names = [];
@@ -88,7 +88,7 @@ function searchProgramName(summary) {
 }
 
 function formatDate(dateString) {
-    return moment(dateString, 'DD/MM/YYYY hh:mm').tz('Europe/Helsinki').format();
+    return moment(dateString, 'DD/MM/YYYY hh:mm').format();
 }
 
 // Gets information for every channel
