@@ -2,7 +2,7 @@
 
 # TV-API
 
-A web scraper that searches programs for finnish tv-channels and provides an API for this information.
+A web scraper that searches for programs from finnish tv-channels and provides an API for this information.
 
 `GET /api/channels`
 
