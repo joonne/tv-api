@@ -27,9 +27,7 @@ router.post('/api/channels', (req, res, next) => {
             const newChannel = new Channel({ name });
             return newChannel.save()
                 .then(() => res.status(201).json({ message: 'Created' }))
-                .catch((error) => {
-                    next(error);
-                });
+                .catch(error => next(error));
         }
         return res.status(409).json({ message: `Channel "${name}" already exists` });
     });
