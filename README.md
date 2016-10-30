@@ -1,7 +1,8 @@
 [![Build Status](https://travis-ci.org/joonne/tv-api.svg?branch=master)](https://travis-ci.org/joonne/tv-api)
 
 # TV-API
-tv-information scraper / API
+
+A web scraper that searches programs for finnish tv-channels and provides an API for this information.
 
 `GET /api/channels`
 
