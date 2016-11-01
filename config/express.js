@@ -9,10 +9,23 @@ const compress = require('compression');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const Channel = require('../app/models/channel');
+const channels = require('./channels.json');
 
 module.exports = (app, config) => {
+    // init mongoose & declare promise library to be used
     mongoose.Promise = Promise;
     mongoose.connect(config.db);
+
+    // init db
+    if (process.env.NODE_ENV !== 'test') {
+        Channel.find().then((results) => {
+            if (!results.length) {
+                const promises = channels.map(name => new Channel({ name }).save());
+                Promise.all(promises);
+            }
+        });
+    }
 
     app.use(logger('dev'));
     app.use(bodyParser.json());

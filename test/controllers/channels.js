@@ -10,15 +10,17 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-function addChannel(channelName) {
-    return new Channel({ channelName }).save();
+function addChannel(name) {
+    return new Channel({ name }).save();
 }
 
 describe('channel controller', () => {
     before((done) => {
-        Channel.remove({}, () => {
-            done();
-        });
+        Channel.remove().then(() => done());
+    });
+
+    after((done) => {
+        Channel.remove().then(() => done());
     });
 
     it('should return an empty array before inserting any channels via GET /api/channels', (done) => {
