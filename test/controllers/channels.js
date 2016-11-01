@@ -102,7 +102,21 @@ describe('channel controller', () => {
                 res.should.have.status(409);
                 res.body.should.be.a('object');
                 res.body.should.have.property('message');
-                res.body.message.should.eql('Channel "subtv" already exists');
+                res.body.message.should.eql('Channel already exists');
+                done();
+            });
+    });
+
+    it('should return 400 Bad Request for missing body parameter "name" via POST /api/channels', (done) => {
+        chai.request(app)
+            .post('/api/channels')
+            .send({})
+            .end((err, res) => {
+                should.exist(err);
+                res.should.have.status(400);
+                res.body.should.be.a('object');
+                res.body.should.have.property('message');
+                res.body.message.should.eql('Missing body parameter: name');
                 done();
             });
     });

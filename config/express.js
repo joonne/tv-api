@@ -36,10 +36,8 @@ module.exports = (app, config) => {
 
     app.use((err, req, res, next) => { // eslint-disable-line
         res.status(err.status || 500);
-        return res.status(500).json({
+        return res.json({
             message: err.message,
-            error: {},
-            title: 'error',
         });
     });
 

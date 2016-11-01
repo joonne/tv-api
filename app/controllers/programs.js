@@ -10,26 +10,26 @@ module.exports = (app) => {
     app.use('/', router);
 };
 
-router.get('/api/programs/:channel', (req, res) => {
+router.get('/api/programs/:channel', (req, res, next) => {
     const channel = req.params.channel;
 
     Program.find({
         channelName: channel,
-    }).sort({
+    })
+    .sort({
         'data.start': 1,
-    }).exec((err, programs) => {
-        if (programs) {
-            return res.status(200).json(programs);
-        }
-        return res.status(404).json({
-            error: 'channel not found',
-        });
-    });
+    })
+    .select({
+        _id: 0,
+        channelName: 1,
+        data: 1,
+    })
+    .then(programs => res.status(200).json(programs))
+    .catch(err => next(err));
 });
 
 router.get('/api/programs', (req, res, next) => {
-    Program.find({}, (err, programs) => {
-        if (err) return next(err);
-        return res.status(200).json(programs);
-    });
+    Program.find()
+        .then(programs => res.status(200).json(programs))
+        .catch(err => next(err));
 });
