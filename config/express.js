@@ -22,7 +22,7 @@ module.exports = (app, config) => {
         Channel.find().then((results) => {
             if (!results.length) {
                 const promises = channels.map(name => new Channel({ name }).save());
-                Promise.all(promises);
+                promises.reduce((curr, next) => curr.then(next), Promise.resolve());
             }
         });
     }
