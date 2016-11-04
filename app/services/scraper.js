@@ -88,7 +88,7 @@ function searchProgramName(summary) {
 }
 
 function formatDate(dateString) {
-    return moment(dateString, 'DD/MM/YYYY hh:mm').tz('Europe/Helsinki').format();
+    return moment.tz(dateString, 'DD/MM/YYYY hh:mm', 'Europe/Helsinki').format();
 }
 
 // Gets information for every channel

@@ -103,7 +103,7 @@ describe('scraper', () => {
     });
 
     describe('formatDate', () => {
-        xit('should return formatted date when invoked with expected date string', (done) => {
+        it('should return formatted date when invoked with expected date string', (done) => {
             formatDate('29/10/2016 01:25').should.equal('2016-10-29T01:25:00+03:00');
             done();
         });
