@@ -23,7 +23,7 @@ module.exports = (app) => {
 };
 
 router.get('/api/channels', (req, res, next) => {
-    Channel.find().select({ name: 1, _id: 0 })
+    Channel.find().select({ name: 1, _id: 0 }).sort()
         .then(channels => res.status(200).json(channels.map(channel => channel.name)))
         .catch(err => next(err));
 });

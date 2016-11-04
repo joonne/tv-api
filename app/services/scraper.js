@@ -88,7 +88,7 @@ function searchProgramName(summary) {
 }
 
 function formatDate(dateString) {
-    return moment(dateString, 'DD/MM/YYYY hh:mm').format();
+    return moment(dateString, 'DD/MM/YYYY hh:mm').tz('Europe/Helsinki').format();
 }
 
 // Gets information for every channel
@@ -186,11 +186,7 @@ function scrape() {
 
     const today = moment().tz('Europe/Helsinki').format('dddd');
 
-    const promises = [];
-
-    channels.forEach((channel) => {
-        promises.push(rp(`http://www.telsu.fi/${today}/${channel}`));
-    });
+    const promises = channels.map(channel => rp(`http://www.telsu.fi/${today}/${channel}`));
 
     Promise.all(promises).then((results) => {
         results.forEach((channel, index) => {

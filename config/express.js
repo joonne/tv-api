@@ -1,9 +1,7 @@
 // config/express.js
 
-const express = require('express');
 const glob = require('glob');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compress = require('compression');
 const methodOverride = require('method-override');
@@ -33,9 +31,7 @@ module.exports = (app, config) => {
         extended: true,
     }));
     app.use(compress());
-    app.use('/public', express.static(`${config.root}/public`));
     app.use(methodOverride());
-    app.use(cookieParser());
 
     // secure HTTP headers with helmet
     app.use(helmet());
