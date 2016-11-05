@@ -1,6 +1,7 @@
 const cheerio = require('cheerio');
 const events = require('events');
 const Program = require('../models/program');
+const Channel = require('../models/channel');
 const rp = require('request-promise');
 const moment = require('moment-timezone');
 
@@ -9,7 +10,7 @@ const eventEmitter = new events.EventEmitter();
 // We need finnish localization
 moment.locale('fi');
 
-const channels = ['yle1', 'yle2', 'mtv3', 'nelonen', 'subtv', 'liv', 'jim', 'viisi', 'kutonen', 'fox', 'mtv3ava', 'hero'];
+let channels = [];
 
 const descriptions = [];
 const names = [];
@@ -182,17 +183,23 @@ function scrape() {
     starts.length = 0;
     ends.length = 0;
 
+    // FIXME
     Program.remove().exec();
 
     const today = moment().tz('Europe/Helsinki').format('dddd');
 
-    const promises = channels.map(channel => rp(`http://www.telsu.fi/${today}/${channel}`));
+    Channel.find().select({ name: 1, _id: 0 }).sort()
+        .then(result => result.map(channel => channel.name))
+        .then((channelArr) => {
+            channels = channelArr;
+            const promises = channels.map(channel => rp(`http://www.telsu.fi/${today}/${channel}`));
 
-    Promise.all(promises).then((results) => {
-        results.forEach((channel, index) => {
-            processBaseInformation(channel, channels[index]);
+            Promise.all(promises).then((results) => {
+                results.forEach((channel, index) => {
+                    processBaseInformation(channel, channels[index]);
+                });
+            });
         });
-    });
 }
 
 module.exports = {
