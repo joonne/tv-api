@@ -43,7 +43,7 @@ function searchEpisodeNumber(description) {
 
     description = description.toLowerCase();
 
-    if (description.indexOf('jakso') !== -1) {
+    if (description.indexOf('jakso') !== -1 && description.charAt(description.indexOf('jakso') + 5) === ' ') {
         start = description.indexOf('jakso');
 
         if (description.charAt(start + 7) === '/') {
@@ -55,7 +55,7 @@ function searchEpisodeNumber(description) {
         } else if (description.charAt(start + 8) === '.') {
             episodeNumber = description.substr(start + 6, 2);
         }
-    } else if (description.indexOf('osa') !== -1) {
+    } else if (description.indexOf('osa') !== -1 && description.charAt(description.indexOf('osa') + 3) === ' ') {
         start = description.indexOf('osa');
 
         if (description.charAt(start + 5) === '.') {
@@ -75,7 +75,6 @@ function searchEpisodeNumber(description) {
             episodeNumber = description.substr(start + 9, 2);
         }
     }
-
     return Number.isNaN(episodeNumber / 1) ? '-' : episodeNumber;
 }
 
@@ -110,7 +109,8 @@ function processBaseInformation(body, channelName) {
     });
 
     $('.t').each((i, elem) => {
-        const description = _.get(elem, 'children[0].children[0].data') || _.get(elem, 'children[0].children[0].next.data', '');
+        const description = _.get(elem, 'children[0].children[0].data') ||
+            _.get(elem, 'children[0].children[0].next.data', '');
 
         if (description.length === 0) {
             descriptions[i] = 'Ei kuvausta saatavilla.';
@@ -125,18 +125,19 @@ function processBaseInformation(body, channelName) {
 
     $('._start').each((i, elem) => {
         const start = _.get(elem, 'children[0].data', '');
-        starts[i] = start.length > 0 ? formatDate(start) : '';
+        starts[i] = start.length ? formatDate(start) : '';
     });
 
     $('._end').each((i, elem) => {
         const end = _.get(elem, 'children[0].data', '');
-        ends[i] = end.length > 0 ? formatDate(end) : '';
+        ends[i] = end.length ? formatDate(end) : '';
     });
 
     const programs = [];
 
     // this combines information to JSON
-    for (let i = 0; i < names.length; i += 1) {
+    const programCount = names.length;
+    for (let i = 0; i < programCount; i += 1) {
         const name = names[i];
         const description = descriptions[i];
         const season = seasons[i];
@@ -144,7 +145,7 @@ function processBaseInformation(body, channelName) {
         const start = starts[i];
         const end = ends[i];
 
-        const temp = {
+        const program = {
             name,
             description,
             season,
@@ -153,11 +154,11 @@ function processBaseInformation(body, channelName) {
             end,
         };
 
-        programs.push(temp);
+        programs.push(program);
 
         const newProgram = new Program({
             channelName,
-            data: temp,
+            data: program,
         });
 
         newProgram.save((err) => {

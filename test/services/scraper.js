@@ -52,6 +52,8 @@ describe('scraper', () => {
                 'Kausi 2. Jakso 1.',
                 'Osa 1.',
                 'osa 1.',
+                'Yllätyksiä. Kausi 2, 1/8. Kiertomatka päättyy New Orleansiin, jossa tavataan Caitlynin sisko Pam. Kaupunkiin saapuu yllättäen myös Caitlynin entinen vaimo Kris Jenner, joka pääsee vertailemaan ex-miehensä luonteenpiirteitä tämän transystävien kanssa. Puheeksi tulee sekin, mitä Bruce oli kertonut sukupuoliongelmastaan aikoinaan vaimolleen. Amerikkalaisessa tositelevisiosarjassa seurataan Caitlyn Jennerin ja kumppanien matkaa transsukupuolisten asialla.',
+                'Kausi 1, 1/8. On jälleen aika pukea sanomatta jääneet sanat kirjeiden muotoon. Tässä jaksossa poika lähettää kirjeen isälleen, tytär haluaa yllättää äitinsä ja vaimo haluaa kiittää miestään. Lisäksi Roope Salminen muistaa kirjeellä parasta ystäväänsä, joka on pitänyt hänet kasassa menestyksen ja pettymyksien keskellä. Uusinta.',
             ];
             descriptions.forEach((description) => {
                 searchEpisodeNumber(description).should.equal('1');
@@ -69,6 +71,8 @@ describe('scraper', () => {
                 'Kausi 2. Jakso 10.',
                 'Osa 10.',
                 'osa 10.',
+                'Yllätyksiä. Kausi 2, 10/8. Kiertomatka päättyy New Orleansiin, jossa tavataan Caitlynin sisko Pam. Kaupunkiin saapuu yllättäen myös Caitlynin entinen vaimo Kris Jenner, joka pääsee vertailemaan ex-miehensä luonteenpiirteitä tämän transystävien kanssa. Puheeksi tulee sekin, mitä Bruce oli kertonut sukupuoliongelmastaan aikoinaan vaimolleen. Amerikkalaisessa tositelevisiosarjassa seurataan Caitlyn Jennerin ja kumppanien matkaa transsukupuolisten asialla.',
+                'Kausi 1, 10/8. On jälleen aika pukea sanomatta jääneet sanat kirjeiden muotoon. Tässä jaksossa poika lähettää kirjeen isälleen, tytär haluaa yllättää äitinsä ja vaimo haluaa kiittää miestään. Lisäksi Roope Salminen muistaa kirjeellä parasta ystäväänsä, joka on pitänyt hänet kasassa menestyksen ja pettymyksien keskellä. Uusinta.',
             ];
             descriptions.forEach((description) => {
                 searchEpisodeNumber(description).should.equal('10');
