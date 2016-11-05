@@ -4,6 +4,7 @@ const Program = require('../models/program');
 const Channel = require('../models/channel');
 const rp = require('request-promise');
 const moment = require('moment-timezone');
+const _ = require('lodash');
 
 const eventEmitter = new events.EventEmitter();
 
@@ -104,12 +105,12 @@ function processBaseInformation(body, channelName) {
     const $ = cheerio.load(body);
 
     $('._summary').each((i, elem) => {
-        const summary = elem.children[0].data;
+        const summary = _.get(elem, 'children[0].data', '');
         names[i] = searchProgramName(summary);
     });
 
-    $('._description').each((i, elem) => {
-        const description = elem.children.length > 0 ? elem.children[0].data : '';
+    $('.t').each((i, elem) => {
+        const description = _.get(elem, 'children[0].children[0].data', '');
 
         if (description.length === 0) {
             descriptions[i] = 'Ei kuvausta saatavilla.';
@@ -123,11 +124,13 @@ function processBaseInformation(body, channelName) {
     });
 
     $('._start').each((i, elem) => {
-        starts[i] = elem.children.length > 0 ? formatDate(elem.children[0].data) : '';
+        const start = _.get(elem, 'children[0].data', '');
+        starts[i] = start.length > 0 ? formatDate(start) : '';
     });
 
     $('._end').each((i, elem) => {
-        ends[i] = elem.children.length > 0 ? formatDate(elem.children[0].data) : '';
+        const end = _.get(elem, 'children[0].data', '');
+        ends[i] = end.length > 0 ? formatDate(end) : '';
     });
 
     const programs = [];
