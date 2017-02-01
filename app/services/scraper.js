@@ -89,7 +89,7 @@ function searchProgramName(summary) {
 }
 
 function formatDate(dateString) {
-    return moment.tz(dateString, 'DD/MM/YYYY hh:mm', 'Europe/Helsinki').format();
+    return moment.tz(dateString, 'YYYY-MM-DD hh:mm', 'Europe/Helsinki').format();
 }
 
 // Gets information for every channel
@@ -103,14 +103,13 @@ function processBaseInformation(body, channelName) {
 
     const $ = cheerio.load(body);
 
-    $('._summary').each((i, elem) => {
+    $('.atc_title').each((i, elem) => {
         const summary = _.get(elem, 'children[0].data', '');
         names[i] = searchProgramName(summary);
     });
 
-    $('.t').each((i, elem) => {
-        const description = _.get(elem, 'children[0].children[0].data') ||
-            _.get(elem, 'children[0].children[0].next.data', '');
+    $('.atc_description').each((i, elem) => {
+        const description = _.get(elem, 'children[0].data');
 
         if (description.length === 0) {
             descriptions[i] = 'Ei kuvausta saatavilla.';
@@ -123,12 +122,12 @@ function processBaseInformation(body, channelName) {
         }
     });
 
-    $('._start').each((i, elem) => {
+    $('.atc_date_start').each((i, elem) => {
         const start = _.get(elem, 'children[0].data', '');
         starts[i] = start.length ? formatDate(start) : '';
     });
 
-    $('._end').each((i, elem) => {
+    $('.atc_date_end').each((i, elem) => {
         const end = _.get(elem, 'children[0].data', '');
         ends[i] = end.length ? formatDate(end) : '';
     });
