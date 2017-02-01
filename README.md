@@ -29,7 +29,7 @@ Response 409
 
 ```
 {
-    message: "Channel <channel> already exists"
+    message: "Channel already exists"
 }
 ```
 
@@ -68,8 +68,6 @@ Response 200
 [
   {
     "channelName": "mtv3",
-    "_id": "5813d16d19038efd763a1d19",
-    "__v": 0,
     "data": {
       "end": "2016-10-29T00:50:00-04:00",
       "start": "2016-10-29T00:40:00-04:00",
@@ -77,13 +75,10 @@ Response 200
       "season": "-",
       "description": "Ei kuvausta saatavilla.",
       "name": "Eurojackpot, Jokeri ja Lomatonni"
-    },
-    "createdAt": "2016-10-28T22:30:05.983Z"
+    }
   },
   {
     "channelName": "mtv3",
-    "_id": "5813d16e19038efd763a1d1a",
-    "__v": 0,
     "data": {
       "end": "2016-10-29T01:45:00-04:00",
       "start": "2016-10-29T00:50:00-04:00",
@@ -91,8 +86,7 @@ Response 200
       "season": "1",
       "description": "Jaakko Heinimäki. Kausi 1, 5/10. Uusinta.",
       "name": "Pitääkö olla huolissaan?"
-    },
-    "createdAt": "2016-10-28T22:30:06.001Z"
+    }
   }
 ]
 ```
