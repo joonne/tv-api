@@ -108,8 +108,8 @@ function processBaseInformation(body, channelName) {
         names[i] = searchProgramName(summary);
     });
 
-    $('.atc_description').each((i, elem) => {
-        const description = _.get(elem, 'children[0].data') || '';
+    $('.t').each((i, elem) => {
+        const description = _.get(elem, 'children[0].data') || _.get(elem, 'children[0].children[0].data') || '';
 
         if (description.length === 0) {
             descriptions[i] = 'Ei kuvausta saatavilla.';
