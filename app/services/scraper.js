@@ -109,7 +109,7 @@ function processBaseInformation(body, channelName) {
     });
 
     $('.t').each((i, elem) => {
-        const description = _.get(elem, 'children[0].data') || _.get(elem, 'children[0].children[0].data') || '';
+        const description = _.get(elem, 'children[0].data') || _.get(elem, 'children[0].children[0].data') || _.get(elem, 'children[0].children[0].next.data') || '';
 
         if (description.length === 0) {
             descriptions[i] = 'Ei kuvausta saatavilla.';
