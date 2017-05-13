@@ -11,104 +11,104 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 function addProgram(channel, programName, description, season, episode, start, end) {
-    const program = new Program();
-    program.channelName = channel;
-    program.data.name = programName;
-    program.data.description = description;
-    program.data.season = season;
-    program.data.episode = episode;
-    program.data.start = start;
-    program.data.end = end;
+  const program = new Program();
+  program.channelName = channel;
+  program.data.name = programName;
+  program.data.description = description;
+  program.data.season = season;
+  program.data.episode = episode;
+  program.data.start = start;
+  program.data.end = end;
 
-    return program.save();
+  return program.save();
 }
 
 describe('program controller', () => {
-    before((done) => {
-        Program.remove({}, () => {
-            done();
-        });
+  before((done) => {
+    Program.remove({}, () => {
+      done();
     });
+  });
 
-    it('should return an empty array before inserting any programs via GET /api/programs/:channel', (done) => {
-        chai.request(app)
+  it('should return an empty array before inserting any programs via GET /api/programs/:channel', (done) => {
+    chai.request(app)
             .get('/api/programs/asd')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(0);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(0);
+              done();
             });
-    });
+  });
 
-    it('should create and save a new program into db without error', (done) => {
-        const date = new Date();
-        addProgram('mtv3', 'salkkarit', 'aki vauhdissa', 1, 4, date, date)
+  it('should create and save a new program into db without error', (done) => {
+    const date = new Date();
+    addProgram('mtv3', 'salkkarit', 'aki vauhdissa', 1, 4, date, date)
             .then(() => {
-                done();
+              done();
             });
-    });
+  });
 
-    it('should return one program from the channel "mtv3" via GET /api/programs/:channel', (done) => {
-        chai.request(app)
+  it('should return one program from the channel "mtv3" via GET /api/programs/:channel', (done) => {
+    chai.request(app)
             .get('/api/programs/mtv3')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(1);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(1);
+              done();
             });
-    });
+  });
 
-    it('should return empty array for channel with no programs via GET /api/programs/:channel', (done) => {
-        chai.request(app)
+  it('should return empty array for channel with no programs via GET /api/programs/:channel', (done) => {
+    chai.request(app)
             .get('/api/programs/nelonen')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(0);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(0);
+              done();
             });
-    });
+  });
 
-    it('should create multiple new programs and save into db', (done) => {
-        const date = new Date();
-        Promise.all([
-            addProgram('mtv3', 'salkkarit', 'aki vauhdissa1', 1, 4, date, date),
-            addProgram('mtv3', 'salkkarit', 'aki vauhdissa2', 1, 5, date, date),
-            addProgram('mtv3', 'salkkarit', 'aki vauhdissa3', 1, 6, date, date),
-            addProgram('mtv3', 'salkkarit', 'aki vauhdissa4', 1, 7, date, date),
-            addProgram('mtv3', 'salkkarit', 'aki vauhdissa5', 1, 8, date, date),
-        ])
+  it('should create multiple new programs and save into db', (done) => {
+    const date = new Date();
+    Promise.all([
+      addProgram('mtv3', 'salkkarit', 'aki vauhdissa1', 1, 4, date, date),
+      addProgram('mtv3', 'salkkarit', 'aki vauhdissa2', 1, 5, date, date),
+      addProgram('mtv3', 'salkkarit', 'aki vauhdissa3', 1, 6, date, date),
+      addProgram('mtv3', 'salkkarit', 'aki vauhdissa4', 1, 7, date, date),
+      addProgram('mtv3', 'salkkarit', 'aki vauhdissa5', 1, 8, date, date),
+    ])
         .then(() => {
-            done();
+          done();
         });
-    });
+  });
 
-    it('should return 6 programs in an array for channel "mtv3" via /api/programs/:channel', (done) => {
-        chai.request(app)
+  it('should return 6 programs in an array for channel "mtv3" via /api/programs/:channel', (done) => {
+    chai.request(app)
             .get('/api/programs/mtv3')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(6);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(6);
+              done();
             });
-    });
+  });
 
-    it('should return 6 programs in an array via /api/programs', (done) => {
-        chai.request(app)
+  it('should return 6 programs in an array via /api/programs', (done) => {
+    chai.request(app)
             .get('/api/programs')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(6);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(6);
+              done();
             });
-    });
+  });
 });

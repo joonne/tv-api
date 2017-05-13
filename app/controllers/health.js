@@ -1,11 +1,9 @@
 // controllers/health.js
 
-const express = require('express');
+function getHealth(req, res) {
+  return res.sendStatus(200);
+}
 
-const router = express.Router(); // eslint-disable-line
-
-module.exports = (app) => {
-    app.use('/', router);
+module.exports = {
+  getHealth,
 };
-
-router.get('/health', (req, res) => res.sendStatus(200));

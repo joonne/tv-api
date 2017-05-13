@@ -10,7 +10,7 @@ let mongodbConnectionString = `mongodb://127.0.0.1:27017/${name}`;
 
 // take advantage of openshift env vars when available:
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-    mongodbConnectionString = process.env.OPENSHIFT_MONGODB_DB_URL;
+  mongodbConnectionString = process.env.OPENSHIFT_MONGODB_DB_URL;
 }
 
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
@@ -18,11 +18,11 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 }
 
 module.exports = {
-    root: rootPath,
-    app: {
-        name,
-    },
-    port,
-    ip_address: serverIpAddress,
-    db: mongodbConnectionString,
+  root: rootPath,
+  app: {
+    name,
+  },
+  port,
+  ip_address: serverIpAddress,
+  db: mongodbConnectionString,
 };

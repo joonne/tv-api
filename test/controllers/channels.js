@@ -11,141 +11,141 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 function addChannel(name) {
-    return new Channel({ name }).save();
+  return new Channel({ name }).save();
 }
 
 describe('channel controller', () => {
-    before((done) => {
-        Channel.remove().then(() => done());
-    });
+  before((done) => {
+    Channel.remove().then(() => done());
+  });
 
-    after((done) => {
-        Channel.remove().then(() => done());
-    });
+  after((done) => {
+    Channel.remove().then(() => done());
+  });
 
-    it('should return an empty array before inserting any channels via GET /api/channels', (done) => {
-        chai.request(app)
+  it('should return an empty array before inserting any channels via GET /api/channels', (done) => {
+    chai.request(app)
             .get('/api/channels')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(0);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(0);
+              done();
             });
-    });
+  });
 
-    it('should create and save a new channel into db without error', (done) => {
-        addChannel('mtv3')
+  it('should create and save a new channel into db without error', (done) => {
+    addChannel('mtv3')
             .then(() => {
-                done();
+              done();
             });
-    });
+  });
 
-    it('should return one channel "mtv3" inside an array via GET /api/channels', (done) => {
-        chai.request(app)
+  it('should return one channel "mtv3" inside an array via GET /api/channels', (done) => {
+    chai.request(app)
             .get('/api/channels')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(1);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(1);
+              done();
             });
-    });
+  });
 
-    it('should create multiple new channels and save into db', (done) => {
-        Promise.all([
-            addChannel('yle1'),
-            addChannel('yle2'),
-            addChannel('nelonen'),
-        ])
+  it('should create multiple new channels and save into db', (done) => {
+    Promise.all([
+      addChannel('yle1'),
+      addChannel('yle2'),
+      addChannel('nelonen'),
+    ])
         .then(() => {
-            done();
+          done();
         });
-    });
+  });
 
-    it('should return 4 channels in an array via /api/channels', (done) => {
-        chai.request(app)
+  it('should return 4 channels in an array via /api/channels', (done) => {
+    chai.request(app)
             .get('/api/channels')
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.equal(4);
-                done();
+              should.not.exist(err);
+              res.should.have.status(200);
+              res.body.should.be.a('array');
+              res.body.length.should.equal(4);
+              done();
             });
-    });
+  });
 
-    it('should create a new channel into db via POST /api/channels', (done) => {
-        chai.request(app)
+  it('should create a new channel into db via POST /api/channels', (done) => {
+    chai.request(app)
             .post('/api/channels')
             .send({
-                name: 'subtv',
+              name: 'subtv',
             })
             .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(201);
-                res.body.should.be.a('object');
-                res.body.should.have.property('message');
-                res.body.message.should.eql('Created');
-                done();
+              should.not.exist(err);
+              res.should.have.status(201);
+              res.body.should.be.a('object');
+              res.body.should.have.property('message');
+              res.body.message.should.eql('Created');
+              done();
             });
-    });
+  });
 
-    it('should not create a duplicate channel into db via POST /api/channels', (done) => {
-        chai.request(app)
+  it('should not create a duplicate channel into db via POST /api/channels', (done) => {
+    chai.request(app)
             .post('/api/channels')
             .send({
-                name: 'subtv',
+              name: 'subtv',
             })
             .end((err, res) => {
-                should.exist(err);
-                res.should.have.status(409);
-                res.body.should.be.a('object');
-                res.body.should.have.property('message');
-                res.body.message.should.eql('Channel already exists');
-                done();
+              should.exist(err);
+              res.should.have.status(409);
+              res.body.should.be.a('object');
+              res.body.should.have.property('message');
+              res.body.message.should.eql('Channel already exists');
+              done();
             });
-    });
+  });
 
-    it('should return 400 Bad Request for missing body parameter "name" via POST /api/channels', (done) => {
-        chai.request(app)
+  it('should return 400 Bad Request for missing body parameter "name" via POST /api/channels', (done) => {
+    chai.request(app)
             .post('/api/channels')
             .send({})
             .end((err, res) => {
-                should.exist(err);
-                res.should.have.status(400);
-                res.body.should.be.a('object');
-                res.body.should.have.property('message');
-                res.body.message.should.eql('Missing body parameter: name');
-                done();
+              should.exist(err);
+              res.should.have.status(400);
+              res.body.should.be.a('object');
+              res.body.should.have.property('message');
+              res.body.message.should.eql('Missing body parameter: name');
+              done();
             });
-    });
+  });
 
-    it('should delete a channel from db via DELETE /api/channels/:name', (done) => {
-        chai.request(app)
-            .delete('/api/channels/subtv')
-            .end((err, res) => {
-                should.not.exist(err);
-                res.should.have.status(200);
-                res.body.should.be.a('object');
-                res.body.should.have.property('message');
-                res.body.message.should.eql('Deleted');
-                done();
-            });
-    });
+  it('should delete a channel from db via DELETE /api/channels/:name', (done) => {
+    chai.request(app)
+      .delete('/api/channels/subtv')
+      .end((err, res) => {
+        should.not.exist(err);
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message');
+        res.body.message.should.eql('Deleted');
+        done();
+      });
+  });
 
-    it('should not delete a non existing channel from db via DELETE /api/channels/:name', (done) => {
-        chai.request(app)
-            .delete('/api/channels/subtv')
-            .end((err, res) => {
-                should.exist(err);
-                res.should.have.status(404);
-                res.body.should.be.a('object');
-                res.body.should.have.property('message');
-                res.body.message.should.eql('Not Found');
-                done();
-            });
-    });
+  it('should not delete a non existing channel from db via DELETE /api/channels/:name', (done) => {
+    chai.request(app)
+      .delete('/api/channels/subtv')
+      .end((err, res) => {
+        should.exist(err);
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message');
+        res.body.message.should.eql('Not Found');
+        done();
+      });
+  });
 });
