@@ -96,7 +96,7 @@ function formatStartDate(dateString) {
 function formatEndDate(dateString) {
   const date = moment.tz(dateString, 'YYYY-MM-DD hh:mm', 'Europe/Helsinki');
   if (date.hour() > 5 || date.weekday() === moment().tz('Europe/Helsinki').day(1).weekday()) {
-    date.day(-1);
+    date.subtract(1, 'days');
   }
   return date.format();
 }
