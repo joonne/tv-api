@@ -89,8 +89,16 @@ function searchProgramName(summary) {
   return name;
 }
 
-function formatDate(dateString) {
+function formatStartDate(dateString) {
   return moment.tz(dateString, 'YYYY-MM-DD hh:mm', 'Europe/Helsinki').format();
+}
+
+function formatEndDate(dateString) {
+  const date = moment.tz(dateString, 'YYYY-MM-DD hh:mm', 'Europe/Helsinki');
+  if (date.hour() > 5 && date.weekday() === moment().tz('Europe/Helsinki').day(1).weekday()) {
+    date.day(-1);
+  }
+  return date.format();
 }
 
 function processBaseInformation(body, channelName) {
@@ -127,17 +135,16 @@ function processBaseInformation(body, channelName) {
 
   $('.atc_date_start').each((i, elem) => {
     const start = _.get(elem, 'children[0].data', '');
-    starts[i] = start.length ? formatDate(start) : '';
+    starts[i] = start.length ? formatStartDate(start) : '';
   });
 
   $('.atc_date_end').each((i, elem) => {
     const end = _.get(elem, 'children[0].data', '');
-    ends[i] = end.length ? formatDate(end) : '';
+    ends[i] = end.length ? formatEndDate(end) : '';
   });
 
   const programs = [];
 
-    // this combines information to JSON
   const programCount = names.length;
   for (let i = 0; i < programCount; i += 1) {
     const name = names[i];
@@ -194,24 +201,26 @@ function scrape() {
 
   const today = moment().tz('Europe/Helsinki').format('dddd');
 
-  Channel.find().select({ name: 1, _id: 0 }).sort()
-        .then(result => result.map(channel => channel.name))
-        .then((channelArr) => {
-          channels = channelArr;
-          const promises = channels.map(channel => rp(`http://www.telsu.fi/${today}/${channel}`));
+  Channel
+    .find()
+    .select({ name: 1, _id: 0 })
+    .sort()
+    .then(result => result.map(channel => channel.name))
+    .then((channelArr) => {
+      channels = channelArr;
+      const promises = channels.map(channel => rp(`http://www.telsu.fi/${today}/${channel}`));
 
-          Promise.all(promises).then((results) => {
-            results.forEach((channel, index) => {
-              processBaseInformation(channel, channels[index]);
-            });
-          });
-        });
+      Promise.all(promises).then((results) => {
+        results.forEach((channel, index) => processBaseInformation(channel, channels[index]));
+      });
+    });
 }
 
 module.exports = {
   searchSeasonNumber,
   searchEpisodeNumber,
   searchProgramName,
-  formatDate,
+  formatStartDate,
+  formatEndDate,
   scrape,
 };

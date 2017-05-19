@@ -2,7 +2,8 @@ const {
     searchSeasonNumber,
     searchEpisodeNumber,
     searchProgramName,
-    formatDate,
+    formatStartDate,
+    formatEndDate
 } = require('../../app/services/scraper');
 
 describe('scraper', () => {
@@ -106,14 +107,14 @@ describe('scraper', () => {
     });
   });
 
-  describe('formatDate', () => {
+  describe('formatStartDate', () => {
     it('should return formatted date when invoked with expected date string', (done) => {
-      formatDate('2016-10-29 01:25').should.equal('2016-10-29T01:25:00+03:00');
+      formatStartDate('2016-10-29 01:25').should.equal('2016-10-29T01:25:00+03:00');
       done();
     });
 
     it('should return "Invalid date" when invoked with invalid date string', (done) => {
-      formatDate('asd').should.equal('Invalid date');
+      formatStartDate('asd').should.equal('Invalid date');
       done();
     });
   });

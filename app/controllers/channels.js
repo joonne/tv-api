@@ -35,7 +35,6 @@ function deleteChannel(req, res, next) {
   return Channel
     .remove({ name })
     .then((result) => {
-      console.log(result);
       if (!result.result.n) {
         throw new createError.NotFound('Not Found');
       }
