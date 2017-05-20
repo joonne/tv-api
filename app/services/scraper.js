@@ -204,7 +204,7 @@ function scrape() {
   Channel
     .find()
     .select({ name: 1, _id: 0 })
-    .sort()
+    .sort({ orderNumber: 1 })
     .then(result => result.map(channel => channel.name))
     .then((channelArr) => {
       channels = channelArr;

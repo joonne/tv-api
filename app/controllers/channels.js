@@ -9,7 +9,7 @@ function getChannels(req, res, next) {
   return Channel
     .find()
     .select({ name: 1, _id: 0 })
-    .sort()
+    .sort({ orderNumber: 1 })
     .then(channels => res.status(200).json(channels.map(channel => channel.name)))
     .catch(err => next(err));
 }
