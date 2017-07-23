@@ -4,13 +4,6 @@ const mongoose = require('mongoose');
 
 const Program = mongoose.model('Program');
 
-function getPrograms(req, res, next) {
-  return Program
-    .find()
-    .then(programs => res.status(200).json(programs))
-    .catch(err => next(err));
-}
-
 function getProgramsByChannel(req, res, next) {
   const channel = req.params.channel;
 
@@ -31,6 +24,5 @@ function getProgramsByChannel(req, res, next) {
 }
 
 module.exports = {
-  getPrograms,
   getProgramsByChannel,
 };

@@ -7,9 +7,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 
-const channelRouter = require('../app/routes/channels');
-const programRouter = require('../app/routes/programs');
-const healthRouter = require('../app/routes/health');
+const routes = require('../app/routes');
 const Channel = require('../app/models/channel');
 const channels = require('./channels.json');
 
@@ -43,9 +41,7 @@ module.exports = (app, config) => {
   // secure HTTP headers with helmet
   app.use(helmet());
 
-  app.use(channelRouter);
-  app.use(programRouter);
-  app.use(healthRouter);
+  app.use(routes);
 
   app.use((req, res) => res.status(404).send('Not Found'));
 

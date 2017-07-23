@@ -32,7 +32,7 @@ describe('program controller', () => {
 
   it('should return an empty array before inserting any programs via GET /api/programs/:channel', (done) => {
     chai.request(app)
-            .get('/api/programs/asd')
+            .get('/api/channels/:channel/programs')
             .end((err, res) => {
               should.not.exist(err);
               res.should.have.status(200);
@@ -50,9 +50,9 @@ describe('program controller', () => {
             });
   });
 
-  it('should return one program from the channel "mtv3" via GET /api/programs/:channel', (done) => {
+  it('should return one program from the channel "mtv3" via GET /api/channels/:channel/programs', (done) => {
     chai.request(app)
-            .get('/api/programs/mtv3')
+            .get('/api/channels/mtv3/programs')
             .end((err, res) => {
               should.not.exist(err);
               res.should.have.status(200);
@@ -62,9 +62,9 @@ describe('program controller', () => {
             });
   });
 
-  it('should return empty array for channel with no programs via GET /api/programs/:channel', (done) => {
+  it('should return empty array for channel with no programs via GET /api/channels/:channel/programs', (done) => {
     chai.request(app)
-            .get('/api/programs/nelonen')
+            .get('/api/channels/nelonen/programs')
             .end((err, res) => {
               should.not.exist(err);
               res.should.have.status(200);
@@ -88,21 +88,9 @@ describe('program controller', () => {
         });
   });
 
-  it('should return 6 programs in an array for channel "mtv3" via /api/programs/:channel', (done) => {
+  it('should return 6 programs in an array for channel "mtv3" via /api/channels/:channel/programs', (done) => {
     chai.request(app)
-            .get('/api/programs/mtv3')
-            .end((err, res) => {
-              should.not.exist(err);
-              res.should.have.status(200);
-              res.body.should.be.a('array');
-              res.body.length.should.equal(6);
-              done();
-            });
-  });
-
-  it('should return 6 programs in an array via /api/programs', (done) => {
-    chai.request(app)
-            .get('/api/programs')
+            .get('/api/channels/mtv3/programs')
             .end((err, res) => {
               should.not.exist(err);
               res.should.have.status(200);
