@@ -3,7 +3,6 @@ const {
     searchEpisodeNumber,
     searchProgramName,
     formatStartDate,
-    formatEndDate
 } = require('../../app/services/scraper');
 
 describe('scraper', () => {

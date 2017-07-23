@@ -8,7 +8,7 @@ const cron = require('cron');
 require('./app/models/channel');
 require('./app/models/program');
 // const { scrape } = require('./app/services/scraper');
-const { scrape } = require('./app/services/xmltv');
+const { updateSchedule } = require('./app/services/xmltv');
 
 const db = mongoose.connection;
 db.on('error', () => {
@@ -24,10 +24,10 @@ app.listen(config.port, config.ip_address, () => {
 });
 
 const cronJob = cron.job('0 */2 * * * *', () => {
-  scrape();
+  updateSchedule();
 });
 cronJob.start();
 
-scrape();
+updateSchedule();
 
 module.exports = app;
