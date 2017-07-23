@@ -6,6 +6,8 @@ const Schema = mongoose.Schema;
 
 const ChannelSchema = new Schema({
   name: String,
+  telsuId: String,
+  xmltvId: String,
   orderNumber: Number,
   createdAt: {
     type: Date,

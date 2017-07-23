@@ -20,12 +20,15 @@ module.exports = (app, config) => {
   if (process.env.NODE_ENV !== 'test') {
     Channel.find().then((results) => {
       if (!results.length) {
-        const promises =
-          channels.map(channel => new Channel({
+        channels.forEach((channel) => {
+          const newChannel = new Channel({
             name: channel.name,
             orderNumber: channel.orderNumber,
-          }).save());
-        promises.reduce((curr, next) => curr.then(next), Promise.resolve());
+            telsuId: channel.telsuId,
+            xmltvId: channel.xmltvId,
+          });
+          newChannel.save();
+        });
       }
     });
   }
