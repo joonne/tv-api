@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProgramSchema = new Schema({
-  channelName: String,
+  _channelId: Schema.Types.ObjectId,
   createdAt: {
     type: Date,
     expires: 172800,

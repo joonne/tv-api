@@ -22,8 +22,9 @@ const starts = [];
 const ends = [];
 const allPrograms = [];
 
-function searchSeasonNumber(description) {
-  const start = description.indexOf('Kausi');
+function searchSeasonNumber(desc) {
+  const description = desc.toLowerCase();
+  const start = description.indexOf('kausi');
   let seasonNumber = '-';
 
   if (description.charAt(start + 7) === ',') {
@@ -203,9 +204,9 @@ function scrape() {
 
   Channel
     .find()
-    .select({ name: 1, _id: 0 })
+    .select({ telsuId: 1, _id: 0 })
     .sort({ orderNumber: 1 })
-    .then(result => result.map(channel => channel.name))
+    .then(result => result.map(channel => channel.telsuId))
     .then((channelArr) => {
       channels = channelArr;
       const promises = channels.map(channel => rp(`http://www.telsu.fi/${today}/${channel}`));
