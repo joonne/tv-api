@@ -1,8 +1,10 @@
 language: node_js
 node_js:
-- '6'
+  - '6'
 services:
-- mongodb
+  - mongodb
+before_install:
+  - travis_internal_ruby() { echo "$TRAVIS_RUBY_VERSION"; }
 deploy:
   provider: openshift
   user: jonne.pihlanen@gmail.com
