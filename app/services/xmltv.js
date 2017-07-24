@@ -93,8 +93,27 @@ const updateSchedule = () => {
     });
 };
 
+const updateChannels = () => {
+  rp(`${baseUrl}/channels.js.gz`)
+    .then((result) => {
+      const channelsOrig = JSON.parse(result).jsontv.channels;
+      const channelIds = Object.keys(channelsOrig);
+
+      channelIds.forEach((channelId) => {
+        const channel = {
+          name: channelsOrig[channelId].displayName.en,
+          icon: channelsOrig[channelId].icon,
+          _id: channelId,
+          country: channelId.slice(channelId.lastIndexOf('.') + 1),
+        };
+        console.log(channel);
+      });
+    });
+};
+
 module.exports = {
   updateSchedule,
+  updateChannels,
   getEpisodeNumber,
   getSeasonNumber,
 };
