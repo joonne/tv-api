@@ -3,8 +3,6 @@ node_js:
   - '6'
 services:
   - mongodb
-before_install:
-  - gem update --system 1.8.30
 deploy:
   provider: openshift
   user: jonne.pihlanen@gmail.com
@@ -12,4 +10,3 @@ deploy:
     secure: 0Mm4y7gpFykyknyp6FIT9aQgTvOi5rmZIbKo3qefZDLgppKSVpYPmnv//tcNvDv19jUhiJPDnRSSYPeipPMBQWGfcGMi9QCDi3OlWAdvbwLwOIjlKPqMAItDvTLE5XcJAjejUSxv391+J7qQsjQTUArpu0yXtmjhSGxF6ZyLyrfo1Iay447Ekl8SQos+N8iyiubIgasIqWJjip+FgUX+2+yz4QOjVsA5dATGGvSaKInALp9fRlZh63pkUcm/X1pYOS4688xDFdHSlvtHdWUm3YRxIYDGy0GxtqtZ542+pqf/HjHVnz7d0DnkEWt6Mx33b7hdfMdoz6VFMLKnul1oaTt2x+aojzCWungilWypz1CqhjA5L5MXfXpC0oLSi5lN62s02DZIG/gp3j0mUq6TrVHLw8Ntg+AldDq7905LznzSLlqdte3Ae4d0VcW024BZlZrtCjQQvn4w2CqwcbUOp3pNY/ZNVWEozPnAmTwmKtZ8yFOFrt5FoONICPWXdfmQrHwE9lTloGN5O/fjf/JlbbJoxw3CPnxIu0ibo/XabJ1cD3GpTP2eawbgaVAZA8j8NAwWV+GgQVpe1gc5updtioZ0FMp3c7YHQk27ALH0HbleAOyp+EQDcmJ5764H/83UUttNma7LWpZwxluobVH+aUM71ajCrYjgRhliNKp+N/k=
   app: tv-api
   domain: mashupjonne
-  on: master
