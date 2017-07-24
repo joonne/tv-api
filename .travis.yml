@@ -4,7 +4,7 @@ node_js:
 services:
   - mongodb
 before_install:
-  - travis_internal_ruby() { echo "$TRAVIS_RUBY_VERSION"; }
+  - gem update --system 1.8.30
 deploy:
   provider: openshift
   user: jonne.pihlanen@gmail.com
