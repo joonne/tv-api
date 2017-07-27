@@ -1,8 +1,7 @@
 const rp = require('request-promise');
 const moment = require('moment-timezone');
 
-const Channel = require('../models/channel');
-const Program = require('../models/program');
+const mongo = require('../helpers/mongo');
 
 const baseUrl = 'http://json.xmltv.se';
 
@@ -53,34 +52,33 @@ const parseResponses = (responses) => {
 const processBaseInformation = (data, _channelId) => {
   data.jsontv.programme.forEach((p) => {
     const program = {
-      name: p.title && p.title[language] ? p.title[language] : '',
-      description: p.desc && p.desc[language] ? p.desc[language] : '',
-      season: p.episodeNum && p.episodeNum.xmltv_ns ? getSeasonNumber(p.episodeNum.xmltv_ns) : '-',
-      episode: p.episodeNum && p.episodeNum.xmltv_ns ? getEpisodeNumber(p.episodeNum.xmltv_ns) : '-',
-      start: p.start ? p.start : '-',
-      end: p.stop ? p.stop : '-',
+      _channelId,
+      data: {
+        name: p.title && p.title[language] ? p.title[language] : '',
+        description: p.desc && p.desc[language] ? p.desc[language] : '',
+        season: p.episodeNum && p.episodeNum.xmltv_ns ? getSeasonNumber(p.episodeNum.xmltv_ns) : '-',
+        episode: p.episodeNum && p.episodeNum.xmltv_ns ? getEpisodeNumber(p.episodeNum.xmltv_ns) : '-',
+        start: p.start ? p.start : '-',
+        end: p.stop ? p.stop : '-',
+      },
     };
 
-    const newProgram = new Program({
-      _channelId,
-      data: program,
-    });
-
-    newProgram.save((err) => {
-      if (err) throw err;
-    });
+    mongo.getDb
+      .then(db => db.collection('programs').insertOne(program));
   });
 };
 
 const updateSchedule = () => {
-  Program.remove().exec();
-
-  Channel
-    .find()
-    .sort({ orderNumber: 1 })
+  let db;
+  mongo.getDb
+    .then((database) => {
+      db = database;
+      return db.collection('programs').deleteMany({});
+    })
+    .then(() => db.collection('channels').find().sort({ orderNumber: 1 }).toArray())
     .then((channels) => {
       const promises =
-        channels.map(channel => rp(`${baseUrl}/${channel.xmltvId}.${language}_${dateString}.js.gz`));
+        channels.map(channel => rp(`${baseUrl}/${channel._id}.${language}_${dateString}.js.gz`));
 
       Promise.all(promises)
         .then(parseResponses)
@@ -96,20 +94,27 @@ const updateSchedule = () => {
 const updateChannels = () => {
   rp(`${baseUrl}/channels.js.gz`)
     .then((result) => {
-      const channelsOrig = JSON.parse(result).jsontv.channels;
-      const channelIds = Object.keys(channelsOrig);
-
-      channelIds.forEach((channelId) => {
+      const channels = JSON.parse(result).jsontv.channels;
+      Object.keys(channels).forEach((channelId) => {
         const channel = {
-          name: channelsOrig[channelId].displayName.en,
-          icon: channelsOrig[channelId].icon,
+          name: channels[channelId].displayName.en,
+          icon: channels[channelId].icon,
           _id: channelId,
           country: channelId.slice(channelId.lastIndexOf('.') + 1),
         };
         console.log(channel);
+        let db;
+        mongo.getDb
+          .then((database) => {
+            db = database;
+            return db.collection('channels').deleteMany({});
+          })
+          .then(() => db.collection('channels').insertOne(channel));
       });
     });
 };
+
+updateChannels();
 
 module.exports = {
   updateSchedule,

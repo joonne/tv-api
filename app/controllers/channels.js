@@ -1,14 +1,10 @@
 // controllers/channels.js
 
-const mongoose = require('mongoose');
-
-const Channel = mongoose.model('Channel');
+const mongo = require('../helpers/mongo');
 
 function getChannels(req, res, next) {
-  return Channel
-    .find()
-    .select({ name: 1, telsuId: 1, xmltvId: 1, _id: 1 })
-    .sort({ orderNumber: 1 })
+  return mongo.getDb
+    .then(db => db.collection('channels').find({}).sort({ orderNumber: 1 }).toArray())
     .then(channels => res.status(200).json(channels))
     .catch(err => next(err));
 }

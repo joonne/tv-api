@@ -2,18 +2,9 @@
 
 const express = require('express');
 const config = require('./config/config');
-const mongoose = require('mongoose');
 const cron = require('cron');
 
-require('./app/models/channel');
-require('./app/models/program');
-// const { scrape } = require('./app/services/scraper');
 const { updateSchedule } = require('./app/services/xmltv');
-
-const db = mongoose.connection;
-db.on('error', () => {
-  throw new Error(`Unable to connect to database at ${config.db}`);
-});
 
 const app = express();
 
