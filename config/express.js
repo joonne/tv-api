@@ -4,33 +4,30 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const compress = require('compression');
 const methodOverride = require('method-override');
-const mongoose = require('mongoose');
 const helmet = require('helmet');
 
 const routes = require('../app/routes');
-const Channel = require('../app/models/channel');
 const channels = require('./channels.json');
+const mongo = require('../app/helpers/mongo');
 
-module.exports = (app, config) => {
-  // init mongoose & declare promise library to be used
-  mongoose.Promise = Promise;
-  mongoose.connect(config.db);
-
+module.exports = (app) => {
   // init db
   if (process.env.NODE_ENV !== 'test') {
-    Channel.find().then((results) => {
-      if (!results.length) {
-        channels.forEach((channel) => {
-          const newChannel = new Channel({
-            name: channel.name,
-            orderNumber: channel.orderNumber,
-            telsuId: channel.telsuId,
-            xmltvId: channel.xmltvId,
+    mongo.getDb
+      .then(db => db.collection('channels').find({}).toArray())
+      .then((results) => {
+        if (!results.length) {
+          channels.forEach((ch) => {
+            const channel = {
+              name: ch.name,
+              orderNumber: ch.orderNumber,
+              // telsuId: ch.telsuId,
+              _id: ch.xmltvId,
+            };
+            mongo.getDb.then(db => db.collection('channels').insertOne(channel));
           });
-          newChannel.save();
-        });
-      }
-    });
+        }
+      });
   }
 
   app.use(logger('dev'));
@@ -57,15 +54,11 @@ module.exports = (app, config) => {
 
   // graceful shutdown when interrupted (ctrl-c)
   process.on('SIGINT', () => {
-    mongoose.connection.close(() => {
-      process.exit();
-    });
+    process.exit();
   });
 
   // graceful shutdown when the process is killed
   process.on('SIGTERM', () => {
-    mongoose.connection.close(() => {
-      process.exit();
-    });
+    process.exit();
   });
 };

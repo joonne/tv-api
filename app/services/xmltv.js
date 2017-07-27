@@ -49,7 +49,7 @@ const parseResponses = (responses) => {
   return parsed;
 };
 
-const processBaseInformation = (data, _channelId) => {
+const insertPrograms = (data, _channelId) => {
   data.jsontv.programme.forEach((p) => {
     const program = {
       _channelId,
@@ -58,8 +58,8 @@ const processBaseInformation = (data, _channelId) => {
         description: p.desc && p.desc[language] ? p.desc[language] : '',
         season: p.episodeNum && p.episodeNum.xmltv_ns ? getSeasonNumber(p.episodeNum.xmltv_ns) : '-',
         episode: p.episodeNum && p.episodeNum.xmltv_ns ? getEpisodeNumber(p.episodeNum.xmltv_ns) : '-',
-        start: p.start ? p.start : '-',
-        end: p.stop ? p.stop : '-',
+        start: p.start ? parseInt(p.start, 10) : '-',
+        end: p.stop ? parseInt(p.stop, 10) : '-',
       },
     };
 
@@ -68,31 +68,28 @@ const processBaseInformation = (data, _channelId) => {
   });
 };
 
-const updateSchedule = () => {
-  let db;
-  mongo.getDb
-    .then((database) => {
-      db = database;
-      return db.collection('programs').deleteMany({});
-    })
-    .then(() => db.collection('channels').find().sort({ orderNumber: 1 }).toArray())
+function updateSchedule() {
+  return mongo.getDb
+    .then(db => db.collection('programs').deleteMany({}))
+    .then(() => mongo.getDb)
+    .then(db => db.collection('channels').find().sort({ orderNumber: 1 }).toArray())
     .then((channels) => {
       const promises =
-        channels.map(channel => rp(`${baseUrl}/${channel._id}.${language}_${dateString}.js.gz`));
+        channels.map(channel => rp(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
 
-      Promise.all(promises)
+      return Promise.all(promises)
         .then(parseResponses)
         .then(results => results.forEach((channel, index) => {
-          processBaseInformation(channel, channels[index]._id);
+          insertPrograms(channel, channels[index]._id);
         }))
         .catch((err) => {
           console.log(err);
         });
     });
-};
+}
 
-const updateChannels = () => {
-  rp(`${baseUrl}/channels.js.gz`)
+function updateChannels() {
+  return rp(`${baseUrl}/channels.js.gz`)
     .then((result) => {
       const channels = JSON.parse(result).jsontv.channels;
       Object.keys(channels).forEach((channelId) => {
@@ -102,23 +99,23 @@ const updateChannels = () => {
           _id: channelId,
           country: channelId.slice(channelId.lastIndexOf('.') + 1),
         };
-        console.log(channel);
-        let db;
-        mongo.getDb
-          .then((database) => {
-            db = database;
-            return db.collection('channels').deleteMany({});
-          })
-          .then(() => db.collection('channels').insertOne(channel));
+        return mongo.getDb
+          .then(db => db.collection('channels').deleteMany({}))
+          .then(() => mongo.getDb)
+          .then(db => db.collection('channels').insertOne(channel));
       });
     });
-};
+}
 
-updateChannels();
+const updateAll = () => updateChannels()
+  .then(() => console.log('Channels updated'))
+  .then(() => updateSchedule())
+  .then(() => console.log('Programs updated'));
 
 module.exports = {
   updateSchedule,
   updateChannels,
   getEpisodeNumber,
   getSeasonNumber,
+  updateAll,
 };
