@@ -63,10 +63,11 @@ const insertPrograms = (data, _channelId) => {
       },
     };
 
-    console.log('program', program);
-
     mongo.getDb
-      .then(db => db.collection('programs').insertOne(program));
+      .then(db => db.collection('programs').insertOne(program))
+      .then((result) => {
+        console.log('result', result);
+      });
   });
 };
 
