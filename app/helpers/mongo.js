@@ -7,7 +7,6 @@ let connection = null;
 
 module.exports = {
   connect() {
-    console.log('mongo url:', config.db);
     return new Promise((resolve, reject) => {
       MongoClient.connect(config.db, (err, db) => {
         if (err) {

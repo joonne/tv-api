@@ -14,7 +14,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL) {
 }
 
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-    mongodbConnectionString = `${process.env.OPENSHIFT_MONGODB_DB_USERNAME}:${process.env.OPENSHIFT_MONGODB_DB_PASSWORD}@${process.env.OPENSHIFT_MONGODB_DB_HOST}:${process.env.OPENSHIFT_MONGODB_DB_PORT}/${process.env.OPENSHIFT_APP_NAME}`; // eslint-disable-line
+  mongodbConnectionString = `mongodb://${process.env.OPENSHIFT_MONGODB_DB_USERNAME}:${process.env.OPENSHIFT_MONGODB_DB_PASSWORD}@${process.env.OPENSHIFT_MONGODB_DB_HOST}:${process.env.OPENSHIFT_MONGODB_DB_PORT}/${process.env.OPENSHIFT_APP_NAME}`; // eslint-disable-line
 }
 
 module.exports = {
