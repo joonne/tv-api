@@ -63,6 +63,8 @@ const insertPrograms = (data, _channelId) => {
       },
     };
 
+    console.log('program', program);
+
     mongo.getDb
       .then(db => db.collection('programs').insertOne(program));
   });
@@ -72,9 +74,8 @@ function updateSchedule() {
   return mongo.getDb
     .then(db => db.collection('programs').deleteMany({}))
     .then(() => mongo.getDb)
-    .then(db => db.collection('channels').find().sort({ orderNumber: 1 }).toArray())
+    .then(db => db.collection('channels').find().toArray())
     .then((channels) => {
-      console.log('channels', channels);
       const promises =
         channels.map(channel => rp(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
 
