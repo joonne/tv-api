@@ -82,6 +82,7 @@ function updateSchedule() {
       return Promise.all(promises)
         .then(parseResponses)
         .then(results => results.forEach((channel, index) => {
+          console.log('channel', channel);
           insertPrograms(channel, channels[index]._id);
         }))
         .catch((err) => {
