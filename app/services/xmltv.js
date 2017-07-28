@@ -39,6 +39,16 @@ const getSeasonNumber = (str) => {
   return parseInt(season, 10) + 1;
 };
 
+const getTitleOrDesc = (obj) => {
+  let key;
+  try {
+    key = Object.keys(obj)[0];
+  } catch (error) {
+    key = null;
+  }
+  return obj[key] || '';
+};
+
 const parseResponses = (responses) => {
   let parsed;
   try {
@@ -50,25 +60,20 @@ const parseResponses = (responses) => {
 };
 
 const insertPrograms = (data, _channelId) => {
-  data.jsontv.programme.forEach((p) => {
-    const program = {
-      _channelId,
-      data: {
-        name: p.title && p.title[language] ? p.title[language] : '',
-        description: p.desc && p.desc[language] ? p.desc[language] : '',
-        season: p.episodeNum && p.episodeNum.xmltv_ns ? getSeasonNumber(p.episodeNum.xmltv_ns) : '-',
-        episode: p.episodeNum && p.episodeNum.xmltv_ns ? getEpisodeNumber(p.episodeNum.xmltv_ns) : '-',
-        start: p.start ? parseInt(p.start, 10) : '-',
-        end: p.stop ? parseInt(p.stop, 10) : '-',
-      },
-    };
+  const programs = data.jsontv.programme.map(p => ({
+    _channelId,
+    data: {
+      name: getTitleOrDesc(p.title),
+      description: getTitleOrDesc(p.desc),
+      season: p.episodeNum && p.episodeNum.xmltv_ns ? getSeasonNumber(p.episodeNum.xmltv_ns) : '-',
+      episode: p.episodeNum && p.episodeNum.xmltv_ns ? getEpisodeNumber(p.episodeNum.xmltv_ns) : '-',
+      start: p.start ? parseInt(p.start, 10) : '-',
+      end: p.stop ? parseInt(p.stop, 10) : '-',
+    },
+  }));
 
-    mongo.getDb
-      .then(db => db.collection('programs').insertOne(program))
-      .then((result) => {
-        console.log('result', result);
-      });
-  });
+  mongo.getDb
+    .then(db => db.collection('programs').insertMany(programs));
 };
 
 function updateSchedule() {
@@ -83,7 +88,6 @@ function updateSchedule() {
       return Promise.all(promises)
         .then(parseResponses)
         .then(results => results.forEach((channel, index) => {
-          console.log('channel', channel);
           insertPrograms(channel, channels[index]._id);
         }))
         .catch((err) => {
@@ -95,19 +99,18 @@ function updateSchedule() {
 function updateChannels() {
   return rp(`${baseUrl}/channels.js.gz`)
     .then((result) => {
-      const channels = JSON.parse(result).jsontv.channels;
-      Object.keys(channels).forEach((channelId) => {
-        const channel = {
-          name: channels[channelId].displayName.en,
-          icon: channels[channelId].icon,
-          _id: channelId,
-          country: channelId.slice(channelId.lastIndexOf('.') + 1),
-        };
-        return mongo.getDb
-          .then(db => db.collection('channels').deleteMany({}))
-          .then(() => mongo.getDb)
-          .then(db => db.collection('channels').insertOne(channel));
-      });
+      const channelsOrig = JSON.parse(result).jsontv.channels;
+      const channels = Object.keys(channelsOrig).map(channelId => ({
+        name: channelsOrig[channelId].displayName.en,
+        icon: channelsOrig[channelId].icon,
+        _id: channelId,
+        country: channelId.slice(channelId.lastIndexOf('.') + 1),
+      }));
+
+      return mongo.getDb
+        .then(db => db.collection('channels').deleteMany({}))
+        .then(() => mongo.getDb)
+        .then(db => db.collection('channels').insertMany(channels));
     });
 }
 

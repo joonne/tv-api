@@ -7,12 +7,12 @@ const methodOverride = require('method-override');
 const helmet = require('helmet');
 
 const routes = require('../app/routes');
-const channels = require('./channels.json');
-const mongo = require('../app/helpers/mongo');
+// const channels = require('./channels.json');
+// const mongo = require('../app/helpers/mongo');
 
 module.exports = (app) => {
   // init db
-  if (process.env.NODE_ENV !== 'test') {
+  /* if (process.env.NODE_ENV !== 'test') {
     mongo.getDb
       .then(db => db.collection('channels').find({}).toArray())
       .then((results) => {
@@ -28,7 +28,7 @@ module.exports = (app) => {
           });
         }
       });
-  }
+  } */
 
   app.use(logger('dev'));
   app.use(bodyParser.json());
