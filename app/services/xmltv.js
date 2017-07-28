@@ -74,6 +74,7 @@ function updateSchedule() {
     .then(() => mongo.getDb)
     .then(db => db.collection('channels').find().sort({ orderNumber: 1 }).toArray())
     .then((channels) => {
+      console.log('channels', channels);
       const promises =
         channels.map(channel => rp(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
 

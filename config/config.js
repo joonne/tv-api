@@ -8,9 +8,9 @@ const serverIpAddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 const name = 'tv-api';
 let mongodbConnectionString = `mongodb://127.0.0.1:27017/${name}`;
 
-// take advantage of openshift env vars when available:
+/* take advantage of openshift env vars when available */
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-  mongodbConnectionString = process.env.OPENSHIFT_MONGODB_DB_URL;
+  mongodbConnectionString = `${process.env.OPENSHIFT_MONGODB_DB_URL}/${process.env.OPENSHIFT_APP_NAME}`;
 }
 
 if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
