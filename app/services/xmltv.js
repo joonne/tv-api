@@ -7,8 +7,6 @@ const baseUrl = 'http://json.xmltv.se';
 
 const dateString = moment().tz('Europe/Helsinki').format('YYYY-MM-DD');
 
-const language = 'fi';
-
 /* xmltv_ns: This is intended to be a general way to number episodes and
 parts of multi-part episodes.  It is three numbers separated by dots,
 the first is the series or season, the second the episode number
@@ -46,7 +44,7 @@ const getTitleOrDesc = (obj) => {
   } catch (error) {
     key = null;
   }
-  return obj[key] || '';
+  return obj && key ? obj[key] : '';
 };
 
 const parseResponses = (responses) => {
@@ -72,6 +70,11 @@ const insertPrograms = (data, _channelId) => {
     },
   }));
 
+  // bulk insert fails if array is empty
+  if (!programs.length) {
+    return;
+  }
+
   mongo.getDb
     .then(db => db.collection('programs').insertMany(programs));
 };
@@ -80,16 +83,18 @@ function updateSchedule() {
   return mongo.getDb
     .then(db => db.collection('programs').deleteMany({}))
     .then(() => mongo.getDb)
-    .then(db => db.collection('channels').find().toArray())
+    .then(db => db.collection('channels').find({ country: 'fi' }).toArray())
     .then((channels) => {
       const promises =
         channels.map(channel => rp(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
 
       return Promise.all(promises)
         .then(parseResponses)
-        .then(results => results.forEach((channel, index) => {
-          insertPrograms(channel, channels[index]._id);
-        }))
+        .then((results) => {
+          results.forEach((channel, index) => {
+            insertPrograms(channel, channels[index]._id);
+          });
+        })
         .catch((err) => {
           console.log(err);
         });
