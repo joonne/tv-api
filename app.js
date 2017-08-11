@@ -1,22 +1,33 @@
 // app.js
 
-const express = require('express');
-const config = require('./config/config');
+const http = require('http');
 const cron = require('cron');
 
 const { updateAll } = require('./app/services/xmltv');
 
-const app = express();
+const config = require('./config/config');
+const router = require('./app/routes');
+const logger = require('./app/helpers/logger');
 
-require('./config/express')(app, config);
+const server = http.createServer(logger(router));
 
-app.listen(config.port, config.ip_address, () => {
-  console.info(`Listening at ${config.ip_address}:${config.port}`);
+server.on('clientError', (err, socket) => {
+  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
+
+server.listen(config.port, config.ip_address);
 
 const cronJob = cron.job('0 6 * * * *', () => updateAll());
 cronJob.start();
 
 updateAll();
 
-module.exports = app;
+// graceful shutdown when interrupted (ctrl-c)
+process.on('SIGINT', () => {
+  process.exit();
+});
+
+// graceful shutdown when the process is killed
+process.on('SIGTERM', () => {
+  process.exit();
+});

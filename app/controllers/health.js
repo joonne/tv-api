@@ -1,7 +1,8 @@
 // controllers/health.js
 
 function getHealth(req, res) {
-  return res.sendStatus(200);
+  res.statusCode = 200;
+  return res.end();
 }
 
 module.exports = {

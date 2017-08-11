@@ -1,0 +1,19 @@
+[
+  { "_channelId": "tv1.yle.fi", "orderNumber": 1 },
+  { "_channelId": "tv2.yle.fi", "orderNumber": 2 },
+  { "_channelId": "mtv3.fi", "orderNumber": 3 },
+  { "_channelId": "nelonen.fi", "orderNumber": 4 },
+  { "_channelId": "fem.yle.fi", "orderNumber": 5 },
+  { "_channelId": "sub.fi", "orderNumber": 6 },
+  { "_channelId": "tv5.fi", "orderNumber": 7 },
+  { "_channelId": "liv.nelonen.fi", "orderNumber": 8 },
+  { "_channelId": "jim.nelonen.fi", "orderNumber": 9 },
+  { "_channelId": "kutonen.fi", "orderNumber": 10 },
+  { "_channelId": "tlc.discoverynetworks.fi", "orderNumber": 11 },
+  { "_channelId": "fox.fi", "orderNumber": 12 },
+  { "_channelId": "ava.mtv.fi", "orderNumber": 13 },
+  { "_channelId": "herotv.fi", "orderNumber": 14 },
+  { "_channelId": "alfatv.fi", "orderNumber": 15 },
+  { "_channelId": "frii.sbs.fi", "orderNumber": 16 },
+  { "_channelId": "natgeo.fi", "orderNumber": 17 }
+]
