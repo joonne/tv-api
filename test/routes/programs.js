@@ -1,36 +1,27 @@
 process.env.NODE_ENV = 'test';
 
-const Program = require('../../app/models/program');
-const ObjectId = require('mongoose').Types.ObjectId;
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+
 const app = require('../../app');
+const mongo = require('../../app/helpers/mongo');
 
 const should = chai.should();
 
 chai.use(chaiHttp);
 
-const defaultChannelId = new ObjectId();
+const defaultChannelId = 'mtv3.fi';
 
-function addProgram(_channelId, programName, description, season, episode, start, end) {
-  const program = new Program();
-  program._channelId = _channelId;
-  program.data.name = programName;
-  program.data.description = description;
-  program.data.season = season;
-  program.data.episode = episode;
-  program.data.start = start;
-  program.data.end = end;
-
-  return program.save();
+function addProgram(program) {
+  return mongo.getDb
+    .then(db => db.collection('programs').insertOne(program));
 }
 
 describe('program controller', () => {
   before((done) => {
-    Program.remove({}, () => {
-      done();
-    });
+    mongo.getDb
+      .then(db => db.collection('programs').removeMany({}))
+      .then(() => done());
   });
 
   it('should return an empty array before inserting any programs via GET /api/programs/:channel', (done) => {
@@ -67,7 +58,7 @@ describe('program controller', () => {
 
   it('should return empty array for channel with no programs via GET /api/channels/:channel/programs', (done) => {
     chai.request(app)
-      .get(`/api/channels/${new ObjectId()}/programs`)
+      .get('/api/channels/asdasd/programs')
       .end((err, res) => {
         should.not.exist(err);
         res.should.have.status(200);

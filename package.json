@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "NODE_ENV=test mocha --recursive"
+    "test": "NODE_ENV=test mocha --recursive",
+    "lint": "eslint app config test"
   },
   "dependencies": {
     "body-parser": "^1.12.4",

@@ -15,7 +15,6 @@ its number would be '0 . 12/13 . 0/3'.  The series number is just '0'
 because you don't know how many series there are in total - perhaps
 the show is still being made! */
 
-
 describe('xmltv', () => {
   describe('getSeasonNumber', () => {
     it('should find a 1-digit season number from the given string', (done) => {

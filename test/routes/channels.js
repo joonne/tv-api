@@ -1,28 +1,31 @@
 process.env.NODE_ENV = 'test';
 
-const Channel = require('../../app/models/channel');
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+
 const app = require('../../app');
+const mongo = require('../../app/helpers/mongo');
 
 const should = chai.should();
 
 chai.use(chaiHttp);
 
-function addChannel(name) {
-  return new Channel({
-    name,
-  }).save();
+function addChannel(_id, name) {
+  return mongo.getDb
+    .then(db => db.collection('channels').insertOne({ _id, name }));
 }
 
 describe('channel controller', () => {
   before((done) => {
-    Channel.remove().then(() => done());
+    mongo.getDb
+      .then(db => db.collection('channels').removeMany({}))
+      .then(() => done());
   });
 
   after((done) => {
-    Channel.remove().then(() => done());
+    mongo.getDb
+      .then(db => db.collection('channels').removeMany({}))
+      .then(() => done());
   });
 
   it('should return an empty array before inserting any channels via GET /api/channels', (done) => {
