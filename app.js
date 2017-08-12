@@ -15,9 +15,11 @@ server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
 
-server.listen(config.port, config.ip_address);
+server.listen(config.port, config.ip_address, undefined, () => {
+  console.log(`listening at ${config.ip_address}:${config.port}`);
+});
 
-const cronJob = cron.job('0 6 * * * *', () => updateAll());
+const cronJob = cron.job('0 6 * * *', () => updateAll());
 cronJob.start();
 
 updateAll();
@@ -31,3 +33,5 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
   process.exit();
 });
+
+module.exports = server;

@@ -37,8 +37,15 @@ describe('program controller', () => {
   });
 
   it('should create and save a new program into db without error', (done) => {
-    const date = new Date();
-    addProgram(defaultChannelId, 'salkkarit', 'aki vauhdissa', 1, 4, date, date)
+    addProgram({
+      _channelId: defaultChannelId,
+      name: 'salkkarit',
+      description: 'aki vauhdissa',
+      season: 1,
+      episode: 4,
+      start: Date.now,
+      end: Date.now,
+    })
       .then(() => {
         done();
       });
@@ -69,13 +76,62 @@ describe('program controller', () => {
   });
 
   it('should create multiple new programs and save into db', (done) => {
-    const date = new Date();
     Promise.all([
-      addProgram(defaultChannelId, 'salkkarit', 'aki vauhdissa1', 1, 4, date, date),
-      addProgram(defaultChannelId, 'salkkarit', 'aki vauhdissa2', 1, 5, date, date),
-      addProgram(defaultChannelId, 'salkkarit', 'aki vauhdissa3', 1, 6, date, date),
-      addProgram(defaultChannelId, 'salkkarit', 'aki vauhdissa4', 1, 7, date, date),
-      addProgram(defaultChannelId, 'salkkarit', 'aki vauhdissa5', 1, 8, date, date),
+      addProgram({
+        _channelId: defaultChannelId,
+        data: {
+          name: 'salkkarit',
+          description: 'aki vauhdissa',
+          season: 1,
+          episode: 4,
+          start: Date.now,
+          end: Date.now,
+        },
+      }),
+      addProgram({
+        _channelId: defaultChannelId,
+        data: {
+          name: 'salkkarit',
+          description: 'aki vauhdissa',
+          season: 1,
+          episode: 5,
+          start: Date.now,
+          end: Date.now,
+        },
+      }),
+      addProgram({
+        _channelId: defaultChannelId,
+        data: {
+          name: 'salkkarit',
+          description: 'aki vauhdissa',
+          season: 1,
+          episode: 6,
+          start: Date.now,
+          end: Date.now,
+        },
+      }),
+      addProgram({
+        _channelId: defaultChannelId,
+        data: {
+          name: 'salkkarit',
+          description: 'aki vauhdissa',
+          season: 1,
+          episode: 7,
+          start: Date.now,
+          end: Date.now,
+        },
+      }),
+      addProgram({
+        _channelId: defaultChannelId,
+        data: {
+          name: 'salkkarit',
+          description: 'aki vauhdissa',
+          season: 1,
+          episode: 8,
+          start: Date.now,
+          end: Date.now,
+        },
+      }),
     ])
       .then(() => {
         done();
