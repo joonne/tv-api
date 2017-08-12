@@ -1,10 +1,9 @@
-const rp = require('request-promise');
 const moment = require('moment-timezone');
 
+const http = require('../helpers/http');
 const mongo = require('../helpers/mongo');
 
 const baseUrl = 'http://json.xmltv.se';
-
 const dateString = moment().tz('Europe/Helsinki').format('YYYY-MM-DD');
 
 /* xmltv_ns: This is intended to be a general way to number episodes and
@@ -47,16 +46,6 @@ const getTitleOrDesc = (obj) => {
   return obj && key ? obj[key] : '';
 };
 
-const parseResponses = (responses) => {
-  let parsed;
-  try {
-    parsed = responses.map(response => JSON.parse(response));
-  } catch (error) {
-    parsed = [];
-  }
-  return parsed;
-};
-
 const insertPrograms = (data, _channelId) => {
   const programs = data.jsontv.programme.map(p => ({
     _channelId,
@@ -86,10 +75,9 @@ function updateSchedule() {
     .then(db => db.collection('channels').find({ country: 'fi' }).toArray())
     .then((channels) => {
       const promises =
-        channels.map(channel => rp(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
+        channels.map(channel => http.get(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
 
       return Promise.all(promises)
-        .then(parseResponses)
         .then((results) => {
           results.forEach((channel, index) => {
             insertPrograms(channel, channels[index]._id);
@@ -102,9 +90,9 @@ function updateSchedule() {
 }
 
 function updateChannels() {
-  return rp(`${baseUrl}/channels.js.gz`)
+  return http.get(`${baseUrl}/channels.js.gz`)
     .then((result) => {
-      const channelsOrig = JSON.parse(result).jsontv.channels;
+      const channelsOrig = result.jsontv.channels;
       const channels = Object.keys(channelsOrig).map(channelId => ({
         name: channelsOrig[channelId].displayName.en,
         icon: channelsOrig[channelId].icon,
