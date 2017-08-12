@@ -2,12 +2,13 @@
 
 const url = require('url');
 
+const cors = require('../helpers/cors');
 const { getChannels } = require('../controllers/channels');
 const { getProgramsByChannel } = require('../controllers/programs');
-const { getHealth } = require('../controllers/health.js');
+const { getHealth } = require('../controllers/health');
 const { getCountries } = require('../controllers/countries');
 
-const routes = (req, res) => {
+const router = (req, res) => {
   const pathname = url.parse(req.url, true).pathname;
   if (pathname === '/api/channels' && req.method === 'GET') {
     return getChannels(req, res);
@@ -22,4 +23,4 @@ const routes = (req, res) => {
   return res.end('Not Found');
 };
 
-module.exports = routes;
+module.exports = cors(router);

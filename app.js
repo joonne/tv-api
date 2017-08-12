@@ -6,7 +6,7 @@ const cron = require('cron');
 const { updateAll } = require('./app/services/xmltv');
 
 const config = require('./config/config');
-const router = require('./app/routes');
+const router = require('./app/router');
 const logger = require('./app/helpers/logger');
 
 const server = http.createServer(logger(router));
@@ -19,8 +19,8 @@ server.listen(config.port, config.ip_address, undefined, () => {
   console.log(`listening at ${config.ip_address}:${config.port}`);
 });
 
-const cronJob = cron.job('0 6 * * *', () => updateAll());
-cronJob.start();
+// 6 AM
+cron.job('0 6 * * *', () => updateAll()).start();
 
 updateAll();
 
