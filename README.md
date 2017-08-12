@@ -2,61 +2,48 @@
 
 # TV-API
 
-A web scraper that searches for programs from finnish tv-channels and provides an API for this information.
+A web service that gets tv-channel information from xmltv.se and provides an API for this information.
 
 `GET /api/channels`
 
 Return all available channels from the database.
 
-Response 200
+Can be filtered with query parameter `country` .
 
-```
-["yle1", "yle2", "mtv3", "nelonen", "subtv", "liv", "jim", "viisi", "kutonen", "fox", "ava", "hero"]
-```
-
-`POST /api/channels`
-
-Creates a new channel into the database.
-
-Response 201
-
-```
-{
-    message: "Created"
-}
-```
-Response 409
-
-```
-{
-    message: "Channel already exists"
-}
-```
-
-`DELETE /api/channels`
-
-Deletes a channel from the database.
+Example: GET /api/channels?country=fi
 
 Response 200
 
 ```
+[
+  {
+    name: "Folketinget",
+    icon: "http://chanlogos.xmltv.se/ft.dk.png",
+    _id: "ft.dk",
+    country: "dk"
+  },
+  {
+    name: "VOX (DE)",
+    icon: "http://chanlogos.xmltv.se/vox.de.png",
+    _id: "vox.de",
+    country: "de"
+  }
+]
+```
+
+`PUT /api/channels/:channel`
+
+Allows to modify the orderNumber of the channel.
+
+Response 200
+
+```
 {
-    message: "Deleted"
+    message: "Modified"
 }
 ```
-Response 404
 
-```
-{
-    message: "Not Found"
-}
-```
-
-`GET /api/programs`
-
-Return all available programs from the database.
-
-`GET /api/programs/:channel`
+`GET /api/channels/:channel/programs`
 
 Returns an array of today's programs for the given channel.
 
@@ -88,5 +75,18 @@ Response 200
       "name": "Pitääkö olla huolissaan?"
     }
   }
+]
+```
+`GET /api/countries`
+
+Returns an array of available countries to perform filtering with.
+
+Response 200
+
+```
+[
+  "fi",
+  "se",
+  "de"
 ]
 ```

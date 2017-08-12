@@ -5,6 +5,7 @@ const url = require('url');
 const { getChannels } = require('../controllers/channels');
 const { getProgramsByChannel } = require('../controllers/programs');
 const { getHealth } = require('../controllers/health.js');
+const { getCountries } = require('../controllers/countries');
 
 const routes = (req, res) => {
   const pathname = url.parse(req.url, true).pathname;
@@ -14,6 +15,8 @@ const routes = (req, res) => {
     return getProgramsByChannel(req, res);
   } else if (pathname === '/health' && req.method === 'GET') {
     return getHealth(req, res);
+  } else if (pathname === '/api/countries') {
+    return getCountries(req, res);
   }
   res.statusCode = 404;
   return res.end('Not Found');
