@@ -3,7 +3,7 @@ const moment = require('moment-timezone');
 const http = require('../helpers/http');
 const mongo = require('../helpers/mongo');
 
-const baseUrl = 'http://json.xmltv.se';
+const baseUrl = 'https://json.xmltv.se';
 const dateString = moment().tz('Europe/Helsinki').format('YYYY-MM-DD');
 
 /* xmltv_ns: This is intended to be a general way to number episodes and

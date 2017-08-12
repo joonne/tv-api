@@ -1,20 +1,20 @@
-// helpers/http.js
-
-const http = require('http');
+const https = require('https');
 
 function get(url) {
   return new Promise((resolve, reject) => {
-    http.get(url, (res) => {
-      const { statusCode } = res;
+    https.get(url, (res) => {
+      const {
+        statusCode,
+      } = res;
       const contentType = res.headers['content-type'];
 
       let error;
       if (statusCode !== 200) {
         error = new Error('Request Failed.\n' +
-                          `Status Code: ${statusCode}`);
+          `Status Code: ${statusCode}`);
       } else if (!/^application\/json/.test(contentType)) {
         error = new Error('Invalid content-type.\n' +
-                          `Expected application/json but received ${contentType}`);
+          `Expected application/json but received ${contentType}`);
       }
       if (error) {
         console.error(error.message);
@@ -25,7 +25,9 @@ function get(url) {
 
       res.setEncoding('utf8');
       let rawData = '';
-      res.on('data', (chunk) => { rawData += chunk; });
+      res.on('data', (chunk) => {
+        rawData += chunk;
+      });
       res.on('end', () => {
         try {
           const parsedData = JSON.parse(rawData);
