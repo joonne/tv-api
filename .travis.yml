@@ -1,10 +1,9 @@
+dist: precise
 language: node_js
 node_js:
   - '6'
 services:
   - mongodb
-before_install:
-  - travis_internal_ruby() { echo "1.9.3"; }
 deploy:
   provider: openshift
   user: jonne.pihlanen@gmail.com
