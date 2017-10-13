@@ -3,19 +3,26 @@
 const path = require('path');
 
 const rootPath = path.join(__dirname, '/..');
-const port = process.env.OPENSHIFT_NODEJS_PORT || 10010;
-const serverIpAddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 10010;
+const serverIpAddress = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 const name = 'tv-api';
-let mongodbConnectionString = `mongodb://127.0.0.1:27017/${name}`;
+const mongoURL = process.env.MONGO_URL || process.env.OPENSHIFT_MONGODB_DB_URL || `mongodb://127.0.0.1:27017/${name}`;
 
-/* take advantage of openshift env vars when available */
-if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-  mongodbConnectionString = `${process.env.OPENSHIFT_MONGODB_DB_URL}/${process.env.OPENSHIFT_APP_NAME}`;
-}
+// if (process.env.DATABASE_SERVICE_NAME) {
+//   const mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase();
+//   const mongoHost = process.env[`${mongoServiceName}_SERVICE_HOST`];
+//   const mongoPort = process.env[`${mongoServiceName}_SERVICE_PORT`];
+//   const mongoDatabase = process.env[`${mongoServiceName}_DATABASE`];
+//   const mongoPassword = process.env[`${mongoServiceName}_PASSWORD`];
+//   const mongoUser = process.env[`${mongoServiceName}_USER`];
 
-if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-  mongodbConnectionString = `mongodb://${process.env.OPENSHIFT_MONGODB_DB_USERNAME}:${process.env.OPENSHIFT_MONGODB_DB_PASSWORD}@${process.env.OPENSHIFT_MONGODB_DB_HOST}:${process.env.OPENSHIFT_MONGODB_DB_PORT}/${process.env.OPENSHIFT_APP_NAME}`; // eslint-disable-line
-}
+//   if (mongoHost && mongoPort && mongoDatabase) {
+//     if (mongoUser && mongoPassword) {
+//       mongoURL += `${mongoUser}:${mongoPassword}@`;
+//     }
+//     mongoURL += `${mongoHost}:${mongoPort}/${mongoDatabase}`;
+//   }
+// }
 
 module.exports = {
   root: rootPath,
@@ -24,5 +31,5 @@ module.exports = {
   },
   port,
   ip_address: serverIpAddress,
-  db: mongodbConnectionString,
+  db: mongoURL,
 };

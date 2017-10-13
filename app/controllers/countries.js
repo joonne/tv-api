@@ -4,13 +4,9 @@ const mongo = require('../helpers/mongo');
 
 const { handleErrors } = require('../helpers/errors');
 
-const blacklist = ['com', 'org', 'net'];
-const filter = countries => countries.filter(country => !blacklist.includes(country));
-
 function getCountries(req, res) {
   return mongo.getDb
-    .then(db => db.collection('channels').distinct('country'))
-    .then(filter)
+    .then(db => db.collection('countries').find({}).toArray())
     .then((countries) => {
       res.writeHead(200, {
         'Content-Type': 'application/json',

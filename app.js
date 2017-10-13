@@ -8,6 +8,15 @@ const { updateAll } = require('./app/services/xmltv');
 const config = require('./config/config');
 const router = require('./app/router');
 const logger = require('./app/helpers/logger');
+const mongo = require('./app/helpers/mongo');
+
+const countries = require('./app/data/countries.json');
+
+mongo.getDb
+  .then(db => db.collection('countries').deleteMany({}))
+  .then(() => mongo.getDb)
+  .then(db => db.collection('countries').insertMany(countries))
+  .then(updateAll);
 
 const server = http.createServer(logger(router));
 
@@ -21,8 +30,6 @@ server.listen(config.port, config.ip_address, undefined, () => {
 
 // 6 AM
 cron.job('0 6 * * *', () => updateAll()).start();
-
-updateAll();
 
 // graceful shutdown when interrupted (ctrl-c)
 process.on('SIGINT', () => {

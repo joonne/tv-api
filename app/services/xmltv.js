@@ -90,27 +90,34 @@ function updateSchedule() {
 }
 
 function updateChannels() {
-  return http.get(`${baseUrl}/channels.js.gz`)
-    .then((result) => {
-      const channelsOrig = result.jsontv.channels;
-      const channels = Object.keys(channelsOrig).map(channelId => ({
-        name: channelsOrig[channelId].displayName.en,
-        icon: channelsOrig[channelId].icon,
-        _id: channelId,
-        country: channelId.slice(channelId.lastIndexOf('.') + 1),
-      }));
+  return mongo.getDb
+    .then(db => db.collection('countries').find({}).toArray())
+    .then((countries) => {
+      const promises =
+        countries.map(country => http.get(`${baseUrl}/channels-${country.name}.js.gz`));
 
-      return mongo.getDb
-        .then(db => db.collection('channels').deleteMany({}))
-        .then(() => mongo.getDb)
-        .then(db => db.collection('channels').insertMany(channels));
+      return Promise.all(promises)
+        .then((result) => {
+          const channelsOrig = result.jsontv.channels;
+          const channels = Object.keys(channelsOrig).map(channelId => ({
+            name: channelsOrig[channelId].displayName.en,
+            icon: channelsOrig[channelId].icon,
+            _id: channelId,
+            country: channelId.slice(channelId.lastIndexOf('.') + 1),
+          }));
+
+          return mongo.getDb
+            .then(db => db.collection('channels').deleteMany({}))
+            .then(() => mongo.getDb)
+            .then(db => db.collection('channels').insertMany(channels));
+        });
     });
 }
 
 const updateAll = () => updateChannels()
   .then(() => console.log('Channels updated'))
-  .then(() => updateSchedule())
-  .then(() => console.log('Programs updated'));
+  // .then(() => updateSchedule())
+  // .then(() => console.log('Programs updated'));
 
 module.exports = {
   updateSchedule,

@@ -1,0 +1,28 @@
+[{
+  "name": "Austria",
+  "abbreviation": "at"
+}, {
+  "name": "Denmark",
+  "abbreviation": "dk"
+}, {
+  "name": "Finland",
+  "abbreviation": "fi"
+}, {
+  "name": "Germany",
+  "abbreviation": "de"
+}, {
+  "name": "Netherlands",
+  "abbreviation": "nl"
+}, {
+  "name": "Norway",
+  "abbreviation": "no"
+} , {
+  "name": "Poland",
+  "abbreviation": "pl"
+}, {
+  "name": "Sweden",
+  "abbreviation": "se"
+}, {
+  "name": "Switzerland",
+  "abbreviation": "ch"
+}]
