@@ -16,7 +16,7 @@ Example: GET /api/channels?country=fi
 
 Response 200
 
-```
+```json
 [
   {
     name: "Folketinget",
@@ -39,7 +39,7 @@ Allows to modify the orderNumber of the channel.
 
 Response 200
 
-```
+```json
 {
     message: "Modified"
 }
@@ -53,7 +53,7 @@ If there are no programs or the channel is incorrect / missing, empty array will
 
 Response 200
 
-```
+```json
 [
   {
     "channelName": "mtv3",
@@ -85,10 +85,18 @@ Returns an array of available countries to perform filtering with.
 
 Response 200
 
-```
-[
-  "fi",
-  "se",
-  "de"
-]
+```json
+[{
+  "_id":"59e1b3cac5526a3d7256ceaa",
+  "name":"Austria",
+  "abbreviation":"at"
+}, {
+  "_id":"59e1b3cac5526a3d7256ceab",
+  "name":"Denmark",
+  "abbreviation":"dk"
+}, {
+  "_id":"59e1b3cac5526a3d7256ceac",
+  "name":"Finland",
+  "abbreviation":"fi"
+}]
 ```
