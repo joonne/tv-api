@@ -16,7 +16,10 @@ mongo.getDb
   .then(db => db.collection('countries').deleteMany({}))
   .then(() => mongo.getDb)
   .then(db => db.collection('countries').insertMany(countries))
-  .then(updateAll);
+  .then(updateAll)
+  .catch((err) => {
+    console.log(err.stack);
+  });
 
 const server = http.createServer(logger(router));
 

@@ -56,6 +56,7 @@ const insertPrograms = (data, _channelId) => {
       episode: p.episodeNum && p.episodeNum.xmltv_ns ? getEpisodeNumber(p.episodeNum.xmltv_ns) : '-',
       start: p.start ? parseInt(p.start, 10) : '-',
       end: p.stop ? parseInt(p.stop, 10) : '-',
+      categories: p.category && p.category.en ? p.category.en : [],
     },
   }));
 
@@ -89,6 +90,12 @@ function updateSchedule() {
     });
 }
 
+/* processes an array of { jsontv: { channels: {} } } objects into one flat object */
+function reduceChannels(result) {
+  return result.reduce((acc, curr) =>
+    Object.assign(acc, (curr.jsontv && curr.jsontv.channels) || {}));
+}
+
 function updateChannels() {
   return mongo.getDb
     .then(db => db.collection('countries').find({}).toArray())
@@ -97,11 +104,11 @@ function updateChannels() {
         countries.map(country => http.get(`${baseUrl}/channels-${country.name}.js.gz`));
 
       return Promise.all(promises)
-        .then((result) => {
-          const channelsOrig = result.jsontv.channels;
-          const channels = Object.keys(channelsOrig).map(channelId => ({
-            name: channelsOrig[channelId].displayName.en,
-            icon: channelsOrig[channelId].icon,
+        .then(reduceChannels)
+        .then((allChannels) => {
+          const channels = Object.keys(allChannels).map(channelId => ({
+            name: allChannels[channelId].displayName && allChannels[channelId].displayName.en,
+            icon: allChannels[channelId].icon,
             _id: channelId,
             country: channelId.slice(channelId.lastIndexOf('.') + 1),
           }));
@@ -116,8 +123,8 @@ function updateChannels() {
 
 const updateAll = () => updateChannels()
   .then(() => console.log('Channels updated'))
-  // .then(() => updateSchedule())
-  // .then(() => console.log('Programs updated'));
+  .then(() => updateSchedule())
+  .then(() => console.log('Programs updated'));
 
 module.exports = {
   updateSchedule,
