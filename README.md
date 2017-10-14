@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/joonne/tv-api.svg?branch=master)](https://travis-ci.org/joonne/tv-api)
 
+[![Coverage Status](https://coveralls.io/repos/github/joonne/tv-api/badge.svg?branch=master)](https://coveralls.io/github/joonne/tv-api?branch=master)
+
 # TV-API
 
 A web service that gets tv-channel information from xmltv.se and provides an API for this information.
