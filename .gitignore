@@ -3,3 +3,5 @@ public/components
 .sass-cache
 npm-debug.log
 yarn.lock
+.nyc_output/
+coverage/
