@@ -18,7 +18,7 @@ You can put spaces whereever you like to make things easier to read. */
 
 const getEpisodeNumber = (str) => {
   const parts = str.split('.');
-  if (!parts.length) {
+  if (parts.length === 1) {
     return '-';
   }
   const episodeStr = parts[1].trim();
@@ -28,7 +28,7 @@ const getEpisodeNumber = (str) => {
 
 const getSeasonNumber = (str) => {
   const parts = str.split('.');
-  if (!parts.length) {
+  if (parts.length === 1) {
     return '-';
   }
   const seasonStr = parts[0].trim();

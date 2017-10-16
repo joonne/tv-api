@@ -49,6 +49,7 @@ describe('xmltv', () => {
 
     it('should return "-" if the given string does not contain any dots.', (done) => {
       getSeasonNumber('12 0 0/2').should.equal('-');
+      done();
     });
   });
 
@@ -80,6 +81,11 @@ describe('xmltv', () => {
       strings.forEach((string) => {
         getEpisodeNumber(string).should.equal(22);
       });
+      done();
+    });
+
+    it('should return "-" if the given string does not contain any dots.', (done) => {
+      getEpisodeNumber('1210/1').should.equal('-');
       done();
     });
   });
