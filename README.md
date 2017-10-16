@@ -19,16 +19,16 @@ Response 200
 ```json
 [
   {
-    name: "Folketinget",
-    icon: "http://chanlogos.xmltv.se/ft.dk.png",
-    _id: "ft.dk",
-    country: "dk"
+    "name": "Folketinget",
+    "icon": "http://chanlogos.xmltv.se/ft.dk.png",
+    "_id": "ft.dk",
+    "country": "dk"
   },
   {
-    name: "VOX (DE)",
-    icon: "http://chanlogos.xmltv.se/vox.de.png",
-    _id: "vox.de",
-    country: "de"
+    "name": "VOX (DE)",
+    "icon": "http://chanlogos.xmltv.se/vox.de.png",
+    "_id": "vox.de",
+    "country": "de"
   }
 ]
 ```
@@ -41,7 +41,7 @@ Response 200
 
 ```json
 {
-    message: "Modified"
+    "message": "Modified"
 }
 ```
 
