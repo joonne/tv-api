@@ -116,4 +116,9 @@ describe('xmltv', () => {
       done();
     });
   });
+
+  it('should return an empty object if the given parameter is not an array', (done) => {
+    [{}, '', 12].forEach(input => reduceChannels(input).should.deep.equal({}));
+    done();
+  });
 });

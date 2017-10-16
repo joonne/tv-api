@@ -85,13 +85,18 @@ function updateSchedule() {
           });
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.stack);
         });
     });
 }
 
 /* processes an array of { jsontv: { channels: {} } } objects into one flat object */
 function reduceChannels(result) {
+  if (!Array.isArray(result)) {
+    console.error('invalid result provided, should be an array');
+    return {};
+  }
+
   return result.reduce((acc, curr) =>
     Object.assign(acc, (curr.jsontv && curr.jsontv.channels) || {}), {});
 }
