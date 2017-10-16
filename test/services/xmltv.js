@@ -1,6 +1,7 @@
 const {
     getSeasonNumber,
     getEpisodeNumber,
+    reduceChannels,
 } = require('../../app/services/xmltv');
 
 /* Some examples will make things clearer.  The first episode of the
@@ -86,6 +87,32 @@ describe('xmltv', () => {
 
     it('should return "-" if the given string does not contain any dots.', (done) => {
       getEpisodeNumber('1210/1').should.equal('-');
+      done();
+    });
+  });
+
+  describe('reduceChannels', () => {
+    it('should return a flattened object that has the channel names as keys', (done) => {
+      const channelName1 = 'mtv3.fi';
+      const channelName2 = 'nelonen.fi';
+      const validInput = [{
+        jsontv: {
+          channels: {
+            [channelName1]: {},
+          },
+        },
+      }, {
+        jsontv: {
+          channels: {
+            [channelName2]: {},
+          },
+        },
+      }];
+      const expectedResult = {
+        [channelName1]: {},
+        [channelName2]: {},
+      };
+      reduceChannels(validInput).should.deep.equal(expectedResult);
       done();
     });
   });

@@ -93,7 +93,7 @@ function updateSchedule() {
 /* processes an array of { jsontv: { channels: {} } } objects into one flat object */
 function reduceChannels(result) {
   return result.reduce((acc, curr) =>
-    Object.assign(acc, (curr.jsontv && curr.jsontv.channels) || {}));
+    Object.assign(acc, (curr.jsontv && curr.jsontv.channels) || {}), {});
 }
 
 function updateChannels() {
@@ -132,4 +132,5 @@ module.exports = {
   getEpisodeNumber,
   getSeasonNumber,
   updateAll,
+  reduceChannels,
 };
