@@ -129,7 +129,10 @@ function updateChannels() {
 const updateAll = () => updateChannels()
   .then(() => console.log('Channels updated'))
   .then(() => updateSchedule())
-  .then(() => console.log('Programs updated'));
+  .then(() => console.log('Programs updated'))
+  .catch(() => {
+    console.log('update failed');
+  });
 
 module.exports = {
   updateSchedule,
