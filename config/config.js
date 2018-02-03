@@ -6,7 +6,7 @@ const rootPath = path.join(__dirname, '/..');
 const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 const serverIpAddress = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 const name = 'tv-api';
-const mongoURL = process.env.MONGO_URL || process.env.OPENSHIFT_MONGODB_DB_URL || `mongodb://127.0.0.1:27017/${name}`;
+const mongoURL = process.env.MONGO_URL || `mongodb://127.0.0.1:27017/${name}`;
 
 module.exports = {
   root: rootPath,

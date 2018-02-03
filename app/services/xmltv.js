@@ -46,7 +46,7 @@ const getTitleOrDesc = (obj) => {
   return obj && key ? obj[key] : '';
 };
 
-const insertPrograms = (data, _channelId) => {
+const insertPrograms = async (data, _channelId) => {
   const programs = data.jsontv.programme.map(p => ({
     _channelId,
     data: {
@@ -65,29 +65,29 @@ const insertPrograms = (data, _channelId) => {
     return;
   }
 
-  mongo.getDb
-    .then(db => db.collection('programs').insertMany(programs));
+  const db = await mongo.getDb;
+  db.collection('programs').insertMany(programs);
 };
 
-function updateSchedule() {
-  return mongo.getDb
-    .then(db => db.collection('programs').deleteMany({}))
-    .then(() => mongo.getDb)
-    .then(db => db.collection('channels').find({ country: 'fi' }).toArray())
-    .then((channels) => {
-      const promises =
-        channels.map(channel => http.get(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
+async function updateSchedule() {
+  const db = await mongo.getDb;
+  await db.collection('programs').deleteMany({});
+  const channels = await db.collection('channels').find({ country: 'fi' }).toArray();
 
-      return Promise.all(promises)
-        .then((results) => {
-          results.forEach((channel, index) => {
-            insertPrograms(channel, channels[index]._id);
-          });
-        })
-        .catch((err) => {
-          console.log(err.stack);
-        });
-    });
+  const promises =
+    channels.map(channel => http.get(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
+
+  let results;
+  try {
+    results = await Promise.all(promises);
+  } catch (error) {
+    console.log(error.stack);
+    results = [];
+  }
+
+  results.forEach((channel, index) => {
+    insertPrograms(channel, channels[index]._id);
+  });
 }
 
 /* processes an array of { jsontv: { channels: {} } } objects into one flat object */
@@ -101,38 +101,34 @@ function reduceChannels(result) {
     Object.assign(acc, (curr.jsontv && curr.jsontv.channels) || {}), {});
 }
 
-function updateChannels() {
-  return mongo.getDb
-    .then(db => db.collection('countries').find({}).toArray())
-    .then((countries) => {
-      const promises =
-        countries.map(country => http.get(`${baseUrl}/channels-${country.name}.js.gz`));
+const updateChannels = async () => {
+  const db = await mongo.getDb;
+  const countries = await db.collection('countries').find({}).toArray();
+  const promises =
+    countries.map(country => http.get(`${baseUrl}/channels-${country.name}.js.gz`));
 
-      return Promise.all(promises)
-        .then(reduceChannels)
-        .then((allChannels) => {
-          const channels = Object.keys(allChannels).map(channelId => ({
-            name: allChannels[channelId].displayName && allChannels[channelId].displayName.en,
-            icon: allChannels[channelId].icon,
-            _id: channelId,
-            country: channelId.slice(channelId.lastIndexOf('.') + 1),
-          }));
+  const allChannels = reduceChannels(await Promise.all(promises));
+  const channels = Object.keys(allChannels).map(channelId => ({
+    name: allChannels[channelId].displayName && allChannels[channelId].displayName.en,
+    icon: allChannels[channelId].icon,
+    _id: channelId,
+    country: channelId.slice(channelId.lastIndexOf('.') + 1),
+  }));
 
-          return mongo.getDb
-            .then(db => db.collection('channels').deleteMany({}))
-            .then(() => mongo.getDb)
-            .then(db => db.collection('channels').insertMany(channels));
-        });
-    });
-}
+  await db.collection('channels').deleteMany({});
+  await db.collection('channels').insertMany(channels);
+};
 
-const updateAll = () => updateChannels()
-  .then(() => console.log('Channels updated'))
-  .then(() => updateSchedule())
-  .then(() => console.log('Programs updated'))
-  .catch(() => {
+const updateAll = async () => {
+  try {
+    await updateChannels();
+    console.log('Channels updated');
+    await updateSchedule();
+    console.log('Programs updated');
+  } catch (error) {
     console.log('update failed');
-  });
+  }
+};
 
 module.exports = {
   updateSchedule,
