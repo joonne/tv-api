@@ -10,7 +10,7 @@ module.exports = {
     return new Promise((resolve, reject) => {
       MongoClient.connect(config.db, (err, db) => {
         if (err) {
-          return reject();
+          return reject(err);
         }
         connection = db;
         return resolve(db);
