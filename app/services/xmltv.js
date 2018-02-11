@@ -72,7 +72,7 @@ const insertPrograms = async (data, _channelId) => {
 async function updateSchedule() {
   const db = await mongo.getDb;
   await db.collection('programs').deleteMany({});
-  const channels = await db.collection('channels').find({ country: 'fi' }).toArray();
+  const channels = await db.collection('channels').find({}).toArray();
 
   const promises =
     channels.map(channel => http.get(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
