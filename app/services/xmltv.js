@@ -4,7 +4,7 @@ const http = require('../helpers/http');
 const mongo = require('../helpers/mongo');
 
 const baseUrl = 'https://json.xmltv.se';
-const dateString = moment().tz('Europe/Helsinki').format('YYYY-MM-DD');
+const dateString = () => moment().tz('Europe/Helsinki').format('YYYY-MM-DD');
 
 /* xmltv_ns: This is intended to be a general way to number episodes and
 parts of multi-part episodes.  It is three numbers separated by dots,
@@ -75,7 +75,7 @@ async function updateSchedule() {
   const channels = await db.collection('channels').find({}).toArray();
 
   const promises =
-    channels.map(channel => http.get(`${baseUrl}/${channel._id}_${dateString}.js.gz`));
+    channels.map(channel => http.get(`${baseUrl}/${channel._id}_${dateString()}.js.gz`));
 
   let results;
   try {
