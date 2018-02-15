@@ -6,6 +6,8 @@ const mongo = require('../helpers/mongo');
 const baseUrl = 'https://json.xmltv.se';
 const dateString = () => moment().tz('Europe/Helsinki').format('YYYY-MM-DD');
 
+const { channelsByCountry } = require('../data/channels');
+
 /* xmltv_ns: This is intended to be a general way to number episodes and
 parts of multi-part episodes.  It is three numbers separated by dots,
 the first is the series or season, the second the episode number
@@ -113,6 +115,9 @@ const updateChannels = async () => {
     icon: allChannels[channelId].icon,
     _id: channelId,
     country: channelId.slice(channelId.lastIndexOf('.') + 1),
+    get orderNumber() {
+      return channelsByCountry[this.country] && channelsByCountry[this.country][this._id];
+    },
   }));
 
   await db.collection('channels').deleteMany({});
