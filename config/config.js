@@ -1,19 +1,13 @@
 // config/config.js
 
-const path = require('path');
-
-const rootPath = path.join(__dirname, '/..');
 const port = process.env.PORT || 10010;
-const serverIpAddress = process.env.IP || '0.0.0.0';
+const ip = process.env.IP || '0.0.0.0';
 const name = 'tv-api';
-const mongoURL = process.env.MONGO_URL || `mongodb://127.0.0.1:27017/${name}`;
+const db = process.env.MONGO_URL || `mongodb://127.0.0.1:27017/${name}`;
 
 module.exports = {
-  root: rootPath,
-  app: {
-    name,
-  },
+  name,
   port,
-  ip_address: serverIpAddress,
-  db: mongoURL,
+  ip,
+  db,
 };

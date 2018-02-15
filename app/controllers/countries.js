@@ -4,16 +4,19 @@ const mongo = require('../helpers/mongo');
 
 const { handleErrors } = require('../helpers/errors');
 
-function getCountries(req, res) {
-  return mongo.getDb
-    .then(db => db.collection('countries').find({}).toArray())
-    .then((countries) => {
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-      });
-      return res.end(JSON.stringify(countries));
-    })
-    .catch(error => handleErrors(res, error));
+async function getCountries(req, res) {
+  try {
+    const db = await mongo.getDb;
+    const countries = await db.collection('countries').find({}).toArray();
+
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+    });
+
+    return res.end(JSON.stringify(countries));
+  } catch (error) {
+    return handleErrors(res, error);
+  }
 }
 
 module.exports = {

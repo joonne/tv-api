@@ -16,7 +16,7 @@ const router = (req, res) => {
     return getProgramsByChannel(req, res);
   } else if (pathname === '/health' && req.method === 'GET') {
     return getHealth(req, res);
-  } else if (pathname === '/api/countries') {
+  } else if (pathname === '/api/countries' && req.method === 'GET') {
     return getCountries(req, res);
   }
   res.statusCode = 404;

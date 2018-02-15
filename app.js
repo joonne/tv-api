@@ -31,8 +31,8 @@ server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
 
-server.listen(config.port, config.ip_address, undefined, () => {
-  console.log(`listening at ${config.ip_address}:${config.port}`);
+server.listen(config.port, config.ip, undefined, () => {
+  console.log(`listening at ${config.ip}:${config.port}`);
 });
 
 // 6 AM

@@ -1,11 +1,11 @@
-// app/controllers/program.js
+// app/controllers/programs.js
 
 const mongo = require('../helpers/mongo');
 const url = require('url');
 
 const { handleErrors } = require('../helpers/errors');
 
-function getProgramsByChannel(req, res) {
+async function getProgramsByChannel(req, res) {
   const startString = 'channels/';
   const endString = '/programs';
   const pathname = url.parse(req.url).pathname;
@@ -13,15 +13,18 @@ function getProgramsByChannel(req, res) {
   const end = pathname.indexOf(endString);
   const _channelId = pathname.slice(start, end);
 
-  return mongo.getDb
-    .then(db => db.collection('programs').find({ _channelId }).sort({ 'data.start': 1 }).toArray())
-    .then((programs) => {
-      res.writeHead(200, {
-        'Content-Type': 'application/json',
-      });
-      return res.end(JSON.stringify(programs));
-    })
-    .catch(error => handleErrors(res, error));
+  try {
+    const db = await mongo.getDb;
+    const programs = await db.collection('programs').find({ _channelId }).sort({ 'data.start': 1 }).toArray();
+
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+    });
+
+    return res.end(JSON.stringify(programs));
+  } catch (error) {
+    return handleErrors(res, error);
+  }
 }
 
 module.exports = {
