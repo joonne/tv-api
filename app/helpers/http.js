@@ -19,8 +19,7 @@ function get(url) {
       if (error) {
         console.error(error.message);
         // consume response data to free up memory
-        res.resume();
-        return;
+        reject(res.resume());
       }
 
       res.setEncoding('utf8');

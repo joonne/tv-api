@@ -71,21 +71,26 @@ const insertPrograms = async (data, _channelId) => {
   db.collection('programs').insertMany(programs);
 };
 
+const toResultObject = promise => new Promise(async (resolve) => {
+  const result = await promise
+    .catch((error) => {
+      console.error('error with', error.req.path);
+      return undefined;
+    });
+
+  return resolve(result);
+});
+
 async function updateSchedule() {
   const db = await mongo.getDb;
   await db.collection('programs').deleteMany({});
   const channels = await db.collection('channels').find({}).toArray();
 
-  const promises =
-    channels.map(channel => http.get(`${baseUrl}/${channel._id}_${dateString()}.js.gz`));
+  const promises = channels
+    .map(channel => http.get(`${baseUrl}/${channel._id}_${dateString()}.js.gz`))
+    .map(toResultObject);
 
-  let results;
-  try {
-    results = await Promise.all(promises);
-  } catch (error) {
-    console.log(error.stack);
-    results = [];
-  }
+  const results = (await Promise.all(promises)).filter(res => res);
 
   results.forEach((channel, index) => {
     insertPrograms(channel, channels[index]._id);
@@ -131,6 +136,7 @@ const updateAll = async () => {
     await updateSchedule();
     console.log('Programs updated');
   } catch (error) {
+    console.log(error.stack);
     console.log('update failed');
   }
 };
