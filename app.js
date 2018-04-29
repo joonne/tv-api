@@ -12,18 +12,16 @@ const mongo = require('./app/helpers/mongo');
 
 const countries = require('./app/data/countries.json');
 
-const initDb = async () => {
+(async () => {
   try {
-    const db = await mongo.getDb;
+    const db = await mongo.db;
     await db.collection('countries').deleteMany({});
     await db.collection('countries').insertMany(countries);
     await updateAll();
   } catch (error) {
     console.log(error.stack);
   }
-};
-
-initDb();
+})();
 
 const server = http.createServer(logger(router));
 

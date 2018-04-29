@@ -1,5 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
-const ObjectId = require('mongodb').ObjectID;
+const { MongoClient, ObjectId } = require('mongodb');
 
 const config = require('../../config/config');
 
@@ -26,10 +25,11 @@ module.exports = {
     }
     return objectId;
   },
-  get getDb() {
+  get db() {
     if (connection) {
       return Promise.resolve(connection);
     }
+
     return this.connect();
   },
 };

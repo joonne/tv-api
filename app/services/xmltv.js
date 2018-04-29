@@ -67,22 +67,19 @@ const insertPrograms = async (data, _channelId) => {
     return;
   }
 
-  const db = await mongo.getDb;
+  const db = await mongo.db;
   db.collection('programs').insertMany(programs);
 };
 
-const toResultObject = promise => new Promise(async (resolve) => {
+const toResultObject = async (promise) => {
   const result = await promise
-    .catch((error) => {
-      console.error('error with', error.req.path);
-      return undefined;
-    });
+    .catch(error => console.error('error with', error.req.path));
 
-  return resolve(result);
-});
+  return result;
+};
 
 async function updateSchedule() {
-  const db = await mongo.getDb;
+  const db = await mongo.db;
   await db.collection('programs').deleteMany({});
   const channels = await db.collection('channels').find({}).toArray();
 
@@ -109,7 +106,7 @@ function reduceChannels(result) {
 }
 
 const updateChannels = async () => {
-  const db = await mongo.getDb;
+  const db = await mongo.db;
   const countries = await db.collection('countries').find({}).toArray();
   const promises =
     countries.map(country => http.get(`${baseUrl}/channels-${country.name}.js.gz`));
