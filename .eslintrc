@@ -8,7 +8,6 @@
         "no-underscore-dangle": 0
     },
     "env": {
-        "node": true,
-        "mocha": true
+        "node": true
     }
 }

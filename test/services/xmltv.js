@@ -1,7 +1,10 @@
+const { expect } = require('chai');
+
 const {
   getSeasonNumber,
   getEpisodeNumber,
   reduceChannels,
+  toResultObject,
 } = require('../../app/services/xmltv');
 
 /* Some examples will make things clearer.  The first episode of the
@@ -107,6 +110,20 @@ describe('xmltv', () => {
 
     it('should return an empty object if the given parameter is not an array', () => {
       [{}, '', 12].forEach(input => reduceChannels(input).should.deep.equal({}));
+    });
+  });
+
+  describe('toResultObject', () => {
+    it('should resolve a given promise with correct value', async () => {
+      const value = 'jee';
+      const result = await toResultObject(Promise.resolve(value));
+      result.should.equal(value);
+    });
+
+    it('should resolve a given to be rejected promise from xmltv with a falsy value', async () => {
+      const errorResponse = { req: { path: '/' } };
+      const result = await toResultObject(Promise.reject(errorResponse));
+      expect(result).to.be.undefined;
     });
   });
 });

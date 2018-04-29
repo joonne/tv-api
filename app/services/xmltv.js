@@ -144,4 +144,5 @@ module.exports = {
   getSeasonNumber,
   updateAll,
   reduceChannels,
+  toResultObject,
 };
