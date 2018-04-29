@@ -41,7 +41,7 @@ const getSeasonNumber = (str) => {
 const getTitleOrDesc = (obj) => {
   let key;
   try {
-    key = Object.keys(obj)[0];
+    [key] = Object.keys(obj);
   } catch (error) {
     key = null;
   }

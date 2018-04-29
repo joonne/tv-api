@@ -8,7 +8,7 @@ const { handleErrors } = require('../helpers/errors');
 async function getProgramsByChannel(req, res) {
   const startString = 'channels/';
   const endString = '/programs';
-  const pathname = url.parse(req.url).pathname;
+  const { pathname } = url.parse(req.url);
   const start = pathname.indexOf(startString) + startString.length;
   const end = pathname.indexOf(endString);
   const _channelId = pathname.slice(start, end);

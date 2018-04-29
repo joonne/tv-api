@@ -5,7 +5,7 @@ const cron = require('cron');
 
 const { updateAll } = require('./app/services/xmltv');
 
-const config = require('./config/config');
+const { port, ip, env } = require('./config/config');
 const router = require('./app/router');
 const logger = require('./app/helpers/logger');
 const mongo = require('./app/helpers/mongo');
@@ -17,7 +17,7 @@ const countries = require('./app/data/countries.json');
     const db = await mongo.db;
     await db.collection('countries').deleteMany({});
     await db.collection('countries').insertMany(countries);
-    await updateAll();
+    if (env !== 'test') await updateAll();
   } catch (error) {
     console.log(error.stack);
   }
@@ -29,8 +29,8 @@ server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
 
-server.listen(config.port, config.ip, undefined, () => {
-  console.log(`listening at ${config.ip}:${config.port}`);
+server.listen(port, ip, undefined, () => {
+  console.log(`listening at ${ip}:${port}`);
 });
 
 // 6 AM

@@ -1,7 +1,7 @@
 const {
-    getSeasonNumber,
-    getEpisodeNumber,
-    reduceChannels,
+  getSeasonNumber,
+  getEpisodeNumber,
+  reduceChannels,
 } = require('../../app/services/xmltv');
 
 /* Some examples will make things clearer.  The first episode of the

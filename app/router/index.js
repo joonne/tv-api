@@ -9,7 +9,7 @@ const { getHealth } = require('../controllers/health');
 const { getCountries } = require('../controllers/countries');
 
 const router = (req, res) => {
-  const pathname = url.parse(req.url, true).pathname;
+  const { pathname } = url.parse(req.url, true);
   if (pathname === '/api/channels' && req.method === 'GET') {
     return getChannels(req, res);
   } else if (pathname.match('^/api/channels/.{1,}/programs$') && req.method === 'GET') {

@@ -6,7 +6,7 @@ const url = require('url');
 const { handleErrors } = require('../helpers/errors');
 
 async function getChannels(req, res) {
-  const country = url.parse(req.url, true).query.country;
+  const { country } = url.parse(req.url, true).query;
   const query = {};
 
   if (country) {
