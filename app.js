@@ -23,7 +23,7 @@ const countries = require('./app/data/countries.json');
   }
 })();
 
-const server = http.createServer(logger(router));
+const server = http.createServer(env === 'test' ? router : logger(router));
 
 server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');

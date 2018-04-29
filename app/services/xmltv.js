@@ -97,7 +97,6 @@ async function updateSchedule() {
 /* processes an array of { jsontv: { channels: {} } } objects into one flat object */
 function reduceChannels(result) {
   if (!Array.isArray(result)) {
-    console.error('invalid result provided, should be an array');
     return {};
   }
 

@@ -18,81 +18,71 @@ the show is still being made! */
 
 describe('xmltv', () => {
   describe('getSeasonNumber', () => {
-    it('should find a 1-digit season number from the given string', (done) => {
-      const strings = [
+    it('should find a 1-digit season number from the given string', () => {
+      [
         '1 . 3 .',
         '1.0.0/1',
         '1.0.0/2',
         '1.0.1/2',
         '1..',
         '1 . 12/13 . 0/3',
-      ];
-      strings.forEach((string) => {
+      ].forEach((string) => {
         getSeasonNumber(string).should.equal(2);
       });
-      done();
     });
 
-    it('should find a 2-digit season number from the given string', (done) => {
-      const strings = [
+    it('should find a 2-digit season number from the given string', () => {
+      [
         '12 . 3 .',
         '12.0.0/1',
         '12.0.0/2',
         '12.0.1/2',
         '12..',
         '12 . 12/13 . 0/3',
-      ];
-      strings.forEach((string) => {
+      ].forEach((string) => {
         getSeasonNumber(string).should.equal(13);
       });
-      done();
     });
 
-    it('should return "-" if the given string does not contain any dots.', (done) => {
+    it('should return "-" if the given string does not contain any dots.', () => {
       getSeasonNumber('12 0 0/2').should.equal('-');
-      done();
     });
   });
 
   describe('getEpisodeNumber', () => {
-    it('should find a 1 digit episode number from the given string', (done) => {
-      const strings = [
+    it('should find a 1 digit episode number from the given string', () => {
+      [
         '1 . 3 .',
         '1.3.0/1',
         '1.3.0/2',
         '1.3.1/2',
         '.3.',
         '1 . 3/13 . 0/3',
-      ];
-      strings.forEach((string) => {
+      ].forEach((string) => {
         getEpisodeNumber(string).should.equal(4);
       });
-      done();
     });
 
-    it('should find a  2-digit episode number from the given string', (done) => {
-      const strings = [
+    it('should find a  2-digit episode number from the given string', () => {
+      [
         '1 . 21 .',
         '1.21.0/1',
         '1.21.0/2',
         '1.21.1/2',
         '.21.',
         '1 . 21/22 . 0/3',
-      ];
-      strings.forEach((string) => {
+      ].forEach((string) => {
         getEpisodeNumber(string).should.equal(22);
       });
-      done();
     });
 
-    it('should return "-" if the given string does not contain any dots.', (done) => {
+    it('should return "-" if the given string does not contain any dots.', () => {
       getEpisodeNumber('1210/1').should.equal('-');
-      done();
     });
   });
 
   describe('reduceChannels', () => {
-    it('should return a flattened object that has the channel names as keys', (done) => {
+    it('should return a flattened object that has the channel names as keys', () => {
       const channelName1 = 'mtv3.fi';
       const channelName2 = 'nelonen.fi';
       const validInput = [{
@@ -113,12 +103,10 @@ describe('xmltv', () => {
         [channelName2]: {},
       };
       reduceChannels(validInput).should.deep.equal(expectedResult);
-      done();
     });
-  });
 
-  it('should return an empty object if the given parameter is not an array', (done) => {
-    [{}, '', 12].forEach(input => reduceChannels(input).should.deep.equal({}));
-    done();
+    it('should return an empty object if the given parameter is not an array', () => {
+      [{}, '', 12].forEach(input => reduceChannels(input).should.deep.equal({}));
+    });
   });
 });
