@@ -12,16 +12,15 @@ chai.use(chaiHttp);
 
 const defaultChannelId = 'mtv3.fi';
 
-function addProgram(program) {
-  return mongo.getDb
-    .then(db => db.collection('programs').insertOne(program));
+async function addProgram(program) {
+  const db = await mongo.db;
+  await db.collection('programs').insertOne(program);
 }
 
 describe('program controller', () => {
-  before((done) => {
-    mongo.getDb
-      .then(db => db.collection('programs').removeMany({}))
-      .then(() => done());
+  before(async () => {
+    const db = await mongo.db;
+    await db.collection('programs').removeMany({});
   });
 
   it('should return an empty array before inserting any programs via GET /api/programs/:channel', (done) => {
@@ -36,8 +35,8 @@ describe('program controller', () => {
       });
   });
 
-  it('should create and save a new program into db without error', (done) => {
-    addProgram({
+  it('should create and save a new program into db without error', async () => {
+    await addProgram({
       _channelId: defaultChannelId,
       name: 'salkkarit',
       description: 'aki vauhdissa',
@@ -45,10 +44,7 @@ describe('program controller', () => {
       episode: 4,
       start: Date.now,
       end: Date.now,
-    })
-      .then(() => {
-        done();
-      });
+    });
   });
 
   it('should return one program from the default channel via GET /api/channels/:channel/programs', (done) => {
@@ -75,8 +71,8 @@ describe('program controller', () => {
       });
   });
 
-  it('should create multiple new programs and save into db', (done) => {
-    Promise.all([
+  it('should create multiple new programs and save into db', async () => {
+    await Promise.all([
       addProgram({
         _channelId: defaultChannelId,
         data: {
@@ -132,10 +128,7 @@ describe('program controller', () => {
           end: Date.now,
         },
       }),
-    ])
-      .then(() => {
-        done();
-      });
+    ]);
   });
 
   it('should return 6 programs in an array for default channel via /api/channels/:channel/programs', (done) => {

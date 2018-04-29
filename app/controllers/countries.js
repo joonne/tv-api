@@ -6,7 +6,7 @@ const { handleErrors } = require('../helpers/errors');
 
 async function getCountries(req, res) {
   try {
-    const db = await mongo.getDb;
+    const db = await mongo.db;
     const countries = await db.collection('countries').find({}).toArray();
 
     res.writeHead(200, {

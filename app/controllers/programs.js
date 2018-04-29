@@ -14,7 +14,7 @@ async function getProgramsByChannel(req, res) {
   const _channelId = pathname.slice(start, end);
 
   try {
-    const db = await mongo.getDb;
+    const db = await mongo.db;
     const programs = await db.collection('programs').find({ _channelId }).sort({ 'data.start': 1 }).toArray();
 
     res.writeHead(200, {

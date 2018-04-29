@@ -10,22 +10,20 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-function addCountry(_id, name, abbreviation) {
-  return mongo.getDb
-    .then(db => db.collection('countries').insertOne({ _id, name, abbreviation }));
+async function addCountry(_id, name, abbreviation) {
+  const db = await mongo.db;
+  await db.collection('countries').insertOne({ _id, name, abbreviation });
 }
 
 describe('countries controller', () => {
-  before((done) => {
-    mongo.getDb
-      .then(db => db.collection('countries').removeMany({}))
-      .then(() => done());
+  before(async () => {
+    const db = await mongo.db;
+    await db.collection('countries').removeMany({});
   });
 
-  after((done) => {
-    mongo.getDb
-      .then(db => db.collection('channels').removeMany({}))
-      .then(() => done());
+  after(async () => {
+    const db = await mongo.db;
+    await db.collection('channels').removeMany({});
   });
 
   it('should return empty array before adding countries via GET /api/countries', (done) => {
@@ -40,11 +38,8 @@ describe('countries controller', () => {
       });
   });
 
-  it('should create and save a new country into db without error', (done) => {
-    addCountry('id', 'Finland', 'fi')
-      .then(() => {
-        done();
-      });
+  it('should create and save a new country into db without error', async () => {
+    await addCountry('id', 'Finland', 'fi');
   });
 
   it('should return one country "Finland" inside an array via GET /api/countries', (done) => {

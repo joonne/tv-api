@@ -14,7 +14,7 @@ async function getChannels(req, res) {
   }
 
   try {
-    const db = await mongo.getDb;
+    const db = await mongo.db;
     const channelsWithoutOrderNumber = await db.collection('channels').find({ ...query, orderNumber: null }).toArray();
     const channelsWithOrderNumber = await db.collection('channels').find({ ...query, orderNumber: { $ne: null } }).sort({ orderNumber: 1 }).toArray();
 
