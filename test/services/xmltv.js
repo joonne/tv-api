@@ -1,10 +1,14 @@
+const mongo = require('../../app/helpers/mongo');
 const { expect } = require('chai');
+
+let db;
 
 const {
   getSeasonNumber,
   getEpisodeNumber,
   reduceChannels,
   toResultObject,
+  insertPrograms,
 } = require('../../app/services/xmltv');
 
 /* Some examples will make things clearer.  The first episode of the
@@ -19,7 +23,18 @@ its number would be '0 . 12/13 . 0/3'.  The series number is just '0'
 because you don't know how many series there are in total - perhaps
 the show is still being made! */
 
+const clearDb = async () => {
+  await db.collection('channels').removeMany({});
+  await db.collection('programs').removeMany({});
+};
+
 describe('xmltv', () => {
+  before(async () => {
+    db = await mongo.db;
+    clearDb();
+  });
+  after(clearDb);
+
   describe('getSeasonNumber', () => {
     it('should find a 1-digit season number from the given string', () => {
       [
@@ -124,6 +139,35 @@ describe('xmltv', () => {
       const errorResponse = { req: { path: '/' } };
       const result = await toResultObject(Promise.reject(errorResponse));
       expect(result).to.be.undefined;
+    });
+  });
+
+  describe('insertPrograms', () => {
+    it('should not insert any programs into db when there is no data (due to bulk insert restrictions)', async () => {
+      const data = { jsontv: { programme: [] } };
+      await insertPrograms(data, 'id');
+      const result = await db.collection('programs').find({}).toArray();
+      result.length.should.equal(0);
+    });
+
+    it('should insert 1 program into db', async () => {
+      const data = {
+        jsontv: {
+          programme: [{
+            title: 'title',
+            description: 'description',
+            episodeNum: { xmltv_ns: 'asd' },
+            start: '123123123',
+            stop: '123123123123',
+            category: { en: [] },
+          }],
+        },
+      };
+
+      await insertPrograms(data, 'id');
+
+      const result = await db.collection('programs').find({}).toArray();
+      result.length.should.equal(1);
     });
   });
 });

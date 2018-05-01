@@ -145,4 +145,5 @@ module.exports = {
   updateAll,
   reduceChannels,
   toResultObject,
+  insertPrograms,
 };
