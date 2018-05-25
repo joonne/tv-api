@@ -3,32 +3,30 @@
 // this file includes all the available country specific channel order files
 //
 
-const channelsByCountry = {};
-
 const countries = require('../countries.json');
 
 const generateChannelsByCountry = () => {
   if (!Array.isArray(countries)) {
-    return;
+    return {};
   }
 
-  countries.forEach((country) => {
+  return countries.reduce((channelsByCountry, country) => {
     try {
       // eslint-disable-next-line global-require, import/no-dynamic-require
       const channels = require(`./${country.abbreviation}.json`);
 
-      const channelsReduced = channels.reduce((acc, curr) => {
-        acc[curr._channelId] = curr.orderNumber;
-        return acc;
-      }, {});
-
-      channelsByCountry[country.abbreviation] = channelsReduced;
+      return {
+        ...channelsByCountry,
+        [country.abbreviation]: channels.reduce((channelsReduced, channel) => ({
+          ...channelsReduced,
+          [channel._channelId]: channel.orderNumber,
+        }), {}),
+      };
     } catch (error) {
       console.error(`${country.abbreviation}.json not found`);
+      return channelsByCountry;
     }
-  });
+  }, {});
 };
 
-generateChannelsByCountry();
-
-module.exports = { channelsByCountry };
+module.exports = { channelsByCountry: generateChannelsByCountry() };

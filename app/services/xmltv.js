@@ -49,16 +49,18 @@ const getTitleOrDesc = (obj) => {
 };
 
 const insertPrograms = async (data, _channelId) => {
-  const programs = data.jsontv.programme.map(p => ({
+  const programs = data.jsontv.programme.map(({
+    title, desc, episodeNum, start, stop, category,
+  }) => ({
     _channelId,
     data: {
-      name: getTitleOrDesc(p.title),
-      description: getTitleOrDesc(p.desc),
-      season: p.episodeNum && p.episodeNum.xmltv_ns ? getSeasonNumber(p.episodeNum.xmltv_ns) : '-',
-      episode: p.episodeNum && p.episodeNum.xmltv_ns ? getEpisodeNumber(p.episodeNum.xmltv_ns) : '-',
-      start: p.start ? parseInt(p.start, 10) : '-',
-      end: p.stop ? parseInt(p.stop, 10) : '-',
-      categories: p.category && p.category.en ? p.category.en : [],
+      name: getTitleOrDesc(title),
+      description: getTitleOrDesc(desc),
+      season: episodeNum && episodeNum.xmltv_ns ? getSeasonNumber(episodeNum.xmltv_ns) : '-',
+      episode: episodeNum && episodeNum.xmltv_ns ? getEpisodeNumber(episodeNum.xmltv_ns) : '-',
+      start: start ? parseInt(start, 10) : '-',
+      end: stop ? parseInt(stop, 10) : '-',
+      categories: category && category.en ? category.en : [],
     },
   }));
 
