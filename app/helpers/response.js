@@ -7,7 +7,7 @@ module.exports = cb => (req, res) => {
     return this;
   };
 
-  res.json = function end(response) {
+  res.json = function json(response) {
     this.end(JSON.stringify(response));
   };
 
