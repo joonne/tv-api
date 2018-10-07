@@ -1,7 +1,7 @@
 // controllers/channels.js
 
-const mongo = require('../helpers/mongo');
 const url = require('url');
+const mongo = require('../helpers/mongo');
 
 const { handleErrors } = require('../helpers/errors');
 

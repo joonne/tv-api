@@ -10,11 +10,11 @@ function get(url) {
 
       let error;
       if (statusCode !== 200) {
-        error = new Error('Request Failed.\n' +
-          `Status Code: ${statusCode}`);
+        error = new Error(`Request Failed
+          Status Code: ${statusCode}`);
       } else if (!/^application\/json/.test(contentType)) {
-        error = new Error('Invalid content-type.\n' +
-          `Expected application/json but received ${contentType}`);
+        error = new Error(`Invalid content-type
+          Expected application/json but received ${contentType}`);
       }
       if (error) {
         console.error(error.message);

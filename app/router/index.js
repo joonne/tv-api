@@ -13,15 +13,21 @@ const router = (req, res) => {
   const { pathname } = url.parse(req.url, true);
   if (pathname === '/api/channels' && req.method === 'GET') {
     return getChannels(req, res);
-  } else if (pathname.match('^/api/channels/.{1,}/programs$') && req.method === 'GET') {
+  }
+
+  if (pathname.match('^/api/channels/.{1,}/programs$') && req.method === 'GET') {
     return getProgramsByChannel(req, res);
-  } else if (pathname === '/health' && req.method === 'GET') {
+  }
+
+  if (pathname === '/health' && req.method === 'GET') {
     return getHealth(req, res);
-  } else if (pathname === '/api/countries' && req.method === 'GET') {
+  }
+
+  if (pathname === '/api/countries' && req.method === 'GET') {
     return getCountries(req, res);
   }
-  res.statusCode = 404;
-  return res.end('Not Found');
+
+  return res.status(404).end('Not Found');
 };
 
 module.exports = cors(extendResponse(router));

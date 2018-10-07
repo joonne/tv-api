@@ -1,5 +1,5 @@
-const mongo = require('../../app/helpers/mongo');
 const { expect } = require('chai');
+const mongo = require('../../app/helpers/mongo');
 
 let db;
 

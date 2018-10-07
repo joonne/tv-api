@@ -102,15 +102,17 @@ function reduceChannels(result) {
     return {};
   }
 
-  return result.reduce((acc, curr) =>
-    Object.assign(acc, (curr.jsontv && curr.jsontv.channels) || {}), {});
+  return result.reduce((acc, curr) => ({
+    ...acc,
+    ...(curr.jsontv && curr.jsontv.channels) || {},
+  }), {});
 }
 
 const updateChannels = async () => {
   const db = await mongo.db;
   const countries = await db.collection('countries').find({}).toArray();
-  const promises =
-    countries.map(country => http.get(`${baseUrl}/channels-${country.name}.js.gz`));
+  const getChannel = name => http.get(`${baseUrl}/channels-${name}.js.gz`);
+  const promises = countries.map(({ name }) => getChannel(name));
 
   const allChannels = reduceChannels(await Promise.all(promises));
   const channels = Object.keys(allChannels).map(channelId => ({
