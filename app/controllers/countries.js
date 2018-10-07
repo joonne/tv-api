@@ -9,11 +9,7 @@ async function getCountries(req, res) {
     const db = await mongo.db;
     const countries = await db.collection('countries').find({}).toArray();
 
-    res.writeHead(200, {
-      'Content-Type': 'application/json',
-    });
-
-    return res.end(JSON.stringify(countries));
+    return res.status(200).json(countries);
   } catch (error) {
     return handleErrors(res, error);
   }

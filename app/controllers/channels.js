@@ -20,11 +20,7 @@ async function getChannels(req, res) {
 
     const channels = channelsWithOrderNumber.concat(channelsWithoutOrderNumber);
 
-    res.writeHead(200, {
-      'Content-Type': 'application/json',
-    });
-
-    return res.end(JSON.stringify(channels));
+    return res.status(200).json(channels);
   } catch (error) {
     return handleErrors(res, error);
   }

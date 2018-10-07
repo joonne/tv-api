@@ -17,11 +17,7 @@ async function getProgramsByChannel(req, res) {
     const db = await mongo.db;
     const programs = await db.collection('programs').find({ _channelId }).sort({ 'data.start': 1 }).toArray();
 
-    res.writeHead(200, {
-      'Content-Type': 'application/json',
-    });
-
-    return res.end(JSON.stringify(programs));
+    return res.status(200).json(programs);
   } catch (error) {
     return handleErrors(res, error);
   }

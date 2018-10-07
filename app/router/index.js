@@ -3,6 +3,7 @@
 const url = require('url');
 
 const cors = require('../helpers/cors');
+const extendResponse = require('../helpers/response');
 const { getChannels } = require('../controllers/channels');
 const { getProgramsByChannel } = require('../controllers/programs');
 const { getHealth } = require('../controllers/health');
@@ -23,4 +24,4 @@ const router = (req, res) => {
   return res.end('Not Found');
 };
 
-module.exports = cors(router);
+module.exports = cors(extendResponse(router));
