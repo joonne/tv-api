@@ -106,3 +106,9 @@ Response 200
 ```sh
 oc tag --alias=true jonnepihlanen/tv-api tv-api:latest
 ```
+
+## aws
+
+```sh
+aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com --profile tv-api
+```

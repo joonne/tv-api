@@ -1,0 +1,90 @@
+Resources:
+  TvApiVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      # EnableDnsSupport: 'false'
+      # EnableDnsHostnames: 'false'
+      # InstanceTenancy: dedicated
+      # Tags:
+      # - Key: foo
+      #   Value: bar
+
+  TvApiSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref TvApiVPC
+      CidrBlock: 10.0.0.0/24
+      # Tags:
+      # - Key: foo
+      #   Value: bar
+
+  TvApiEcr: 
+    Type: AWS::ECR::Repository
+    Properties:
+      # RepositoryName: "tv-api"
+      RepositoryPolicyText:
+        Version: "2012-10-17"
+        Statement:
+          -
+            Sid: AllowPushPull
+            Effect: Allow
+            Principal:
+              AWS:
+                - arn:aws:iam::499064814326:user/tv-api
+            Action:
+              - "ecr:GetDownloadUrlForLayer"
+              - "ecr:BatchGetImage"
+              - "ecr:BatchCheckLayerAvailability"
+              - "ecr:PutImage"
+              - "ecr:InitiateLayerUpload"
+              - "ecr:UploadLayerPart"
+              - "ecr:CompleteLayerUpload"
+  
+  TvApiEcsCluster:
+    Type: AWS::ECS::Cluster
+  
+  TvApiEcsTaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: "tv-api"
+      Volumes:
+        -
+          Name: "my-vol"
+      Cpu: "256"
+      Memory: "0.5GB"
+      RequiresCompatibilities:
+        - "FARGATE"
+      NetworkMode: "awsvpc"
+      ContainerDefinitions:
+        - 
+          Name: "tv-api"
+          Image: !GetAtt TvApiEcr.Arn
+          Cpu: 1
+          EntryPoint: 
+            - "npm start"
+          Memory: 500
+          Essential: true
+        - 
+          Name: "mongo"
+          MountPoints: 
+            - 
+              SourceVolume: "my-vol"
+              ContainerPath: "/data/my-vol"
+          Image: "mongo"
+          Cpu: 1
+          Memory: 500
+          Essential: true
+
+  TvApiEcsService:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref TvApiEcsCluster
+      LaunchType: FARGATE
+      TaskDefinition: !Ref TvApiEcsTaskDefinition
+      DesiredCount: 2
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          Subnets:
+            - !Ref TvApiSubnet
+          AssignPublicIp: "ENABLED"

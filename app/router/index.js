@@ -1,4 +1,4 @@
-// app/routes/index.js
+// app/router/index.js
 
 const url = require('url');
 
