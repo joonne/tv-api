@@ -29,9 +29,11 @@ server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
 
-server.listen(port, ip, undefined, () => {
-  console.log(`listening at ${ip}:${port}`);
-});
+if (!module.parent) {
+  server.listen(port, ip, undefined, () => {
+    console.log(`listening at ${ip}:${port}`);
+  });
+}
 
 // 6 AM
 cron.job('0 6 * * *', () => updateAll()).start();
