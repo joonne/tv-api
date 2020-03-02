@@ -100,9 +100,3 @@ Response 200
   "abbreviation":"fi"
 }]
 ```
-
-## deployment from docker cloud
-
-```sh
-oc tag --alias=true jonnepihlanen/tv-api tv-api:latest
-```
