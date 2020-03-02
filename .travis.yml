@@ -3,5 +3,5 @@ node_js:
   - 'node'
 services:
   - mongodb
-before_script: npm run lint
+before_script: nvm install && nvm use && npm run lint
 after_success: npm run coveralls
