@@ -1,5 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const { expect } = require('chai');
-const mongo = require('../../app/helpers/mongo');
+const mongo = require('../../src/helpers/mongo');
 
 let db;
 
@@ -9,7 +10,7 @@ const {
   reduceChannels,
   toResultObject,
   insertPrograms,
-} = require('../../app/services/xmltv');
+} = require('../../src/services/xmltv');
 
 /* Some examples will make things clearer.  The first episode of the
 second series is '1.0.0/1' .  If it were a two-part episode, then the
@@ -124,7 +125,7 @@ describe('xmltv', () => {
     });
 
     it('should return an empty object if the given parameter is not an array', () => {
-      [{}, '', 12].forEach(input => reduceChannels(input).should.deep.equal({}));
+      [{}, '', 12].forEach((input) => reduceChannels(input).should.deep.equal({}));
     });
   });
 

@@ -3,8 +3,8 @@ process.env.NODE_ENV = 'test';
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
-const app = require('../../app');
-const mongo = require('../../app/helpers/mongo');
+const app = require('../../src');
+const mongo = require('../../src/helpers/mongo');
 
 const should = chai.should();
 

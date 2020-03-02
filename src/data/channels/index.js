@@ -1,4 +1,4 @@
-// data/countries/index.js
+// data/channels/index.js
 //
 // this file includes all the available country specific channel order files
 //

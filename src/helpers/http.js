@@ -1,8 +1,8 @@
 const https = require('https');
 
-function get(url) {
+function get(url, options = {}) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    https.get(url, options, (res) => {
       const {
         statusCode,
       } = res;

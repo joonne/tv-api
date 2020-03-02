@@ -1,4 +1,4 @@
-module.exports = cb => (req, res) => {
+module.exports = (cb) => (req, res) => {
   res.status = function status(statusCode) {
     this.writeHead(statusCode, {
       'Content-Type': 'application/json',

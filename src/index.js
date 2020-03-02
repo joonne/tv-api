@@ -3,14 +3,13 @@
 const http = require('http');
 const cron = require('cron');
 
-const { updateAll } = require('./app/services/xmltv');
-
+const { updateAll } = require('./services/xmltv');
 const { port, ip, env } = require('./config/config');
-const router = require('./app/router');
-const logger = require('./app/helpers/logger');
-const mongo = require('./app/helpers/mongo');
+const router = require('./router');
+const logger = require('./helpers/logger');
+const mongo = require('./helpers/mongo');
 
-const countries = require('./app/data/countries.json');
+const countries = require('./data/countries.json');
 
 (async () => {
   try {
@@ -29,9 +28,11 @@ server.on('clientError', (err, socket) => {
   socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
 
-server.listen(port, ip, undefined, () => {
-  console.log(`listening at ${ip}:${port}`);
-});
+if (!module.parent) {
+  server.listen(port, ip, undefined, () => {
+    console.log(`listening at ${ip}:${port}`);
+  });
+}
 
 // 6 AM
 cron.job('0 6 * * *', () => updateAll()).start();
