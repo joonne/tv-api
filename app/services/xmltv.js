@@ -72,7 +72,7 @@ const insertPrograms = async (data, _channelId) => {
   }
 
   const db = await mongo.db;
-  db.collection('programs').insertMany(programs);
+  await db.collection('programs').insertMany(programs);
 };
 
 const toResultObject = async (promise) => {
