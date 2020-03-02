@@ -7,7 +7,7 @@ let connection = null;
 module.exports = {
   connect() {
     return new Promise((resolve, reject) => {
-      MongoClient.connect(config.db, (err, client) => {
+      MongoClient.connect(config.db, { useUnifiedTopology: true }, (err, client) => {
         if (err) {
           return reject(err);
         }
