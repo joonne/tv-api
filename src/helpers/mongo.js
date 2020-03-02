@@ -1,6 +1,6 @@
 const { MongoClient, ObjectId } = require('mongodb');
 
-const config = require('../../config/config');
+const config = require('../config/config');
 
 let connection = null;
 

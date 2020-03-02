@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { expect } = require('chai');
-const mongo = require('../../app/helpers/mongo');
+const mongo = require('../../src/helpers/mongo');
 
 let db;
 
@@ -10,7 +10,7 @@ const {
   reduceChannels,
   toResultObject,
   insertPrograms,
-} = require('../../app/services/xmltv');
+} = require('../../src/services/xmltv');
 
 /* Some examples will make things clearer.  The first episode of the
 second series is '1.0.0/1' .  If it were a two-part episode, then the

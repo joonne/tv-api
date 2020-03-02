@@ -1,4 +1,4 @@
-const { handleErrors } = require('../../app/helpers/errors');
+const { handleErrors } = require('../../src/helpers/errors');
 
 describe('errors', () => {
   describe('handleError', () => {
