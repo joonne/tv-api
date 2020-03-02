@@ -8,6 +8,8 @@ const dateString = () => moment().tz('Europe/Helsinki').format('YYYY-MM-DD');
 
 const { channelsByCountry } = require('../data/channels');
 
+const xmltvOptions = { headers: { 'content-type': 'application/octet-stream' } };
+
 /* xmltv_ns: This is intended to be a general way to number episodes and
 parts of multi-part episodes.  It is three numbers separated by dots,
 the first is the series or season, the second the episode number
@@ -75,7 +77,7 @@ const insertPrograms = async (data, _channelId) => {
 
 const toResultObject = async (promise) => {
   const result = await promise
-    .catch(error => console.error('error with', error.req.path));
+    .catch((error) => console.error('error with', error.req.path));
 
   return result;
 };
@@ -86,14 +88,12 @@ async function updateSchedule() {
   const channels = await db.collection('channels').find({}).toArray();
 
   const promises = channels
-    .map(channel => http.get(`${baseUrl}/${channel._id}_${dateString()}.js.gz`))
+    .map((channel) => http.get(`${baseUrl}/${channel._id}_${dateString()}.json.gz`, xmltvOptions))
     .map(toResultObject);
 
-  const results = (await Promise.all(promises)).filter(res => res);
+  const results = (await Promise.all(promises)).filter((res) => res);
 
-  results.forEach((channel, index) => {
-    insertPrograms(channel, channels[index]._id);
-  });
+  return Promise.all(results.map((channel, index) => insertPrograms(channel, channels[index]._id)));
 }
 
 /* processes an array of { jsontv: { channels: {} } } objects into one flat object */
@@ -111,11 +111,11 @@ function reduceChannels(result) {
 const updateChannels = async () => {
   const db = await mongo.db;
   const countries = await db.collection('countries').find({}).toArray();
-  const getChannel = name => http.get(`${baseUrl}/channels-${name}.js.gz`);
+  const getChannel = (name) => http.get(`${baseUrl}/channels-${name}.json.gz`, xmltvOptions);
   const promises = countries.map(({ name }) => getChannel(name));
 
   const allChannels = reduceChannels(await Promise.all(promises));
-  const channels = Object.keys(allChannels).map(channelId => ({
+  const channels = Object.keys(allChannels).map((channelId) => ({
     name: allChannels[channelId].displayName && allChannels[channelId].displayName.en,
     icon: allChannels[channelId].icon,
     _id: channelId,

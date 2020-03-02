@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const { expect } = require('chai');
 const mongo = require('../../app/helpers/mongo');
 
@@ -124,7 +125,7 @@ describe('xmltv', () => {
     });
 
     it('should return an empty object if the given parameter is not an array', () => {
-      [{}, '', 12].forEach(input => reduceChannels(input).should.deep.equal({}));
+      [{}, '', 12].forEach((input) => reduceChannels(input).should.deep.equal({}));
     });
   });
 
