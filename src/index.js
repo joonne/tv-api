@@ -1,13 +1,10 @@
-// app.js
-
-const http = require('http');
 const cron = require('cron');
 
 const { updateAll } = require('./services/xmltv');
 const { port, ip, env } = require('./config/config');
-const router = require('./router');
-const logger = require('./helpers/logger');
+const server = require('./router');
 const mongo = require('./helpers/mongo');
+const { getChannels } = require('./controllers/channels');
 
 const countries = require('./data/countries.json');
 
@@ -22,17 +19,15 @@ const countries = require('./data/countries.json');
   }
 })();
 
-const server = http.createServer(env === 'test' ? router : logger(router));
-
-server.on('clientError', (err, socket) => {
-  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
-});
+const app = server();
 
 if (!module.parent) {
-  server.listen(port, ip, undefined, () => {
+  app.listen(port, ip, () => {
     console.log(`listening at ${ip}:${port}`);
   });
 }
+
+app.get('/api/channels', getChannels);
 
 // 6 AM
 cron.job('0 6 * * *', () => updateAll()).start();
