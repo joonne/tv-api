@@ -7,22 +7,25 @@
     "start": "node app.js",
     "test": "NODE_ENV=test nyc mocha --recursive --exit",
     "lint": "eslint app config test",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "docker:build": "docker build .",
+    "docker:start": "docker run tv-api -d",
+    "docker:test": "docker run tv-api npm test"
   },
   "dependencies": {
-    "cron": "^1.2.1",
-    "moment": "^2.18.1",
-    "moment-timezone": "^0.5.16",
-    "mongodb": "^3.0.7"
+    "cron": "1.7.2",
+    "moment": "2.24.0",
+    "moment-timezone": "0.5.26",
+    "mongodb": "3.3.2"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-http": "^4.0.0",
-    "coveralls": "^3.0.0",
-    "eslint": "^5.6.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.1.1",
-    "nyc": "^13.0.1"
+    "chai": "4.2.0",
+    "chai-http": "4.3.0",
+    "coveralls": "3.0.6",
+    "eslint": "6.5.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.18.2",
+    "mocha": "6.2.1",
+    "nyc": "14.1.1"
   }
 }

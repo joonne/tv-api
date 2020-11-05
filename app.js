@@ -5,7 +5,7 @@ const cron = require('cron');
 
 const { updateAll } = require('./app/services/xmltv');
 
-const { port, ip, env } = require('./config/config');
+const { port, ip, env } = require('./config');
 const router = require('./app/router');
 const logger = require('./app/helpers/logger');
 const mongo = require('./app/helpers/mongo');

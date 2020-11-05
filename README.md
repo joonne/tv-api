@@ -101,7 +101,13 @@ Response 200
 }]
 ```
 
-## deployment from docker cloud
+## Start MongoDB in docker
+
+```bash
+docker run mongo:3.3 -p 27017:27017 -d
+```
+
+## Deployment from docker cloud
 
 ```sh
 oc tag --alias=true jonnepihlanen/tv-api tv-api:latest
